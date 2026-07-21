@@ -103,6 +103,34 @@ h2{font-size:clamp(30px,4.6vw,50px);margin-bottom:22px;max-width:22ch}
 .offer a{display:inline-block;background:#fff;color:var(--grndk);font-family:'Nunito';font-weight:900;padding:14px 30px;border-radius:999px;font-size:15px}
 .disclaim{font-size:12.5px;color:var(--faint);margin-top:18px;max-width:76ch}
 .infographic{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 60px -34px rgba(20,23,18,.6);margin:26px 0 6px}
+/* Mockups de app (pantallazos reales) */
+.mocknote{background:var(--cream2);border:1px dashed var(--grn2);border-radius:12px;padding:12px 18px;font-size:13.5px;color:#5c554a;margin:20px auto 0;max-width:70ch;text-align:center}
+.mocknote b{color:var(--ink)}
+.cluster{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.phone{width:210px;max-width:44vw;border-radius:30px;border:7px solid var(--night);background:var(--night);box-shadow:0 30px 60px -30px rgba(20,23,18,.65);overflow:hidden}
+.phone img{display:block;width:100%;height:auto}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px;justify-items:center}
+@media(max-width:820px){.gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.gallery{grid-template-columns:1fr}}
+.shot{max-width:230px}
+.shot .cap{margin-top:12px;text-align:center}
+.shot .cap .t{font-family:'Nunito';font-weight:800;font-size:15px}
+.shot .cap .d{font-size:13px;color:var(--soft)}
+/* Banda de logos / apps reales */
+.band{display:block;width:100%;height:auto;margin-top:22px;border-radius:16px}
+.logoband{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-top:24px}
+.logoband img{display:block;width:100%;height:auto}
+/* Carrusel de testimonios */
+.carousel{position:relative;margin-top:30px}
+.ctrack{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 16px;-webkit-overflow-scrolling:touch}
+.ctrack::-webkit-scrollbar{height:8px}
+.ctrack::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+.cslide{flex:0 0 auto;width:340px;max-width:82vw;height:auto;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 60px -34px rgba(20,23,18,.55);scroll-snap-align:center}
+.cbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:none;background:var(--ink);color:#fff;font-size:24px;line-height:1;cursor:pointer;opacity:.92;box-shadow:0 8px 24px -8px rgba(0,0,0,.5)}
+.cbtn:hover{opacity:1}
+.cbtn.prev{left:-8px}.cbtn.next{right:-8px}
+@media(max-width:680px){.cbtn{display:none}}
+.chint{text-align:center;font-size:13px;color:var(--faint);margin-top:4px}
 footer{background:var(--cream2);padding:46px 0;text-align:center;border:none}
 footer .brand{justify-content:center;margin-bottom:8px}
 .conf{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:14px}
@@ -113,9 +141,9 @@ footer .brand{justify-content:center;margin-bottom:8px}
 <div class="nav"><div class="wrap">
   <div class="brand"><span class="vlogo"><svg viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="#004403"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="#004403"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.33 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="#004403"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="#004403"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="#004403"/></svg></span> <span style="color:var(--faint)">×</span> FIB</div>
   <div class="navlinks">
-    <a href="#vikin">VIKIN</a><a href="#oportunidad">Oportunidad</a>
+    <a href="#vikin">VIKIN</a><a href="#clientes">Clientes</a>
     <a href="#experiencia">Experiencia</a><a href="#ingresos">Ingresos</a>
-    <a href="#allyear">Todo el año</a><a href="#next">Siguientes pasos</a>
+    <a href="#prueba">Opiniones</a><a href="#next">Siguientes pasos</a>
   </div>
 </div></div>
 
@@ -130,7 +158,12 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <div><div class="n">95%+</div><div class="l">Abonos vendidos 2026</div></div>
     <div><div class="n">Offline</div><div class="l">Sin cobertura, sin problema</div></div>
   </div>
-  <img class="infographic" src="fib-hero.png" alt="La app oficial de FIB por VIKIN — funciona sin cobertura">
+  <div class="cluster">
+    <div class="phone"><img src="fib-app-home.png" alt="Pantalla de inicio de la app de FIB"></div>
+    <div class="phone"><img src="fib-app-map.png" alt="Mapa del recinto en la app de FIB"></div>
+    <div class="phone"><img src="fib-app-artist.png" alt="Ficha de artista en la app de FIB"></div>
+  </div>
+  <p class="mocknote"><b>Pantallas de ejemplo.</b> Ilustran cómo <em>podría</em> verse la app oficial de <b>FIB</b> con VIKIN. No son un diseño definitivo — el diseño final se trabaja con vuestro equipo.</p>
 </div></header>
 
 <!-- QUIÉNES SOMOS -->
@@ -145,6 +178,16 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <div><div class="n">White-label</div><div class="l">100% tu marca</div></div>
   </div>
   <div class="note">Ya trabajamos con festivales como <b>Greenbelt</b>, <b>The Big Retreat</b>, <b>Ideas Fest</b> o <b>Dubbed Out</b>. El objetivo es simple: mejorar la experiencia del asistente, aumentar el engagement y abrir nuevas oportunidades comerciales para organizador y patrocinadores.</div>
+</div></section>
+
+<!-- YA CONFÍAN EN VIKIN -->
+<section id="clientes"><div class="wrap">
+  <div class="kick">Ya confían en VIKIN</div>
+  <h2>Festivales reales, apps reales.</h2>
+  <p class="lead">Esto no es una demo: estos festivales ya tienen su app oficial hecha con VIKIN, cada una con su propia identidad de marca.</p>
+  <div class="logoband"><img src="vikin-trusted-logos.png" alt="Festivales que ya trabajan con VIKIN: Canowindra, The Big Retreat, Greenbelt, Ideas Fest, Teddy Rocks, Shambala y The Showman's Show"></div>
+  <img class="band" src="vikin-apps-real.png" alt="Apps reales de The Big Retreat, Greenbelt e Ideas Fest">
+  <p class="mocknote" style="border-style:solid"><b>Apps reales</b> de The Big Retreat, Greenbelt e Ideas Fest — cada festival con su marca, no una plantilla.</p>
 </div></section>
 
 <!-- POR QUÉ VIKIN -->
@@ -166,7 +209,6 @@ footer .brand{justify-content:center;margin-bottom:8px}
   <div class="kick">01 · La oportunidad</div>
   <h2>FIB ya tiene el público. Le falta el hilo que lo conecte todo.</h2>
   <p class="lead">El cartel está cerrado, los abonos casi agotados y los servicios en marcha. Pero toda esa información vive hoy repartida entre web, redes y carteles. Una app oficial la reúne en un solo sitio — y funciona aunque el recinto se quede sin señal.</p>
-  <img class="infographic" src="fib-oportunidad.png" alt="Todo tu festival en una sola app: del caos disperso al orden">
   <div class="grid g2" style="margin-top:26px">
     <div class="card"><h3>Mucho que contar, en muchos sitios</h3><p>Pulsera cashless y promo recarga, glamping, consignas con carga de móvil, FIBERBUS y buses lanzadera, zona VIP, cómo llegar… Hoy el fiber lo busca por su cuenta. En la app lo tiene siempre a mano, incluso offline.</p></div>
     <div class="card"><h3>Tres días, decenas de artistas, solapes</h3><p>Con Franz Ferdinand, The Prodigy, Biffy Clyro, The Kooks o Kaiser Chiefs repartidos en varios escenarios, la agenda personal con avisos de solapamiento evita que nadie se pierda su banda.</p></div>
@@ -180,7 +222,6 @@ footer .brand{justify-content:center;margin-bottom:8px}
   <div class="kick">02 · La experiencia del fiber</div>
   <h2>Todo lo que necesita, en el bolsillo y sin conexión.</h2>
   <p class="lead">Un dashboard que cambia según la hora y el lugar, para que cada fiber vea lo relevante en cada momento del festival.</p>
-  <img class="infographic" src="fib-experiencia.png" alt="En el bolsillo de cada fiber: mapa, cartel, agenda y más">
   <div class="feat" style="margin-top:26px">
     <div class="pill"><span class="ic">🗺️</span><div class="t">Mapa interactivo offline</div><div class="d">Rápido, con filtros y navegación sin cobertura.</div></div>
     <div class="pill"><span class="ic">🎵</span><div class="t">Cartel y horarios</div><div class="d">Line-up completo con info y enlaces de cada artista.</div></div>
@@ -192,13 +233,25 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <div class="pill"><span class="ic">🔔</span><div class="t">Notificaciones</div><div class="d">Cambios de horario y avisos que sí llegan.</div></div>
     <div class="pill"><span class="ic">💬</span><div class="t">Feedback in-app</div><div class="d">Reportar incidencias sin pasar por redes sociales.</div></div>
   </div>
+
+  <div class="gallery">
+    <div class="shot"><div class="phone"><img src="fib-app-home.png" alt="Home de la app de FIB"></div><div class="cap"><div class="t">Home dinámico</div><div class="d">Lo que suena ahora y lo próximo.</div></div></div>
+    <div class="shot"><div class="phone"><img src="fib-app-map.png" alt="Mapa de la app de FIB"></div><div class="cap"><div class="t">Mapa offline</div><div class="d">Escenarios, comida y servicios.</div></div></div>
+    <div class="shot"><div class="phone"><img src="fib-app-timeline.png" alt="Horarios en la app de FIB"></div><div class="cap"><div class="t">Horarios</div><div class="d">Todos los escenarios y franjas.</div></div></div>
+    <div class="shot"><div class="phone"><img src="fib-app-myevent.png" alt="Mi agenda en la app de FIB"></div><div class="cap"><div class="t">Mi agenda</div><div class="d">Favoritos y aviso de solapes.</div></div></div>
+    <div class="shot"><div class="phone"><img src="fib-app-artist.png" alt="Ficha de artista en la app de FIB"></div><div class="cap"><div class="t">Ficha de artista</div><div class="d">Bio, redes y actuaciones.</div></div></div>
+    <div class="shot"><div class="phone"><img src="fib-app-splash.png" alt="Pantalla de arranque con la marca de FIB"></div><div class="cap"><div class="t">Con tu marca</div><div class="d">La app abre con FIB.</div></div></div>
+  </div>
+  <p class="mocknote"><b>Pantallas de ejemplo</b>, no un diseño definitivo: dan una idea de la experiencia. El diseño se adapta 100% a la identidad de <b>FIB</b>.</p>
 </div></section>
 
 <!-- 03 INGRESOS / PATROCINADORES -->
 <section id="ingresos"><div class="wrap">
   <div class="kick">03 · Patrocinadores &amp; nuevos ingresos</div>
   <h2>Convierte a tus marcas en una vía de ingresos, no en un muro de logos.</h2>
-  <img class="infographic" src="fib-patrocinadores.png" alt="Tus marcas donde el fiber mira: de muro de logos a activaciones">
+  <div class="cluster" style="margin-top:24px">
+    <div class="shot"><div class="phone"><img src="fib-app-map.png" alt="Mapa de la app con Heineken Stage y Terraza Shein"></div><div class="cap"><div class="d">En el mapa de ejemplo ya aparecen <b>Heineken Stage</b> y <b>Terraza Shein</b>: espacios de marca dentro de la app.</div></div></div>
+  </div>
   <div class="rev" style="margin-top:26px">
     <div class="card">
       <h3>Visibilidad real dentro de la experiencia</h3>
@@ -232,7 +285,6 @@ footer .brand{justify-content:center;margin-bottom:8px}
 <section id="allyear"><div class="wrap">
   <div class="kick">05 · Todo el año</div>
   <h2>La app no se apaga el domingo por la noche.</h2>
-  <img class="infographic" src="fib-offline.png" alt="Offline en el recinto y contigo todo el año">
   <div class="grid g3" style="margin-top:10px">
     <div class="card"><span class="ic">📰</span><h3>Feed de contenido</h3><p>Noticias, contenido exclusivo, podcasts y vídeos con enlaces directos a Spotify o YouTube. Community sin depender del alcance de redes.</p></div>
     <div class="card"><span class="ic">🎟️</span><h3>Preventas y lanzamientos</h3><p>Anuncia FIB 2028, abonos y novedades directamente a quienes ya tienen la app instalada — tu público más fiel.</p></div>
@@ -247,18 +299,37 @@ footer .brand{justify-content:center;margin-bottom:8px}
   <p class="lead">VIKIN no es una app cerrada. Nos integramos con plataformas de gestión de eventos como <b>Crescat</b> (ya activo con Greenbelt), y con otras herramientas bajo solicitud. Ticketing y pagos siguen en manos de tus partners de confianza — nosotros los conectamos.</p>
 </div></section>
 
-<!-- PROOF -->
+<!-- PROOF / CARRUSEL DE TESTIMONIOS -->
 <section id="prueba"><div class="wrap">
-  <div class="night">
-    <div class="kick">Lo que dicen quienes ya trabajan con VIKIN</div>
-    <div class="qgrid">
-      <div class="quote"><p>"VIKIN superó nuestras expectativas. El equipo hizo todo lo posible para que funcionara a la perfección, con un soporte excelente y una experiencia fluida para organización y asistentes. Recomendamos VIKIN a cualquier evento que busque una app de primer nivel."</p><div class="by">Amber Lort-Phillips<span>The Big Retreat Festival</span></div></div>
-      <div class="quote"><p>"Ha sido un auténtico placer trabajar con VIKIN en la app de Greenbelt 2025. Su dedicación, creatividad y apertura al feedback han sido inmejorables. Ese compromiso con la excelencia se nota en el resultado final."</p><div class="by">Daisy Ghira<span>Greenbelt Festival</span></div></div>
-      <div class="quote"><p>"Súper fácil de usar, y genial que funcione sin cobertura. ¡De lejos la mejor app que hemos tenido en Greenbelt!"</p><div class="by">Asistente<span>Greenbelt</span></div></div>
-      <div class="quote"><p>"Me ayudó a planificarme y a aprovechar muchísimo más el festival. Con la navegación fue mucho más fácil moverse por el recinto."</p><div class="by">Asistentes<span>Greenbelt · The Big Retreat</span></div></div>
+  <div class="kick">Lo que dicen organizadores y asistentes</div>
+  <h2>Feedback real de quienes ya usan las apps de VIKIN.</h2>
+  <p class="lead">Testimonios de organizadores y de usuarios de festivales como Canowindra, Teddy Rocks y Greenbelt.</p>
+  <div class="carousel">
+    <button class="cbtn prev" type="button" aria-label="Anterior" onclick="fbScroll(-1)">‹</button>
+    <div class="ctrack" id="fbtrack">
+      <img class="cslide" src="Post=01.png" alt="VIKIN — apps oficiales diseñadas para fans reales">
+      <img class="cslide" src="Post=02.png" alt="Canowindra International Balloon Challenge (Australia)">
+      <img class="cslide" src="Post=03.png" alt="Testimonio de Debra Clarke, Canowindra">
+      <img class="cslide" src="Post=04.png" alt="Feedback de usuarios de Canowindra">
+      <img class="cslide" src="Post=05.png" alt="Teddy Rocks Festival (Reino Unido)">
+      <img class="cslide" src="Post=06.png" alt="Testimonio de Chris Sherry, Teddy Rocks">
+      <img class="cslide" src="Post=07.png" alt="Feedback de usuarios de Teddy Rocks">
+      <img class="cslide" src="Post=08.png" alt="Greenbelt Festival (Reino Unido)">
+      <img class="cslide" src="Post=09.png" alt="Testimonio de Daisy Ghira, Greenbelt">
+      <img class="cslide" src="Post=10.png" alt="Feedback de usuarios de Greenbelt">
     </div>
+    <button class="cbtn next" type="button" aria-label="Siguiente" onclick="fbScroll(1)">›</button>
   </div>
+  <p class="chint">Desliza para ver más →</p>
 </div></section>
+<script>
+function fbScroll(dir){
+  var t=document.getElementById('fbtrack'); if(!t) return;
+  var s=t.querySelector('.cslide');
+  var step=s?s.getBoundingClientRect().width+18:340;
+  t.scrollBy({left:dir*step, behavior:'smooth'});
+}
+</script>
 
 <!-- NEXT STEPS -->
 <section id="next"><div class="wrap">
@@ -280,7 +351,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <p>Cuéntanos cómo imagináis la experiencia FIB 2027 y os montamos una demo con vuestra marca.</p>
     <a href="mailto:wewant@vikin.events">wewant@vikin.events</a>
   </div>
-  <p class="disclaim">Las funciones descritas reflejan la plataforma VIKIN; la configuración final se adapta a las necesidades de FIB. Datos de cartel, fechas y abonos según la web oficial de FIB Benicàssim (julio 2026). Los testimonios corresponden a clientes reales de VIKIN.</p>
+  <p class="disclaim">Las pantallas de app que aparecen en esta propuesta son <b>ejemplos ilustrativos</b> con la marca de FIB, no un diseño definitivo; sirven para dar una idea de la experiencia. Las funciones descritas reflejan la plataforma VIKIN; la configuración y el diseño finales se adaptan a las necesidades de FIB. Datos de cartel, fechas y abonos según la web oficial de FIB Benicàssim (julio 2026). Los testimonios corresponden a clientes reales de VIKIN.</p>
 </div></section>
 
 <footer>
@@ -289,6 +360,89 @@ footer .brand{justify-content:center;margin-bottom:8px}
   <p><a href="mailto:wewant@vikin.events">wewant@vikin.events</a> · <a href="https://vikin.events">vikin.events</a> · +44 (0) 118 991 9316</p>
   <p class="conf">VIKIN × FIB Benicàssim · Confidencial © 2026</p>
 </footer>
+
+<!-- ============================================================
+     TRACKING POR SECCIÓN (VIKIN)
+     Alojado en GitHub Pages. Rellena UNA opción en CONFIG (GA4 o Plausible).
+     Comparte enlaces por prospecto con ?c=nombre  (ej. .../fib/?c=fib)
+     Sin configurar nada, los eventos se ven en la consola del navegador.
+     ============================================================ -->
+<script>
+(function(){
+  var CONFIG = {
+    GA4_ID: "",               // ej. "G-XXXXXXXXXX"  (Google Analytics 4)
+    PLAUSIBLE_DOMAIN: "",     // ej. "dcremades78.github.io" (Plausible/Fathom)
+    BEACON_ENDPOINT: "",      // opcional: URL propia (POST) que reciba el resumen
+    MIN_SECONDS: 2            // segundos visibles mínimos para contar una vista
+  };
+  var CLIENT = new URLSearchParams(location.search).get("c") || "directo";
+
+  function loadGA(id){
+    var s=document.createElement("script"); s.async=true;
+    s.src="https://www.googletagmanager.com/gtag/js?id="+id; document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
+    gtag("js",new Date()); gtag("config",id,{client:CLIENT});
+  }
+  function loadPlausible(domain){
+    var s=document.createElement("script"); s.defer=true;
+    s.setAttribute("data-domain",domain);
+    s.src="https://plausible.io/js/script.manual.js"; document.head.appendChild(s);
+    window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments);};
+  }
+  if(CONFIG.GA4_ID) loadGA(CONFIG.GA4_ID);
+  if(CONFIG.PLAUSIBLE_DOMAIN) loadPlausible(CONFIG.PLAUSIBLE_DOMAIN);
+
+  function track(event, props){
+    props=props||{}; props.client=CLIENT;
+    if(window.gtag) gtag("event", event, props);
+    if(window.plausible) plausible(event, {props:props});
+    if(!CONFIG.GA4_ID && !CONFIG.PLAUSIBLE_DOMAIN) console.log("[track]", event, props);
+  }
+
+  var blocks=[].slice.call(document.querySelectorAll("header.hero, section"));
+  var data=blocks.map(function(el,i){
+    var k=el.querySelector(".kick, h1, h2");
+    return {el:el, name: el.id || ("bloque-"+(i+1)),
+            label:(k?k.textContent.trim().slice(0,60):("bloque-"+(i+1))),
+            seen:false, enter:0, total:0, visible:false};
+  });
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var b=data.find(function(d){return d.el===e.target;});
+      if(!b) return;
+      if(e.isIntersecting && e.intersectionRatio>=0.5){
+        if(!b.visible){ b.visible=true; b.enter=performance.now(); }
+      } else if(b.visible){
+        b.total+=(performance.now()-b.enter)/1000; b.visible=false; maybeView(b);
+      }
+    });
+  },{threshold:[0,0.5,1]});
+  data.forEach(function(b){io.observe(b.el);});
+
+  function maybeView(b){
+    if(!b.seen && b.total>=CONFIG.MIN_SECONDS){
+      b.seen=true; track("section_view",{section:b.name, label:b.label});
+    }
+  }
+
+  function flush(){
+    var now=performance.now();
+    data.forEach(function(b){ if(b.visible){ b.total+=(now-b.enter)/1000; b.visible=false; } maybeView(b); });
+    var summary=data.filter(function(b){return b.total>=CONFIG.MIN_SECONDS;})
+                    .map(function(b){return {section:b.name, seconds:Math.round(b.total)};})
+                    .sort(function(a,b){return b.seconds-a.seconds;});
+    summary.slice(0,12).forEach(function(s){ track("section_time",{section:s.section, seconds:s.seconds}); });
+    if(CONFIG.BEACON_ENDPOINT && navigator.sendBeacon){
+      navigator.sendBeacon(CONFIG.BEACON_ENDPOINT, JSON.stringify({client:CLIENT, url:location.href, sections:summary, ts:Date.now()}));
+    }
+  }
+  document.addEventListener("visibilitychange",function(){ if(document.visibilityState==="hidden") flush(); });
+  window.addEventListener("pagehide", flush);
+
+  track("deck_open",{title:"VIKIN x FIB"});
+})();
+</script>
 
 </body>
 </html>
