@@ -35,8 +35,17 @@ em{font-style:italic;color:var(--grn2);font-weight:800}
 .pill .ic{margin-bottom:8px}
 .pill .ic svg,.pill .ic [data-lucide]{width:20px;height:20px}
 /* Banda de logos de clientes (nativa) */
-.logogrid{display:flex;flex-wrap:wrap;gap:30px 46px;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 30px;margin-top:24px}
-.logogrid img{max-width:130px;max-height:60px;width:auto;height:auto;object-fit:contain}
+.logogrid{display:flex;flex-wrap:nowrap;gap:26px;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 28px;margin-top:24px;overflow-x:auto}
+.logogrid img{flex:0 0 auto;max-width:170px;max-height:88px;width:auto;height:auto;object-fit:contain}
+@media(max-width:820px){.logogrid{gap:22px;justify-content:flex-start}.logogrid img{max-width:120px;max-height:64px}}
+/* Caja destacada de monetización */
+.moneybox{display:flex;gap:20px;align-items:flex-start;margin-top:26px;background:linear-gradient(135deg,#EAF7EE,#F4EEDF);border:1px solid rgba(30,158,68,.35);border-radius:20px;padding:28px 30px}
+.moneybox .mb-ic{flex:0 0 auto;width:52px;height:52px;border-radius:14px;background:var(--grn2);color:#fff;display:flex;align-items:center;justify-content:center}
+.moneybox .mb-ic svg{width:26px;height:26px}
+.moneybox h3{font-size:22px;margin-bottom:8px}
+.moneybox p{font-size:15.5px;color:#5c554a;margin-bottom:8px}
+.moneybox p:last-child{margin-bottom:0}
+@media(max-width:600px){.moneybox{flex-direction:column;gap:14px}}
 .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
 a{color:var(--grn2);text-decoration:none}
 .nav{position:sticky;top:0;z-index:50;background:rgba(244,238,223,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -213,7 +222,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
 <!-- POR QUÉ VIKIN -->
 <section id="porque"><div class="wrap">
   <div class="kick">Por qué VIKIN</div>
-  <h2>Cinco decisiones de diseño que se notan en el recinto.</h2>
+  <h2>Seis decisiones de diseño que se notan en el recinto.</h2>
   <div class="grid g3" style="margin-top:10px">
     <div class="card"><span class="ic"><i data-lucide="wifi-off"></i></span><h3>Pensada para funcionar sin conexión</h3><p>¿Sin cobertura en el recinto? No pasa nada. Funciona offline, sin esperas ni cargas eternas — justo cuando 40.000 móviles saturan la señal.</p></div>
     <div class="card"><span class="ic"><i data-lucide="shield-check"></i></span><h3>Respeto por la privacidad</h3><p>No recopilamos datos personales. No hace falta registrarse y la analítica siempre se presenta agregada y anónima.</p></div>
@@ -284,6 +293,14 @@ footer .brand{justify-content:center;margin-bottom:8px}
         <span>Repsol</span><span>Heineken</span><span>Coca-Cola</span><span>Red Bull</span><span>SHEIN</span><span>Taco Bell</span><span>Cutty Sark</span><span>Jose Cuervo</span><span>Druni</span><span>Umbro</span><span>InPost</span>
       </div>
       <div class="note">Cada una de estas marcas es una oportunidad de activación medible dentro de la app — más allá del escenario.</div>
+    </div>
+  </div>
+  <div class="moneybox">
+    <div class="mb-ic"><i data-lucide="coins"></i></div>
+    <div>
+      <h3>La app puede pagarse sola</h3>
+      <p>Existen <b>numerosas opciones de monetización</b> con vendors y patrocinadores: espacios destacados, contenido y posts patrocinados, activaciones con hora y ubicación, notificaciones, secciones de marca, banners y mucho más. Cada paquete se <b>personaliza según la app, el festival y cada patrocinador</b>, pensado para ayudar a cubrir —o incluso superar— el coste de la app.</p>
+      <p><b>Pregúntanos por las opciones de monetización</b> y te compartimos el documento específico con todas las vías de ingresos para <b>FIB</b>.</p>
     </div>
   </div>
 </div></section>
@@ -369,7 +386,7 @@ function fbScroll(dir){
     <div class="kick" style="color:rgba(255,255,255,.85)">Hagámoslo</div>
     <h2>Demos a los fibers la app que un festival de 30 años merece.</h2>
     <p>Cuéntanos cómo imagináis la experiencia FIB 2027 y os montamos una demo con vuestra marca.</p>
-    <a href="mailto:wewant@vikin.events">wewant@vikin.events</a>
+    <a href="mailto:david@vikin.events">david@vikin.events</a>
   </div>
   <p class="disclaim">Las pantallas de app que aparecen en esta propuesta son <b>ejemplos ilustrativos</b> con la marca de FIB, no un diseño definitivo; sirven para dar una idea de la experiencia. Las funciones descritas reflejan la plataforma VIKIN; la configuración y el diseño finales se adaptan a las necesidades de FIB. Datos de cartel, fechas y abonos según la web oficial de FIB Benicàssim (julio 2026). Los testimonios corresponden a clientes reales de VIKIN.</p>
 </div></section>
@@ -377,91 +394,88 @@ function fbScroll(dir){
 <footer>
   <div class="brand"><span class="vlogo"><svg viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="#004403"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="#004403"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.33 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="#004403"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="#004403"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="#004403"/></svg></span> <span style="color:var(--faint)">×</span> FIB</div>
   <p><b>David Cremades</b> · Iberia Business Development (España &amp; Portugal)</p>
-  <p><a href="mailto:wewant@vikin.events">wewant@vikin.events</a> · <a href="https://vikin.events">vikin.events</a> · +44 (0) 118 991 9316</p>
+  <p><a href="mailto:david@vikin.events">david@vikin.events</a> · <a href="https://vikin.events">vikin.events</a> · +44 (0) 118 991 9316</p>
   <p class="conf">VIKIN × FIB Benicàssim · Confidencial © 2026</p>
 </footer>
 
 <!-- ============================================================
-     TRACKING POR SECCIÓN (VIKIN)
-     Alojado en GitHub Pages. Rellena UNA opción en CONFIG (GA4 o Plausible).
-     Comparte enlaces por prospecto con ?c=nombre  (ej. .../fib/?c=fib)
-     Sin configurar nada, los eventos se ven en la consola del navegador.
+     AMPLITUDE ANALYTICS + SESSION REPLAY (VIKIN)
+     · Autocapture: page views y clicks automáticos.
+     · Custom: vistas de sección, tiempo por sección y vistas de imagen.
+     · Segmentación por propuesta: user property + event property "proposal"
+       = último segmento de la URL (proposals.vikin.events/fib -> "fib").
      ============================================================ -->
-<script>
-(function(){
-  var CONFIG = {
-    GA4_ID: "",               // ej. "G-XXXXXXXXXX"  (Google Analytics 4)
-    PLAUSIBLE_DOMAIN: "",     // ej. "dcremades78.github.io" (Plausible/Fathom)
-    BEACON_ENDPOINT: "",      // opcional: URL propia (POST) que reciba el resumen
-    MIN_SECONDS: 2            // segundos visibles mínimos para contar una vista
-  };
-  var CLIENT = new URLSearchParams(location.search).get("c") || "directo";
+<script type="module">
+import * as amplitude from 'https://esm.sh/@amplitude/unified@latest';
 
-  function loadGA(id){
-    var s=document.createElement("script"); s.async=true;
-    s.src="https://www.googletagmanager.com/gtag/js?id="+id; document.head.appendChild(s);
-    window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);};
-    gtag("js",new Date()); gtag("config",id,{client:CLIENT});
-  }
-  function loadPlausible(domain){
-    var s=document.createElement("script"); s.defer=true;
-    s.setAttribute("data-domain",domain);
-    s.src="https://plausible.io/js/script.manual.js"; document.head.appendChild(s);
-    window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments);};
-  }
-  if(CONFIG.GA4_ID) loadGA(CONFIG.GA4_ID);
-  if(CONFIG.PLAUSIBLE_DOMAIN) loadPlausible(CONFIG.PLAUSIBLE_DOMAIN);
+var PROPOSAL = (location.pathname.split('/').filter(Boolean).pop()
+                || new URLSearchParams(location.search).get('c')
+                || 'fib').toLowerCase();
 
-  function track(event, props){
-    props=props||{}; props.client=CLIENT;
-    if(window.gtag) gtag("event", event, props);
-    if(window.plausible) plausible(event, {props:props});
-    if(!CONFIG.GA4_ID && !CONFIG.PLAUSIBLE_DOMAIN) console.log("[track]", event, props);
-  }
+amplitude.initAll('a5ae82232b24b6c28359fa677b86ac24', {
+  serverZone: 'EU',
+  analytics: { autocapture: true },
+  sessionReplay: { sampleRate: 1 }
+});
 
-  var blocks=[].slice.call(document.querySelectorAll("header.hero, section"));
-  var data=blocks.map(function(el,i){
-    var k=el.querySelector(".kick, h1, h2");
-    return {el:el, name: el.id || ("bloque-"+(i+1)),
-            label:(k?k.textContent.trim().slice(0,60):("bloque-"+(i+1))),
-            seen:false, enter:0, total:0, visible:false};
+// Segmentar todos los eventos por propuesta
+try { amplitude.identify(new amplitude.Identify().set('proposal', PROPOSAL)); } catch(e){}
+
+function track(event, props){
+  props = props || {}; props.proposal = PROPOSAL;
+  try { amplitude.track(event, props); } catch(e){ console.log('[amp]', event, props); }
+}
+
+// ---- Vistas y tiempo por sección ----
+var MIN = 2;
+var blocks = [].slice.call(document.querySelectorAll('header.hero, section'));
+var data = blocks.map(function(el,i){
+  var k = el.querySelector('.kick, h1, h2');
+  return { el:el, name: el.id || ('bloque-'+(i+1)),
+           label:(k?k.textContent.trim().slice(0,60):('bloque-'+(i+1))),
+           seen:false, enter:0, total:0, visible:false };
+});
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    var b = data.find(function(d){ return d.el===e.target; });
+    if(!b) return;
+    if(e.isIntersecting && e.intersectionRatio>=0.5){
+      if(!b.visible){ b.visible=true; b.enter=performance.now(); }
+    } else if(b.visible){
+      b.total += (performance.now()-b.enter)/1000; b.visible=false; maybeView(b);
+    }
   });
+},{threshold:[0,0.5,1]});
+data.forEach(function(b){ io.observe(b.el); });
+function maybeView(b){
+  if(!b.seen && b.total>=MIN){ b.seen=true; track('section_view',{section:b.name, label:b.label}); }
+}
 
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      var b=data.find(function(d){return d.el===e.target;});
-      if(!b) return;
-      if(e.isIntersecting && e.intersectionRatio>=0.5){
-        if(!b.visible){ b.visible=true; b.enter=performance.now(); }
-      } else if(b.visible){
-        b.total+=(performance.now()-b.enter)/1000; b.visible=false; maybeView(b);
-      }
-    });
-  },{threshold:[0,0.5,1]});
-  data.forEach(function(b){io.observe(b.el);});
-
-  function maybeView(b){
-    if(!b.seen && b.total>=CONFIG.MIN_SECONDS){
-      b.seen=true; track("section_view",{section:b.name, label:b.label});
+// ---- Vistas de imagen ----
+var seenImg = {};
+var iio = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting && e.intersectionRatio>=0.5){
+      var src = e.target.getAttribute('src')||'';
+      if(src && !seenImg[src]){ seenImg[src]=1; track('image_view',{src:src, alt:e.target.getAttribute('alt')||''}); }
     }
-  }
+  });
+},{threshold:[0,0.5]});
+[].slice.call(document.querySelectorAll('img')).forEach(function(im){ iio.observe(im); });
 
-  function flush(){
-    var now=performance.now();
-    data.forEach(function(b){ if(b.visible){ b.total+=(now-b.enter)/1000; b.visible=false; } maybeView(b); });
-    var summary=data.filter(function(b){return b.total>=CONFIG.MIN_SECONDS;})
-                    .map(function(b){return {section:b.name, seconds:Math.round(b.total)};})
-                    .sort(function(a,b){return b.seconds-a.seconds;});
-    summary.slice(0,12).forEach(function(s){ track("section_time",{section:s.section, seconds:s.seconds}); });
-    if(CONFIG.BEACON_ENDPOINT && navigator.sendBeacon){
-      navigator.sendBeacon(CONFIG.BEACON_ENDPOINT, JSON.stringify({client:CLIENT, url:location.href, sections:summary, ts:Date.now()}));
-    }
-  }
-  document.addEventListener("visibilitychange",function(){ if(document.visibilityState==="hidden") flush(); });
-  window.addEventListener("pagehide", flush);
+// ---- Al salir: cerrar tiempos por sección ----
+function flush(){
+  var now = performance.now();
+  data.forEach(function(b){ if(b.visible){ b.total+=(now-b.enter)/1000; b.visible=false; } maybeView(b); });
+  data.filter(function(b){ return b.total>=MIN; })
+      .sort(function(a,b){ return b.total-a.total; })
+      .slice(0,15)
+      .forEach(function(b){ track('section_time',{section:b.name, seconds:Math.round(b.total)}); });
+}
+document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden') flush(); });
+window.addEventListener('pagehide', flush);
 
-  track("deck_open",{title:"VIKIN x FIB"});
-})();
+track('proposal_open', { title: 'VIKIN x FIB' });
 </script>
 
 <script>lucide.createIcons();</script>
