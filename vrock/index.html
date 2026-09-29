@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIKIN × Viña Rock 30</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+/* Layout: single scroll, wine-dark stage like the app itself; cream "tickets" for content cards; red only for accents and the 30. */
+:root{
+  --wine:#260414; --wine2:#34091c; --wine3:#471127;
+  --red:#E0263B; --red2:#C21A2E;
+  --cream:#F7F4EA; --cream2:#EDE6D6;
+  --fg:#F7F4EA; --soft:#D5BCC3; --faint:#9E7F89;
+  --ink:#260414; --inksoft:#6B4B55;
+  --line:rgba(247,244,234,.13); --line2:rgba(247,244,234,.07);
+  --display:'Anton','Impact','Arial Narrow Bold',sans-serif;
+  --body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --label:'Archivo Narrow','Arial Narrow',system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--body);color:var(--fg);background:var(--wine);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.disp{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:.005em;text-transform:uppercase;text-wrap:balance}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--red)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+@media(max-width:520px){.wrap{padding-inline:16px}}
+a{color:var(--red);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+[data-lucide]{width:20px;height:20px;stroke-width:1.5px;vertical-align:middle}
+.vlogo{height:24px;width:auto;display:block}
+b{font-weight:700}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(38,4,20,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:14px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .vk{color:var(--fg);display:flex}
+.brand .sep{color:var(--faint);font-weight:600}
+.brand .vr{font-family:var(--display);font-size:21px;color:var(--red);letter-spacing:.02em;white-space:nowrap}
+.navlinks{display:flex;gap:18px;font-size:14px;font-weight:600;align-items:center}
+.navlinks a{color:var(--soft)} .navlinks a:hover{color:var(--fg)}
+.navbtn{background:var(--red);color:var(--cream)!important;padding:8px 14px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.navbtn [data-lucide]{width:16px;height:16px}
+@media(max-width:960px){.navlinks a:not(.navbtn){display:none}}
+@media(max-width:480px){.brand{gap:7px}.brand .vr{font-size:17px}.vlogo{height:18px}.navbtn{font-size:13px;padding:6px 11px}.navbtn [data-lucide]{display:none}}
+
+section{padding-block:84px;border-bottom:1px solid var(--line2)}
+@media(max-width:620px){section{padding-block:60px}}
+.kick{font-family:var(--label);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kick .n{background:var(--red);color:var(--cream);border-radius:4px;padding:1px 7px;letter-spacing:.06em}
+h2{font-size:clamp(34px,5.4vw,58px);margin-bottom:18px;max-width:20ch}
+.lead{font-size:19px;color:var(--soft);max-width:62ch}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:820px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.mt{margin-top:34px}
+
+/* dark card */
+.card{background:var(--wine2);border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0}
+.card .ic{width:42px;height:42px;border-radius:11px;background:rgba(224,38,59,.14);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--red)}
+.card h3{font-size:22px;margin-bottom:8px;letter-spacing:.01em}
+.card p{font-size:15.5px;color:var(--soft)}
+/* cream ticket card */
+.tk{background:var(--cream);color:var(--ink);border-radius:14px;padding:22px;min-width:0;position:relative}
+.tk h3{font-size:22px;margin-bottom:8px;color:var(--ink)}
+.tk p{font-size:15.5px;color:var(--inksoft)}
+.tk .tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--label);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--red);color:var(--cream);padding:3px 9px;border-radius:4px;margin-bottom:12px}
+.tk .tag [data-lucide]{width:14px;height:14px}
+
+/* HERO */
+.hero{padding-block:54px 76px;position:relative;overflow:hidden;border-bottom:none;background:
+  radial-gradient(900px 460px at 85% 20%,rgba(224,38,59,.22),transparent 60%),
+  radial-gradient(700px 400px at 0% 100%,rgba(71,17,39,.9),transparent 70%),var(--wine)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:2}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr}}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--label);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);border:1px solid var(--line);background:rgba(247,244,234,.05);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--red)}
+.hero h1{font-size:clamp(46px,7.4vw,86px);margin-bottom:22px}
+.hero h1 .big{color:var(--red)}
+.hero p{font-size:19px;color:var(--soft);max-width:54ch}
+.hero p b{color:var(--fg)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;padding:13px 22px;border-radius:999px;font-size:15.5px;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--red);color:var(--cream)}
+.btn-primary:hover{background:var(--red2)}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--cream)}
+.metabar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:560px){.metabar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.metabar .n{font-family:var(--display);font-size:30px;line-height:1;color:var(--fg);font-variant-numeric:tabular-nums}
+.metabar .l{font-size:12.5px;color:var(--faint);font-weight:600;margin-top:6px}
+.phones{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:420px}
+.phones img{width:52%;max-width:240px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+.phones img:first-child{transform:rotate(-6deg) translate(18%,4%);z-index:1;opacity:.95}
+.phones img:last-child{transform:rotate(4deg) translate(-12%,-2%);z-index:2}
+.thirty{position:absolute;right:-30px;bottom:-60px;font-family:var(--display);font-size:clamp(220px,30vw,380px);line-height:1;color:rgba(224,38,59,.09);z-index:1;pointer-events:none;user-select:none}
+
+/* anniversary quote band */
+.band{background:var(--red);color:var(--cream);border:none;padding-block:56px}
+.band blockquote{font-family:var(--display);font-size:clamp(28px,4.2vw,46px);line-height:1.12;text-transform:uppercase;max-width:26ch}
+.band cite{display:block;margin-top:18px;font-style:normal;font-size:14.5px;font-weight:600;opacity:.9}
+.band .after{margin-top:26px;font-size:18px;max-width:60ch;color:var(--cream)}
+
+/* screen shots */
+.shot{background:var(--wine2);border:1px solid var(--line);border-radius:18px;padding:22px 18px 0;text-align:center;overflow:hidden;min-width:0}
+.shot img{width:100%;max-width:210px;display:block;margin:0 auto;filter:drop-shadow(0 16px 26px rgba(0,0,0,.5))}
+.shot .cap{padding:14px 4px 20px}
+.shot .cap b{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:19px;letter-spacing:.02em;display:block}
+.shot .cap span{font-size:13.5px;color:var(--soft)}
+.note{border-left:3px solid var(--red);background:rgba(247,244,234,.05);border-radius:0 10px 10px 0;padding:16px 20px;font-size:15.5px;color:var(--soft);margin-top:24px;max-width:78ch}
+.note b{color:var(--fg)}
+
+.facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.fact{display:flex;align-items:center;gap:10px;background:var(--wine2);border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-size:14.5px;font-weight:600}
+.fact [data-lucide]{color:var(--red)}
+
+.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:10px}
+@media(max-width:760px){.logos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.logos .chip{background:var(--cream);border-radius:14px;padding:18px;display:flex;align-items:center;justify-content:center;height:112px}
+.logos img{max-height:72px;width:auto;max-width:100%;object-fit:contain}
+.logos .chip.txt{flex-direction:column;background:var(--red);color:var(--cream);text-align:center;gap:4px}
+.logos .chip.txt .disp{font-size:34px}
+.logos .chip.txt span{font-size:12.5px;font-weight:600;line-height:1.3}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media(max-width:820px){.feat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.feat{grid-template-columns:1fr}}
+.f{background:var(--wine2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;min-width:0}
+.f [data-lucide]{color:var(--red);width:22px;height:22px;grid-row:span 2;margin-top:2px}
+.f b{font-size:15.5px}
+.f span{font-size:14px;color:var(--soft)}
+
+.gal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:30px}
+@media(max-width:900px){.gal{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gal figure{text-align:center;min-width:0}
+.gal img{width:100%;display:block;filter:drop-shadow(0 12px 18px rgba(0,0,0,.5))}
+.gal figcaption{font-family:var(--label);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-top:8px}
+
+/* revenue */
+.rev{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
+@media(max-width:880px){.rev{grid-template-columns:1fr}}
+.rev .mock{position:sticky;top:90px;text-align:center}
+@media(max-width:880px){.rev .mock{position:static}}
+.rev .mock img{width:78%;max-width:280px;filter:drop-shadow(0 26px 36px rgba(0,0,0,.55))}
+.rev .mock p{font-size:13.5px;color:var(--faint);margin-top:10px}
+.partners{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+.partners span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600;color:var(--soft)}
+.partners span b{color:var(--fg)}
+.pays{margin-top:22px;background:var(--cream);color:var(--ink);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.pays [data-lucide]{color:var(--red);width:24px;height:24px;flex:none;margin-top:3px}
+.pays p{font-size:16px;color:var(--inksoft)} .pays b{color:var(--ink)}
+
+/* diff */
+.diff .card{border-top:3px solid var(--red)}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:880px){.quotes{grid-template-columns:1fr}}
+.q{background:var(--cream);color:var(--ink);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.q p{font-size:15.5px;line-height:1.55;color:var(--ink)}
+.q .who{margin-top:auto;display:flex;align-items:center;gap:12px;border-top:1px dashed rgba(38,4,20,.25);padding-top:14px}
+.q .who img{height:40px;width:auto;max-width:90px;object-fit:contain}
+.q .who b{display:block;font-size:14.5px} .q .who span{font-size:13px;color:var(--inksoft)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s}
+@media(max-width:880px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.step{background:var(--wine2);border:1px solid var(--line);border-radius:14px;padding:22px;min-width:0}
+.step .when{font-family:var(--label);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.step h3{font-size:22px;margin:8px 0}
+.step p{font-size:14.5px;color:var(--soft)}
+
+/* CTA */
+.offer{background:linear-gradient(150deg,var(--red2),var(--red));color:var(--cream);border-radius:22px;padding:52px 40px;text-align:center;position:relative;overflow:hidden}
+@media(max-width:520px){.offer{padding:40px 20px}}
+.offer h2{color:var(--cream);max-width:18ch;margin:0 auto 14px;position:relative}
+.offer p{font-size:18px;color:var(--cream);opacity:.95;max-width:52ch;margin:0 auto 26px;position:relative}
+.offer .btns{justify-content:center;position:relative}
+.offer .btn-primary{background:var(--cream);color:var(--wine)}
+.offer .btn-primary:hover{background:var(--cream2)}
+.offer .btn-ghost{color:var(--cream);border-color:rgba(247,244,234,.55)}
+.offer .ghost30{position:absolute;left:-20px;top:-70px;font-family:var(--display);font-size:320px;line-height:1;color:rgba(38,4,20,.12);pointer-events:none}
+.disclaim{font-size:12.5px;color:var(--faint);margin-top:22px;max-width:86ch}
+
+footer{background:#1a020d;color:var(--soft);padding-block:44px;text-align:center}
+footer .brand{justify-content:center}
+footer p{font-size:15px;margin-top:10px}
+footer .mail{color:var(--fg);font-weight:600;user-select:all}
+.conf{font-family:var(--label);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:16px}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="wrap">
+  <div class="brand"><span class="vk"><svg class="vlogo" viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIKIN"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="currentColor"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="currentColor"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.330 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="currentColor"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="currentColor"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="currentColor"/></svg></span><span class="sep">×</span><span class="vr">VIÑA ROCK</span></div>
+  <div class="navlinks">
+    <a href="#aniversario">30 años</a><a href="#experiencia">Experiencia</a><a href="#ingresos">Ingresos</a><a href="#pasos">Pasos</a>
+    <a class="navbtn" href="https://vikin.events" target="_blank" rel="noopener">vikin.events <i data-lucide="arrow-up-right"></i></a>
+  </div>
+</div></div>
+
+<header class="hero">
+  <div class="thirty" aria-hidden="true">30</div>
+  <div class="wrap">
+    <div>
+      <span class="badge"><span class="dot"></span>Propuesta · Temporada 2027</span>
+      <h1><span class="big">30 años</span> de Viña Rock. Toca una <em>app a la altura</em>.</h1>
+      <p>La app oficial del <b>30 aniversario</b>: con vuestra imagen, pensada para funcionar <b>sin cobertura</b> en Villarrobledo, que acompaña al público antes, durante y después del festival. Y que convierte a vuestros patrocinadores en <b>ingresos nuevos</b> para el festival.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#ingresos">Cómo genera ingresos <i data-lucide="arrow-down"></i></a>
+        <a class="btn btn-ghost" href="https://vikin.events" target="_blank" rel="noopener">Conoce VIKIN <i data-lucide="arrow-up-right"></i></a>
+      </div>
+      <div class="metabar">
+        <div><div class="n">29 ABR</div><div class="l">al 1 de mayo de 2027</div></div>
+        <div><div class="n">7</div><div class="l">escenarios</div></div>
+        <div><div class="n">+100</div><div class="l">artistas en cartel</div></div>
+        <div><div class="n">0 KB</div><div class="l">de cobertura necesaria</div></div>
+      </div>
+    </div>
+    <div class="phones">
+      <img src="img/splash.webp" alt="Pantalla de bienvenida de la app con el logo del 30 aniversario de Viña Rock">
+      <img src="img/home.webp" alt="Inicio de la app de Viña Rock con lo que suena en directo y lo siguiente">
+    </div>
+  </div>
+</header>
+
+<section class="band" id="aniversario">
+  <div class="wrap">
+    <blockquote>“30 años de música, de barro, de amigos, de kilómetros, de amaneceres y de miles de historias que se han quedado para siempre.”</blockquote>
+    <cite>Viña Rock, anuncio del 30 aniversario</cite>
+    <p class="after">Una edición así merece algo que el público lleve en el bolsillo durante los tres días, y que siga ahí cuando se apaguen los escenarios. Esa es la idea de esta propuesta.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick">Así se vería</div>
+    <h2>Vuestra app, <em>con vuestra cara</em></h2>
+    <p class="lead">Hemos diseñado varias pantallas con la identidad del 30 aniversario, los escenarios reales y la parrilla de este año como ejemplo.</p>
+    <div class="grid g3 mt">
+      <div class="shot"><img src="img/home.webp" alt="Inicio"><div class="cap"><b>Inicio en directo</b><span>Lo que suena ahora y lo que viene</span></div></div>
+      <div class="shot"><img src="img/parrilla.webp" alt="Parrilla por escenarios"><div class="cap"><b>Parrilla por escenarios</b><span>Los 7 escenarios de un vistazo</span></div></div>
+      <div class="shot"><img src="img/mapa.webp" alt="Mapa del recinto"><div class="cap"><b>Mapa offline</b><span>Escenarios, barras, servicios y acampada</span></div></div>
+    </div>
+    <p class="note"><b>Pantallas de ejemplo.</b> El diseño final lo cerramos con vuestro equipo: colores, tipografías, mapa ilustrado y el sello del 30 aniversario donde queráis.</p>
+  </div>
+</section>
+
+<section id="vikin">
+  <div class="wrap">
+    <div class="kick">Quiénes somos</div>
+    <h2>Hacemos la app oficial de festivales <em>al aire libre</em></h2>
+    <p class="lead">VIKIN es una empresa de desarrollo especializada en festivales y eventos outdoor. Construimos apps con la marca de cada festival, que funcionan sin conexión y que el equipo gestiona sin complicarse desde un portal muy sencillo.</p>
+    <div class="facts">
+      <div class="fact"><i data-lucide="smartphone"></i>iOS y Android</div>
+      <div class="fact"><i data-lucide="wifi-off"></i>Funciona offline</div>
+      <div class="fact"><i data-lucide="shield-check"></i>Sin registro, sin datos personales</div>
+      <div class="fact"><i data-lucide="palette"></i>100% con vuestra marca</div>
+      <div class="fact"><i data-lucide="plug"></i>Se integra con vuestros datos</div>
+    </div>
+  </div>
+</section>
+
+<section id="clientes">
+  <div class="wrap">
+    <div class="kick">Ya confían en VIKIN</div>
+    <h2>Festivales reales, <em>apps reales</em></h2>
+    <div class="logos mt">
+      <div class="chip"><img src="img/logo-teddy.webp" alt="Teddy Rocks"></div>
+      <div class="chip"><img src="img/logo-green.webp" alt="Greenbelt"></div>
+      <div class="chip"><img src="img/logo-shambala.webp" alt="Shambala"></div>
+      <div class="chip"><img src="img/logo-retreat.webp" alt="The Big Retreat Festival"></div>
+      <div class="chip"><img src="img/logo-ideas.webp" alt="Ideas Fest"></div>
+      <div class="chip"><img src="img/logo-show.webp" alt="The Showman's Show"></div>
+      <div class="chip"><img src="img/logo-cano.webp" alt="Canowindra International Balloon Challenge"></div>
+      <div class="chip txt"><div class="disp">1º y 3º</div><span>Apps VIKIN en el top de Entretenimiento del App Store de Reino Unido</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick">Por qué VIKIN</div>
+    <h2>Lo que la hace distinta <em>en un festival</em></h2>
+    <div class="grid g3 mt">
+      <div class="card"><div class="ic"><i data-lucide="wifi-off"></i></div><h3>Pensada para no tener señal</h3><p>Con miles de personas en el recinto la red se cae. La app sigue funcionando: horarios, mapa y búsqueda sin conexión.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="lock"></i></div><h3>Respeta la privacidad</h3><p>No hace falta registrarse. La analítica que veis siempre es agregada y anónima.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="brush"></i></div><h3>Vuestro estilo</h3><p>Nada de plantillas genéricas. Logo, colores, texturas, iconos y mapa ilustrado con la identidad del festival.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="megaphone"></i></div><h3>Comunicación directa</h3><p>Notificaciones y novedades que llegan a todo el público, sin depender de algoritmos de redes.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="sparkles"></i></div><h3>Contenido según hora y lugar</h3><p>El inicio cambia según el momento: quién toca ahora, qué hay cerca, cómo volver a la tienda por la noche.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="settings-2"></i></div><h3>Gestión muy sencilla</h3><p>Es lo que más destacan nuestros clientes. Y como somos desarrolladores, lo que pedís se construye.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="oportunidad">
+  <div class="wrap">
+    <div class="kick"><span class="n">01</span>La oportunidad</div>
+    <h2>Por qué 2027 es <em>el año</em></h2>
+    <div class="grid g2 mt">
+      <div class="tk"><span class="tag"><i data-lucide="party-popper"></i>30 aniversario</span><h3>Una edición histórica</h3><p>El 30 aniversario atrae más atención, más público que vuelve y más interés de marcas. Es el mejor momento para estrenar un canal propio con vuestro público.</p></div>
+      <div class="tk"><span class="tag"><i data-lucide="tent"></i>Villarrobledo</span><h3>Tres días en el recinto</h3><p>Mucha gente acampa y pasa el fin de semana entero dentro. Encontrar la tienda de noche, las duchas o el bus de vuelta sin cobertura es justo donde la app marca la diferencia.</p></div>
+      <div class="tk"><span class="tag"><i data-lucide="music-4"></i>7 escenarios</span><h3>Un cartel enorme</h3><p>Carpa Rock, Negrita, Cutty Sark, Villarrobledo, Castilla-La Mancha, Babilonia y Carpa Viña Dub. Con más de 100 artistas, la agenda personal y el aviso de solapes son casi obligatorios.</p></div>
+      <div class="tk"><span class="tag"><i data-lucide="layers"></i>Mucho más que música</span><h3>Todo en un sitio</h3><p>Buses, bono duchas, consignas, pulsera cashless, zona de descanso, Feria del Vino, Mini Viña… Hoy esa información está repartida. En la app, a un toque y sin conexión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <div class="kick"><span class="n">02</span>La experiencia</div>
+    <h2>Todo lo que el público <em>necesita</em></h2>
+    <div class="feat mt">
+      <div class="f"><i data-lucide="map"></i><b>Mapa interactivo offline</b><span>Con filtros y cómo llegar dentro del recinto</span></div>
+      <div class="f"><i data-lucide="calendar-range"></i><b>Parrilla y cartel</b><span>Por día, escenario, género y hora</span></div>
+      <div class="f"><i data-lucide="heart"></i><b>Mi Festi</b><span>Agenda personal con aviso de solapes y recordatorios</span></div>
+      <div class="f"><i data-lucide="search"></i><b>Búsqueda inteligente</b><span>Artistas, barras, servicios… también sin red</span></div>
+      <div class="f"><i data-lucide="tent"></i><b>Encuentra mi tienda</b><span>Guarda la tienda o el coche y vuelve fácil de noche</span></div>
+      <div class="f"><i data-lucide="siren"></i><b>Ayuda en emergencias</b><span>Tu ubicación en el recinto y contactos al momento</span></div>
+      <div class="f"><i data-lucide="store"></i><b>Barras y puestos</b><span>Comida, merch y servicios cercanos</span></div>
+      <div class="f"><i data-lucide="bell-ring"></i><b>Notificaciones</b><span>Cambios de horario y avisos al instante</span></div>
+      <div class="f"><i data-lucide="accessibility"></i><b>Accesibilidad</b><span>Etiquetas como “epilepsia” o “accesible” en cada concierto</span></div>
+    </div>
+    <div class="gal">
+      <figure><img src="img/home.webp" alt="Inicio"><figcaption>Inicio</figcaption></figure>
+      <figure><img src="img/parrilla.webp" alt="Parrilla"><figcaption>Parrilla</figcaption></figure>
+      <figure><img src="img/mi-festi.webp" alt="Mi Festi en lista"><figcaption>Mi Festi</figcaption></figure>
+      <figure><img src="img/filtros.webp" alt="Filtros por género"><figcaption>Filtros</figcaption></figure>
+      <figure><img src="img/artista.webp" alt="Ficha de artista"><figcaption>Artista</figcaption></figure>
+      <figure><img src="img/mapa.webp" alt="Mapa"><figcaption>Mapa</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="ingresos">
+  <div class="wrap">
+    <div class="kick"><span class="n">03</span>Patrocinadores e ingresos</div>
+    <h2>Que la app dé dinero, <em>no que cueste</em></h2>
+    <p class="lead">Vuestras marcas ya ponen nombre a escenarios. En la app pueden tener algo más valioso que un logo: aparecer justo cuando el público las necesita, y con datos para demostrarlo.</p>
+    <div class="partners">
+      <span>Escenario <b>Negrita</b></span><span>Escenario <b>Cutty Sark</b></span><span><b>Red Bull</b></span><span><b>Castilla-La Mancha Turismo</b></span><span><b>Diputación de Albacete</b></span><span><b>Ayto. de Villarrobledo</b></span>
+    </div>
+    <div class="rev">
+      <div class="mock"><img src="img/mapa.webp" alt="Mapa con puntos destacados"><p>El mapa y la búsqueda son los sitios que más se usan en un festival. Ahí está el inventario.</p></div>
+      <div class="grid g2">
+        <div class="tk"><span class="tag"><i data-lucide="mic-2"></i>Escenarios</span><h3>Escenario con marca, en todas partes</h3><p>El nombre del patrocinador sale en la parrilla, en cada ficha de concierto y en el mapa. Visible cientos de veces por persona.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="layout-dashboard"></i>Inicio</span><h3>Espacio destacado en el inicio</h3><p>Un hueco por franja horaria o por día para la marca, el merch del 30 aniversario o una promo.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="map-pin"></i>Mapa</span><h3>Pins destacados</h3><p>Barras, food trucks y activaciones que se encuentran primero. Se miden taps y “cómo llegar”.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="ticket-percent"></i>Ofertas</span><h3>Cupones por franja</h3><p>Happy hour en una barra, regalo por visitar un stand. Campañas con canjes medibles.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="bell-ring"></i>Notificaciones</span><h3>Avisos patrocinados</h3><p>Un par de mensajes bien colocados, por ejemplo al amanecer o antes del cabeza de cartel. Con límite para no saturar.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="utensils"></i>Utilidad con marca</span><h3>“Encuentra tu tienda” by…</h3><p>Una marca asociada a algo que ayuda de verdad: la vuelta a la tienda, los puntos de agua o la ruta de la Feria del Vino.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="shopping-bag"></i>Venta</span><h3>Buses, duchas y consignas</h3><p>Enlaces directos a comprar los servicios que ya vendéis. Menos preguntas al staff y más conversión.</p></div>
+        <div class="tk"><span class="tag"><i data-lucide="bar-chart-3"></i>Informes</span><h3>Resultados para renovar</h3><p>Un informe sencillo por marca con visitas, taps y canjes. Así el patrocinio de 2028 se vende solo.</p></div>
+      </div>
+    </div>
+    <div class="pays"><i data-lucide="piggy-bank"></i><p><b>La app puede pagarse sola.</b> Con parte de este inventario vendido a vuestros patrocinadores actuales, la app deja de ser un gasto y pasa a ser una línea de ingresos. Los detalles y cifras los vemos en una reunión, con vuestros números.</p></div>
+  </div>
+</section>
+
+<section id="especial">
+  <div class="wrap">
+    <div class="kick"><span class="n">04</span>Especial 30 aniversario</div>
+    <h2>Ideas para <em>celebrarlo</em> dentro de la app</h2>
+    <p class="lead">Propuestas para pensar juntos. Algunas ya existen en VIKIN; otras las construiríamos para vosotros.</p>
+    <div class="grid g3 mt">
+      <div class="card"><div class="ic"><i data-lucide="stamp"></i></div><h3>Pasaporte 30 años</h3><p>Sellos por escenario o por activación de marca. Al completarlo, sorteo o merch del aniversario, con patrocinador.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="archive"></i></div><h3>30 años de carteles</h3><p>Un archivo con los carteles y momentos de cada edición en el feed. Contenido que la gente comparte y que calienta la previa.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="hourglass"></i></div><h3>Cuenta atrás y preventa</h3><p>La app se instala meses antes: anuncios del cartel, horarios, servicios y enlaces de compra en un canal propio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diff">
+  <div class="wrap">
+    <div class="kick"><span class="n">05</span>La diferencia VIKIN</div>
+    <h2>Tres cosas que <em>no negociamos</em></h2>
+    <div class="grid g3 mt">
+      <div class="card"><div class="ic"><i data-lucide="signal-zero"></i></div><h3>Sin señal</h3><p>Todo se descarga antes. Las actualizaciones llegan rápido incluso con mala cobertura.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="user-x"></i></div><h3>Sin registro</h3><p>Se abre y se usa. Nadie deja el festival a medias por no acordarse de una contraseña.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="radio"></i></div><h3>Sin algoritmos</h3><p>Lo que publicáis llega a todo el mundo. El canal es vuestro, no de una red social.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><span class="n">06</span>Todo el año y ecosistema abierto</div>
+    <h2>Un canal que <em>no se apaga</em> el 1 de mayo</h2>
+    <div class="grid g2 mt">
+      <div class="card"><div class="ic"><i data-lucide="rss"></i></div><h3>Contenido todo el año</h3><p>Feed de novedades, aftermovie, anuncios de cartel y preventa de 2028. Y campañas de patrocinadores también fuera del fin de semana.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="blocks"></i></div><h3>Se conecta con lo que ya usáis</h3><p>Integraciones con gestión de artistas (Crescat), ticketing y pagos. Sin duplicar trabajo: la misma información puede alimentar vuestra web.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick">Opiniones</div>
+    <h2>Lo que dicen <em>otros festivales</em></h2>
+    <div class="quotes mt">
+      <div class="q"><p>“VIKIN superó nuestras expectativas. El equipo hizo todo lo posible para que funcionara a la perfección, con un soporte excelente y una experiencia fluida tanto para la organización como para los asistentes.”</p><div class="who"><img src="img/logo-retreat.webp" alt=""><div><b>Amber Lort-Phillips</b><span>The Big Retreat Festival</span></div></div></div>
+      <div class="q"><p>“Su dedicación, creatividad, rapidez de respuesta y apertura al feedback, incluso cuando eso significaba adaptarse a nuestras particularidades, ha sido inmejorable.”</p><div class="who"><img src="img/logo-green.webp" alt=""><div><b>Daisy Ghira</b><span>Greenbelt Festival</span></div></div></div>
+      <div class="q"><p>“Organizar un festival implica muchas piezas en movimiento, y ha sido un alivio lo fácil que nos han hecho todo el proceso. El equipo ha sido cercano y muy sencillo de coordinar.”</p><div class="who"><img src="img/logo-ideas.webp" alt=""><div><b>Olivia Lane</b><span>Ideas Fest</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="kick">Siguientes pasos</div>
+    <h2>Camino al <em>29 de abril</em></h2>
+    <div class="steps mt">
+      <div class="step"><div class="when">Otoño 2026</div><h3>Reunión</h3><p>Vemos juntos qué necesita el festival y qué marcas pueden entrar en la app.</p></div>
+      <div class="step"><div class="when">Invierno</div><h3>Diseño a medida</h3><p>Cerramos la imagen del 30 aniversario, el mapa y los paquetes para patrocinadores.</p></div>
+      <div class="step"><div class="when">Con el cartel</div><h3>Lanzamiento</h3><p>La app sale con los anuncios de cartel y horarios, y empieza a sumar descargas.</p></div>
+      <div class="step"><div class="when">29.04 – 01.05.2027</div><h3>Festival</h3><p>Soporte durante los tres días e informe final para vosotros y cada marca.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="offer">
+      <div class="ghost30" aria-hidden="true">30</div>
+      <h2>Hagamos la app de los 30 años</h2>
+      <p>Una app que el público use de verdad y que el festival pueda rentabilizar con sus propias marcas. ¿Lo hablamos?</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="https://vikin.events" target="_blank" rel="noopener">Ver vikin.events <i data-lucide="arrow-up-right"></i></a>
+        <a class="btn btn-ghost" href="#contacto">Contacto <i data-lucide="mail"></i></a>
+      </div>
+    </div>
+    <p class="disclaim">Datos del festival según información pública de Viña Rock (fechas 2027, escenarios y servicios). Las pantallas son un ejemplo de diseño y los nombres de marcas aparecen solo como ilustración de posibles formatos. Los testimonios son de clientes reales de VIKIN.</p>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="brand"><span class="vk"><svg class="vlogo" viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIKIN"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="currentColor"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="currentColor"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.330 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="currentColor"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="currentColor"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="currentColor"/></svg></span><span class="sep">×</span><span class="vr">VIÑA ROCK</span></div>
+    <p>David Cremades · Iberia Business Development (España y Portugal)</p>
+    <p><span class="mail">david@vikin.events</span> · <a href="https://vikin.events" target="_blank" rel="noopener">vikin.events</a></p>
+    <div class="conf">Propuesta confidencial para Viña Rock</div>
+  </div>
+</footer>
+
+<script>try{lucide.createIcons()}catch(e){}</script>
+
+</body>
+</html>
