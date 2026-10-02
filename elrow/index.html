@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VIKIN × elrow</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<style>
+/* Layout: noche de show. Fondo negro de pista, rojo Halloween Takeover como acento, lila de las etiquetas de la app, y una tira de confeti (el cañonazo de elrow) separando los actos. Solo tema oscuro, a propósito. */
+:root{
+  color-scheme:dark;
+  --night:#0B0A0C; --stage:#16131A; --stage2:#1F1A24;
+  --fire:#FF3A14; --fire2:#FF6A3D;
+  --lilac:#E3C6EF; --lilacdk:#6B3E7C;
+  --paper:#F5EEF7; --mist:#B9AEBF; --dim:#7D7385;
+  --line:rgba(227,198,239,.16);
+  --c1:#FF3A14; --c2:#E3C6EF; --c3:#FFC93C; --c4:#2FD6C3; --c5:#FF5FA2;
+  --display:'Bricolage Grotesque','Arial Black',system-ui,sans-serif;
+  --body:'DM Sans','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--night)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+body{font-family:var(--body);color:var(--paper);background:var(--night);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1;letter-spacing:-.025em;text-wrap:balance}
+h1 em,h2 em{font-style:normal;color:var(--fire)}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:24px}
+@media(max-width:520px){.wrap{padding-inline:16px}}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:6px}
+[data-lucide]{width:20px;height:20px;stroke-width:1.5px;flex-shrink:0}
+.i24{width:24px!important;height:24px!important}
+.i16{width:16px!important;height:16px!important}
+.i12{width:12px!important;height:12px!important}
+
+/* confeti: tira de puntos de colores, como el suelo después del cañonazo */
+.confetti{height:14px;background:
+  radial-gradient(circle at 6px 7px,var(--c1) 3px,transparent 3.5px) 0 0/38px 14px,
+  radial-gradient(circle at 18px 4px,var(--c3) 2.5px,transparent 3px) 0 0/46px 14px,
+  radial-gradient(circle at 28px 10px,var(--c4) 2.5px,transparent 3px) 0 0/52px 14px,
+  radial-gradient(circle at 12px 11px,var(--c2) 3px,transparent 3.5px) 0 0/30px 14px,
+  radial-gradient(circle at 34px 5px,var(--c5) 2px,transparent 2.5px) 0 0/58px 14px;opacity:.85}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(11,10,12,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.vlogo{height:18px;width:auto;display:block;color:var(--paper)}
+.brand .x{color:var(--dim);font-weight:500}
+.elrow{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.04em;line-height:1;color:var(--lilac)}
+.navlinks{display:flex;gap:22px;font-size:14px;font-weight:500;align-items:center;color:var(--mist)}
+.navlinks a:hover{color:var(--paper)}
+.navbtn{background:var(--fire);color:var(--night)!important;padding:9px 16px;border-radius:99px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.navbtn:hover{background:var(--paper)}
+@media(max-width:980px){.navlinks a:not(.navbtn){display:none}}
+@media(max-width:420px){.elrow{font-size:21px}.vlogo{height:14px}.navbtn{padding:8px 12px;font-size:13px}}
+
+section{padding-block:96px}
+@media(max-width:620px){section{padding-block:64px}}
+.kick{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fire);margin-bottom:18px}
+.kick::before{content:"";width:28px;height:2px;background:var(--fire)}
+h2{font-size:clamp(34px,5vw,58px);margin-bottom:22px;max-width:20ch}
+.lead{font-size:19px;color:var(--mist);max-width:64ch}
+.lead b{color:var(--paper);font-weight:700}
+.stack{display:flex;flex-direction:column;gap:18px}
+
+/* tarjetas como las de la app: negro, borde fino, esquina generosa */
+.grid{display:grid;gap:14px;margin-top:34px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--stage);border:1px solid var(--line);border-radius:22px;padding:28px;min-width:0}
+.card .ic{width:44px;height:44px;border-radius:50%;background:var(--lilac);color:var(--night);display:grid;place-items:center;margin-bottom:18px}
+.card h3{font-size:23px;margin-bottom:10px;letter-spacing:-.02em}
+.card p{font-size:15.5px;color:var(--mist)}
+.card p b{color:var(--paper)}
+
+/* etiquetas tipo app */
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px;border-radius:99px;background:var(--lilac);color:var(--night);white-space:nowrap}
+.tag.f{background:var(--fire);color:var(--night)}
+.tag.o{background:transparent;color:var(--lilac);border:1px solid var(--lilac)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+
+/* HERO */
+.hero{padding-block:72px 96px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(42px,6.2vw,80px);margin:22px 0 26px}
+.hero h1 .big{display:block;font-size:.58em;color:var(--lilac);letter-spacing:-.02em;margin-bottom:10px;font-weight:700}
+.hero p{font-size:19.5px;color:var(--mist);max-width:52ch}
+.hero p b{color:var(--paper)}
+.herobtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;padding:15px 24px;font-size:15.5px;border-radius:99px}
+.btn-primary{background:var(--fire);color:var(--night)}
+.btn-primary:hover{background:var(--paper)}
+.btn-ghost{color:var(--paper);border:1px solid var(--lilac)}
+.btn-ghost:hover{background:var(--lilac);color:var(--night)}
+.metabar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:42px}
+@media(max-width:620px){.metabar{grid-template-columns:1fr 1fr}}
+.metabar > div{border-top:2px solid var(--fire);padding-top:12px;min-width:0}
+.metabar .n{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.metabar .l{font-size:12.5px;color:var(--mist);font-weight:500}
+.heroshot{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:420px}
+.heroshot::before{content:"";position:absolute;left:50%;top:50%;width:min(92%,430px);aspect-ratio:1;transform:translate(-50%,-46%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#F3E3F8 0,var(--lilac) 45%,#B98ACB 100%);box-shadow:0 0 90px 10px rgba(255,58,20,.35)}
+.heroshot img{position:relative;width:56%;max-width:260px;filter:drop-shadow(0 30px 40px rgba(40,10,50,.55));z-index:2}
+.heroshot img.back{width:46%;max-width:215px;margin-right:-12%;transform:translateY(-34px) rotate(-6deg);z-index:1}
+
+/* SHOTS */
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.shots{grid-template-columns:1fr}}
+.shot{background:linear-gradient(170deg,#F1E1F7 0%,var(--lilac) 55%,#C79BD8 100%);border:1px solid var(--line);border-radius:22px;padding:28px 20px 0;overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.shot img{width:100%;max-width:210px;display:block;margin:0 auto 22px;filter:drop-shadow(0 18px 24px rgba(40,10,50,.45))}
+.shot .cap{padding:16px 20px 22px;margin:auto -20px 0;background:var(--stage)}
+.shot .cap b{font-family:var(--display);font-weight:700;font-size:18px;display:block}
+.shot .cap span{font-size:13.5px;color:var(--mist)}
+.note{background:var(--stage2);border-radius:18px;padding:18px 22px;font-size:15.5px;color:var(--mist);margin-top:22px;display:flex;gap:14px;align-items:flex-start}
+.note [data-lucide]{color:var(--lilac);margin-top:3px}
+.note b{color:var(--paper)}
+
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.fact{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:14.5px;font-weight:500;border:1px solid var(--line);border-radius:99px}
+.fact [data-lucide]{color:var(--fire)}
+
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:30px}
+.logos .chip{background:var(--paper);border-radius:18px;padding:20px;display:flex;align-items:center;justify-content:center;min-height:108px}
+.logos img{height:58px;width:auto;max-width:150px;object-fit:contain}
+
+/* universo elrow: formatos como escenarios de la parrilla */
+.formats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:30px}
+@media(max-width:820px){.formats{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.formats{grid-template-columns:1fr}}
+.fmt{display:flex;align-items:stretch;border-radius:99px;overflow:hidden;background:var(--paper);color:var(--night);min-width:0}
+.fmt b{background:var(--fire);font-family:var(--display);font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.02em;padding:12px 16px;display:flex;align-items:center;white-space:nowrap}
+.fmt span{padding:12px 16px;font-size:13.5px;font-weight:700;display:flex;align-items:center;min-width:0}
+
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+@media(max-width:860px){.feat{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.feat{grid-template-columns:1fr}}
+.f{background:var(--stage);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0}
+.f [data-lucide]{color:var(--fire);display:block;margin-bottom:12px}
+.f b{font-family:var(--display);font-weight:700;font-size:18px;display:block;margin-bottom:4px}
+.f span{font-size:14px;color:var(--mist)}
+.f.star{background:var(--fire);border-color:var(--fire);color:var(--night)}
+.f.star [data-lucide],.f.star span{color:var(--night)}
+
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media(max-width:860px){.gal{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.gal{grid-template-columns:1fr}}
+.gal .shot img{max-width:190px}
+
+/* stages Halloween Takeover */
+.stages{display:flex;flex-direction:column;gap:8px;margin-top:30px}
+.stg{display:grid;grid-template-columns:200px 1fr;border-radius:99px;overflow:hidden;background:var(--paper);color:var(--night)}
+@media(max-width:560px){.stg{grid-template-columns:1fr;border-radius:20px}}
+.stg b{background:var(--fire);font-family:var(--display);font-weight:800;font-size:17px;text-transform:uppercase;padding:14px 22px}
+.stg span{padding:14px 22px;font-size:14.5px;font-weight:500;min-width:0}
+
+.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px;margin-top:34px}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.money{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:620px){.money{grid-template-columns:1fr}}
+.money .card{padding:24px}
+
+.pay{margin-top:28px;border-radius:24px;padding:30px;background:var(--lilac);color:var(--night);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+@media(max-width:560px){.pay{grid-template-columns:1fr}}
+.pay .ic{width:52px;height:52px;border-radius:50%;background:var(--night);color:var(--lilac);display:grid;place-items:center}
+.pay h3{font-size:26px;margin-bottom:8px}
+.pay p{font-size:16px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.step{background:var(--stage);border:1px solid var(--line);border-radius:22px;padding:24px;min-width:0}
+.step .num{font-family:var(--display);font-weight:800;font-size:48px;line-height:1;color:var(--fire);margin-bottom:14px;font-variant-numeric:tabular-nums}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:14px;color:var(--mist)}
+
+.proofs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+@media(max-width:860px){.proofs{grid-template-columns:1fr}}
+.proof{background:var(--stage2);border-radius:22px;padding:30px;min-width:0}
+.proof .q{font-size:17px;line-height:1.55;margin-bottom:16px}
+.proof .who{font-size:13.5px;color:var(--lilac);font-weight:700}
+.uq{background:transparent;border:1px solid var(--line);border-radius:22px;padding:22px;font-size:15px;color:var(--mist);font-style:italic}
+.uq b{display:block;font-style:normal;font-size:12.5px;color:var(--dim);margin-top:8px}
+
+.offer{background:var(--fire);color:var(--night);border-radius:32px;padding:60px 48px;position:relative;overflow:hidden}
+@media(max-width:560px){.offer{padding:40px 24px;border-radius:24px}}
+.offer .kick{color:var(--night)}.offer .kick::before{background:var(--night)}
+.offer h2{color:var(--night);max-width:18ch}
+.offer h2 em{color:var(--paper)}
+.offer p{font-size:18px;max-width:56ch;margin-bottom:28px;color:#2A0D06}
+.offer .btn-primary{background:var(--night);color:var(--paper)}
+.offer .btn-primary:hover{background:var(--paper);color:var(--night)}
+.offer .btn-ghost{color:var(--night);border-color:var(--night)}
+.offer .btn-ghost:hover{background:var(--night);color:var(--paper)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.mail{margin-top:20px;font-size:15px}
+.mail b{user-select:all}
+.offer .confetti{position:absolute;left:0;right:0;top:0;opacity:1;filter:saturate(1.1)}
+
+.disclaim{font-size:12.5px;color:var(--dim);margin-top:24px;max-width:86ch}
+footer{border-top:1px solid var(--line);padding-block:48px}
+footer p{font-size:15px;color:var(--mist);margin-top:10px}
+footer a{color:var(--paper);border-bottom:1px solid var(--fire)}
+.conf{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-top:18px}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="wrap">
+  <div class="brand">
+    <svg class="vlogo" viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VIKIN"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="currentColor"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="currentColor"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.33 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="currentColor"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="currentColor"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="currentColor"/></svg>
+    <span class="x">×</span>
+    <span class="elrow">elrow</span>
+  </div>
+  <div class="navlinks">
+    <a href="#vikin">VIKIN</a><a href="#oportunidad">Oportunidad</a>
+    <a href="#experiencia">Experiencia</a><a href="#partners">Partners</a><a href="#pasos">Pasos</a>
+    <a class="navbtn" href="https://vikin.events" target="_blank" rel="noopener">vikin.events <i data-lucide="arrow-up-right" class="i16"></i></a>
+  </div>
+</div></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag f"><i data-lucide="sparkles" class="i12"></i> Propuesta VIKIN × elrow</span>
+      <h1><span class="big">680 shows. 150 ciudades. 48 países.</span>Toca una app con la misma <em>locura</em>.</h1>
+      <p>Una app oficial con la marca <b>elrow</b>, que <b>funciona sin conexión</b> en recintos de 12 horas, que cambia de piel con cada temática y que convierte a vuestros partners en una <b>nueva vía de ingresos</b>. Una sola base para Town, XXL, Horroween y todo lo que venga.</p>
+      <div class="herobtns">
+        <a class="btn btn-primary" href="#experiencia">Ver la app <i data-lucide="arrow-down"></i></a>
+        <a class="btn btn-ghost" href="https://vikin.events" target="_blank" rel="noopener">Descubre VIKIN <i data-lucide="arrow-up-right"></i></a>
+      </div>
+      <div class="metabar">
+        <div><div class="n">3,8 M</div><div class="l">Personas en shows elrow</div></div>
+        <div><div class="n">12 h</div><div class="l">De música sin parar</div></div>
+        <div><div class="n">+60</div><div class="l">Países en elrow Town</div></div>
+        <div><div class="n">Offline</div><div class="l">Aunque caiga la red</div></div>
+      </div>
+    </div>
+    <div class="heroshot">
+      <img class="back" src="img/app-splash.webp" alt="Pantalla de inicio de carga de la app de Halloween Takeover">
+      <img src="img/app-inicio.webp" alt="Inicio de la app con lo que suena en directo">
+    </div>
+  </div>
+</header>
+<div class="confetti" aria-hidden="true"></div>
+
+<!-- SHOTS -->
+<section>
+  <div class="wrap">
+    <div class="kick">Ya la hemos diseñado</div>
+    <h2>Así sería la app de <em>Halloween Takeover</em> el 31 de octubre.</h2>
+    <p class="lead">elrow, Industry City y Brunch Electronik en el Recinto Iberdrola Music, 12 horas y tres escenarios. Lo hemos usado como ejemplo de lo que puede ser una app oficial de elrow.</p>
+    <div class="shots" style="margin-top:34px">
+      <div class="shot"><img src="img/app-inicio.webp" alt="Inicio"><div class="cap"><b>Inicio en directo</b><span>Quién toca ahora y quién va después</span></div></div>
+      <div class="shot"><img src="img/app-mapa.webp" alt="Mapa"><div class="cap"><b>Mapa del recinto</b><span>Escenarios, barras, WC, chill out y accesos</span></div></div>
+      <div class="shot"><img src="img/app-parrilla.webp" alt="Parrilla"><div class="cap"><b>Parrilla</b><span>Los tres escenarios con la línea de "ahora"</span></div></div>
+    </div>
+    <div class="note"><i data-lucide="info"></i><span><b>Pantallas de ejemplo.</b> Muestran cómo <i>podría</i> verse vuestra app con VIKIN. El diseño final lo cerramos con vuestro equipo, evento a evento.</span></div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="vikin" style="padding-top:0">
+  <div class="wrap">
+    <div class="kick">Quiénes somos</div>
+    <h2>Hacemos la app oficial de festivales y <em>grandes eventos</em>.</h2>
+    <p class="lead">VIKIN es una solución <b>white-label</b> nacida en Reino Unido. Le damos al organizador una app completa con su marca, sin el coste ni el lío de construirla desde cero.</p>
+    <div class="facts">
+      <div class="fact"><i data-lucide="smartphone"></i> iOS y Android · app nativa propia</div>
+      <div class="fact"><i data-lucide="wifi-off"></i> Funciona sin cobertura</div>
+      <div class="fact"><i data-lucide="shield-check"></i> Sin registro · sin datos personales</div>
+      <div class="fact"><i data-lucide="palette"></i> 100% vuestra marca</div>
+    </div>
+    <p class="lead" style="margin-top:26px">Somos una empresa de desarrollo: lo que nos piden los clientes lo construimos, y cada mejora llega al resto de apps.</p>
+
+    <div class="logos" id="clientes">
+      <div class="chip"><img src="img/logo-greenbelt.png" alt="Greenbelt Festival"></div>
+      <div class="chip"><img src="img/logo-the-big-retreat.png" alt="The Big Retreat Festival"></div>
+      <div class="chip"><img src="img/logo-shambala.png" alt="Shambala Festival"></div>
+      <div class="chip"><img src="img/logo-teddy-rocks.png" alt="Teddy Rocks Festival"></div>
+      <div class="chip"><img src="img/logo-canowindra.png" alt="Canowindra International Balloon Challenge"></div>
+      <div class="chip"><img src="img/logo-the-showmans-show.png" alt="The Showman's Show"></div>
+    </div>
+    <p class="lead" style="margin-top:16px;font-size:15px">Eventos que ya tienen su app oficial hecha con VIKIN, cada una con su propia identidad.</p>
+  </div>
+</section>
+<div class="confetti" aria-hidden="true"></div>
+
+<!-- 01 OPORTUNIDAD -->
+<section id="oportunidad">
+  <div class="wrap">
+    <div class="kick">01 · La oportunidad</div>
+    <h2>Un universo, muchas ciudades y <em>una sola app</em>.</h2>
+    <p class="lead">elrow no es un festival, es una marca que monta su mundo en Madrid, Londres, Milán, Ibiza o Sevilla, a veces el mismo día. El 31 de octubre tenéis <b>cuatro Halloween a la vez en tres países</b>. Una app pensada para eso os ahorra trabajo y os da un canal propio con todo vuestro público.</p>
+
+    <div class="formats">
+      <div class="fmt"><b>Town</b><span>Madrid · el más grande</span></div>
+      <div class="fmt"><b>XXL</b><span>Estadios y carnaval</span></div>
+      <div class="fmt"><b>Horroween</b><span>Londres · Valencia · Milán</span></div>
+      <div class="fmt"><b>Island</b><span>Destinos de playa</span></div>
+      <div class="fmt"><b>Snowrow</b><span>Festival en la nieve</span></div>
+      <div class="fmt"><b>Ibiza</b><span>Residencia en [UNVRS]</span></div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card"><div class="ic"><i data-lucide="layers"></i></div><h3>Una base para todo elrow</h3><p>Montamos la plataforma una vez y cada evento sale con su piel, su mapa y su cartel. Lo que se construye para elrow Town sirve para el siguiente Horroween, sin empezar de cero cada vez.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="drama"></i></div><h3>La temática es el producto</h3><p>Dance with the Serpent, Hallucinarium, Kaos Garden… Cada show tiene su universo. La app también: <b>misma base, nueva piel</b> en cada temática, para que forme parte de la experiencia y no parezca una plantilla.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="signal-low"></i></div><h3>Recintos grandes y 12 horas</h3><p>80.000 m² en Torrejón, el Recinto Iberdrola Music, Drumsheds, la Fiera di Milano. Miles de móviles a la vez y la red se satura. La app sigue enseñando horarios y mapa sin cobertura.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="languages"></i></div><h3>Público de todo el mundo</h3><p>elrow Town Madrid juntó a 35.000 personas de más de 60 países en 2025. Mucha gente sin datos o con roaming. App en <b>castellano e inglés</b>, que funciona sin conexión.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 EXPERIENCIA -->
+<section id="experiencia" style="padding-top:0">
+  <div class="wrap">
+    <div class="kick">02 · La experiencia</div>
+    <h2>Todo lo que necesita el que viene, en el bolsillo y <em>sin conexión</em>.</h2>
+    <p class="lead">Una app que cambia según la hora y el sitio, para que cada persona vea lo que le importa en cada momento de las 12 horas.</p>
+    <div class="feat">
+      <div class="f"><i data-lucide="radio" class="i24"></i><b>En directo y a continuación</b><span>El inicio enseña quién toca ahora y quién va después.</span></div>
+      <div class="f"><i data-lucide="calendar-range" class="i24"></i><b>Parrilla por escenario</b><span>elrow, Industry City y Brunch con la línea de "ahora" en tiempo real.</span></div>
+      <div class="f"><i data-lucide="heart" class="i24"></i><b>Mi evento</b><span>Favoritos, recordatorios y aviso cuando dos sets se solapan.</span></div>
+      <div class="f"><i data-lucide="mic-vocal" class="i24"></i><b>Ficha de artista</b><span>Bio, actuaciones, vídeos de YouTube y etiquetas de género.</span></div>
+      <div class="f"><i data-lucide="sliders-horizontal" class="i24"></i><b>Filtros</b><span>Tech house, techno, hard techno, melodic… o por zona y horario.</span></div>
+      <div class="f star"><i data-lucide="party-popper" class="i24"></i><b>Momentos elrow</b><span>Avisa del próximo desfile, del cañonazo de confeti o del pase de performers.</span></div>
+      <div class="f"><i data-lucide="map-pin" class="i24"></i><b>Mapa offline</b><span>Escenarios, barras, WC, chill out, agua, accesos y salidas.</span></div>
+      <div class="f"><i data-lucide="life-buoy" class="i24"></i><b>Ayuda en emergencia</b><span>Primeros auxilios y ubicación exacta para pedir ayuda al momento.</span></div>
+      <div class="f"><i data-lucide="accessibility" class="i24"></i><b>Avisos en cada sesión</b><span>Accesibilidad y aviso de luces estroboscópicas en la ficha.</span></div>
+    </div>
+    <div class="gal">
+      <div class="shot"><img src="img/app-mi-evento.webp" alt="Mi evento"><div class="cap"><b>Mi evento</b><span>Tu agenda y los solapes</span></div></div>
+      <div class="shot"><img src="img/app-ficha-artista.webp" alt="Ficha de artista"><div class="cap"><b>Ficha de artista</b><span>Bio, actuaciones y YouTube</span></div></div>
+      <div class="shot"><img src="img/app-filtros.webp" alt="Filtros"><div class="cap"><b>Filtros</b><span>Géneros, horarios y zonas</span></div></div>
+    </div>
+  </div>
+</section>
+<div class="confetti" aria-hidden="true"></div>
+
+<!-- 03 PARTNERS -->
+<section id="partners">
+  <div class="wrap">
+    <div class="kick">03 · Partners e ingresos</div>
+    <h2>Vuestros partners ya están en el recinto. En la app, <em>se ven más</em>.</h2>
+    <p class="lead">Marcas como <b>Winamax</b> ya juegan con elrow en 2026, con activaciones donde el público participa. En la app cada marca sale donde la gente mira de verdad: el mapa, el inicio y la parrilla. Durante el evento y el resto del año.</p>
+
+    <div class="stages">
+      <div class="stg"><b>elrow</b><span>Horroween · carpa con más de 100 performers</span></div>
+      <div class="stg"><b>Industry City</b><span>Escenario industrial al aire libre · hard techno</span></div>
+      <div class="stg"><b>Brunch Elec.</b><span>Progressive y melodic · Kölsch, Maceo Plex</span></div>
+    </div>
+
+    <div class="split">
+      <div class="shot"><img src="img/app-mapa.webp" alt="Mapa con zonas de marca"><div class="cap"><b>La marca, en el mapa</b><span>Barras y activaciones a dos toques</span></div></div>
+      <div class="money">
+        <div class="card"><div class="ic"><i data-lucide="layout-dashboard"></i></div><h3>Destacados en el inicio</h3><p>Espacios de marca en la pantalla que más se abre durante el evento.</p></div>
+        <div class="card"><div class="ic"><i data-lucide="map-pin"></i></div><h3>Activaciones en el mapa</h3><p>Barras, zonas y retos con hora y ubicación, para que la gente llegue.</p></div>
+        <div class="card"><div class="ic"><i data-lucide="bell-ring"></i></div><h3>Momentos patrocinados</h3><p>"El próximo cañonazo de confeti, con…". Notificaciones con marca en el momento justo.</p></div>
+        <div class="card"><div class="ic"><i data-lucide="trending-up"></i></div><h3>Datos para renovar</h3><p>Impactos y clics agregados para enseñar a cada marca lo que ha conseguido.</p></div>
+      </div>
+    </div>
+
+    <div class="pay">
+      <div class="ic"><i data-lucide="coins" class="i24"></i></div>
+      <div>
+        <h3>La app puede pagarse sola.</h3>
+        <p>Destacados, posts y notificaciones patrocinadas, secciones de marca, activaciones… Cada paquete se adapta a cada evento y a cada partner, para cubrir o incluso superar el coste de la app. Con tantos eventos al año, el inventario se multiplica. <b>Pedidnos el documento de monetización</b> y os lo pasamos con las vías pensadas para elrow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 DIFERENCIA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick">04 · La diferencia VIKIN</div>
+    <h2>Sin señal, sin registro y <em>sin algoritmos</em>.</h2>
+    <div class="grid g3">
+      <div class="card"><div class="ic"><i data-lucide="download"></i></div><h3>Sin señal, sin problema</h3><p>Horarios, mapa, agenda y fichas van descargados. Las actualizaciones gastan poca batería y pocos datos, clave en jornadas de 14:00 a 02:00.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="user-x"></i></div><h3>Sin registro, sin datos</h3><p>Se entra sin crear cuenta. Menos fricción para descargarla y cero dolores de cabeza con datos personales en varios países.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="send"></i></div><h3>Sin algoritmos</h3><p>Lo que publicáis llega a quien tiene la app, sin que una red social decida quién lo ve.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 TODO EL AÑO -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick">05 · Todo el año</div>
+    <h2>La app no se apaga con el <em>último confeti</em>.</h2>
+    <div class="grid g3">
+      <div class="card"><div class="ic"><i data-lucide="rss"></i></div><h3>Feed de contenido</h3><p>Aftermovies, galerías, sesiones y noticias de cada show. Comunidad propia sin depender del alcance de Instagram.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="ticket"></i></div><h3>Preventas y anuncios</h3><p>Nueva ciudad, nueva temática, primeros nombres. Directo al móvil de quien ya ha venido a un elrow: vuestro público más fiel.</p></div>
+      <div class="card"><div class="ic"><i data-lucide="globe"></i></div><h3>Una app que viaja</h3><p>El que fue a elrow Town la tiene instalada cuando anunciáis Horroween o la temporada de Ibiza. Cada evento suma descargas a la misma base.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ECOSISTEMA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kick">06 · Ecosistema abierto</div>
+    <h2>Se conecta con lo que <em>ya usáis</em>.</h2>
+    <p class="lead">Nos integramos con vuestro sistema de datos para no duplicar trabajo: la programación se carga una vez y sirve para la app y para la web. También trabajamos con plataformas de gestión de eventos como <b>Crescat</b>. La venta de entradas sigue con vuestra ticketera de siempre; nosotros la enlazamos desde la app.</p>
+  </div>
+</section>
+<div class="confetti" aria-hidden="true"></div>
+
+<!-- OPINIONES -->
+<section>
+  <div class="wrap">
+    <div class="kick">Opiniones</div>
+    <h2>Lo que dicen quienes ya usan <em>VIKIN</em>.</h2>
+    <div class="proofs">
+      <div class="proof"><p class="q">“Ha sido un auténtico placer trabajar con VIKIN en la app de Greenbelt 2025. Su dedicación, creatividad y rapidez de respuesta ha sido inmejorable. Ese compromiso con la excelencia se nota en el resultado final.”</p><p class="who">Daisy Ghira · Greenbelt Festival</p></div>
+      <div class="proof"><p class="q">“Ya habíamos usado apps para eventos en The Big Retreat, pero VIKIN superó nuestras expectativas. Una experiencia fluida tanto para la organización como para los asistentes. Los recomendamos totalmente.”</p><p class="who">Amber Lort-Phillips · The Big Retreat</p></div>
+      <div class="uq">“Súper fácil de usar, y genial que funcione sin cobertura. ¡La mejor app que hemos tenido!”<b>Asistente · Greenbelt</b></div>
+      <div class="uq">“Me ayudó a planificarme y aprovechar muchísimo más el festival.”<b>Asistente · The Big Retreat</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section id="pasos" style="padding-top:0">
+  <div class="wrap">
+    <div class="kick">Siguientes pasos</div>
+    <h2>Empezar por un evento y llevarlo a <em>todos</em>.</h2>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Llamada y diseño</h3><p>Partimos de estas pantallas y las ajustamos con vuestro equipo a la imagen elrow.</p></div>
+      <div class="step"><div class="num">02</div><h3>Primer evento</h3><p>Elegimos juntos un evento de la temporada 2027 para lanzar la app, con datos, mapa y partners conectados.</p></div>
+      <div class="step"><div class="num">03</div><h3>Resto del calendario</h3><p>Misma base, nueva piel para cada ciudad y temática. Cada evento suma descargas.</p></div>
+      <div class="step"><div class="num">04</div><h3>Todo el año</h3><p>Soporte en directo durante cada show, y contenido, notificaciones y preventas entre eventos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="offer">
+      <div class="confetti" aria-hidden="true"></div>
+      <div class="kick">Hagámoslo</div>
+      <h2>Una app con tanta <em>locura</em> como un show de elrow.</h2>
+      <p>En una llamada de 30 minutos os enseñamos la app funcionando y cómo encaja con vuestros partners y con el calendario de 2027.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="mailto:david@vikin.events"><i data-lucide="arrow-right"></i> Hablar con VIKIN</a>
+        <a class="btn btn-ghost" href="https://vikin.events" target="_blank" rel="noopener">Ver vikin.events</a>
+      </div>
+      <p class="mail">Escríbenos a <b>david@vikin.events</b></p>
+    </div>
+    <p class="disclaim">Las pantallas de esta propuesta son ejemplos ilustrativos con la marca de Halloween Takeover, no un diseño definitivo. Las funciones descritas reflejan la plataforma VIKIN; la configuración y el diseño finales se adaptan a las necesidades de elrow. Fechas, recintos, marcas y cifras según información pública de elrow y prensa. Los testimonios corresponden a clientes reales de VIKIN.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <svg class="vlogo" viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VIKIN"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="currentColor"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="currentColor"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.33 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="currentColor"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="currentColor"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="currentColor"/></svg>
+      <span class="x">×</span><span class="elrow">elrow</span>
+    </div>
+    <p><b style="color:var(--paper)">David Cremades</b> · Iberia Business Development (España y Portugal)</p>
+    <p><a href="mailto:david@vikin.events">david@vikin.events</a> · <a href="https://vikin.events" target="_blank" rel="noopener">vikin.events</a></p>
+    <p class="conf">VIKIN × elrow · Confidencial © 2026</p>
+  </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body></html>
