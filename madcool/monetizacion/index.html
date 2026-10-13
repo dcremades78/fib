@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VIKIN × Mad Cool · Monetización de la app</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+
+:root{
+  color-scheme:light;
+  --cream:#f4f4f2; --cream2:#e9e9e4; --card:#FFFFFF;
+  --ink:#0a0a0a; --soft:#4d4d4d; --faint:#85857f;
+  --brand:#0a0a0a; --brand2:#2a2a2a; --branddk:#000;
+  --mint:#d9d9d4; --sky:#fff; --yellow:#ffffff; --red:#E8324A; --orange:#E07A2E;
+  --tint:rgba(0,0,0,.06);
+  --platinum:#000; --gold:#d4d4cf; --silver:#b0b0aa; --bronze:#85857f;
+  --line:rgba(10,10,10,.14); --line2:rgba(10,10,10,.08);
+  --display:'Inter','Segoe UI',system-ui,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.disp{font-family:var(--display);font-weight:700;line-height:1.06;letter-spacing:-.01em;text-wrap:balance}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--brand)}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:24px}
+@media(max-width:520px){.wrap{padding-inline:16px}}
+a{color:var(--brand);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+[data-lucide]{width:20px;height:20px;stroke-width:1.5px;vertical-align:middle;flex-shrink:0}
+.vlogo{height:24px;width:auto;display:block}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(234,244,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:.01em}
+.brand .vk{color:#004403;display:flex}
+.brand .sep{color:var(--faint);font-weight:600}
+.brand .fest{color:var(--branddk);font-weight:800;letter-spacing:.06em}
+.navlinks{display:flex;gap:18px;font-size:14px;font-weight:600;align-items:center}
+.navlinks a{color:var(--soft)} .navlinks a:hover{color:var(--ink)}
+.navbtn{background:var(--branddk);color:#fff!important;padding:8px 15px;border-radius:11px;font-weight:700;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.navbtn:hover{background:var(--brand2)}
+.navbtn [data-lucide]{width:16px;height:16px}
+@media(max-width:980px){.navlinks a:not(.navbtn){display:none}}
+@media(max-width:480px){.brand{font-size:16px;gap:8px}.brand .vlogo{height:19px}.navbtn{padding:7px 11px;font-size:13px}}
+
+.simbar{background:var(--branddk);color:#E4F1E7;font-size:13.5px;text-align:center;padding:9px 20px;line-height:1.4}
+.simbar b{color:var(--yellow)}
+.simbar [data-lucide]{width:14px;height:14px;margin-right:6px;color:var(--yellow);vertical-align:-2px}
+
+section{padding-block:80px;border-bottom:1px solid var(--line2)}
+@media(max-width:620px){section{padding-block:60px}}
+.kick{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:15px}
+h2{font-size:clamp(30px,4.6vw,50px);margin-bottom:18px;max-width:24ch}
+.lead{font-size:19px;color:var(--soft);max-width:66ch;margin-bottom:8px}
+.lead b{color:var(--ink)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:980px){.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+@media(max-width:560px){.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;min-width:0}
+.card .ic{width:44px;height:44px;border-radius:13px;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--brand)}
+.card .ic [data-lucide]{width:24px;height:24px}
+.card h3{font-size:20px;margin-bottom:9px}
+.card p{font-size:15.5px;color:var(--soft)}
+.card p b{color:var(--ink)}
+
+/* HERO */
+.hero{background:linear-gradient(170deg,var(--sky) 0%,#BFE6D2 55%,#8FCFA5 100%);padding-block:56px 84px;border-bottom:none;position:relative;overflow:hidden}
+.hero .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--branddk);background:rgba(255,255,255,.6);padding:6px 14px;border-radius:20px;margin-bottom:22px}
+.hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:44px;align-items:center;position:relative;z-index:2}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(38px,5.8vw,64px);font-weight:800;margin:0 0 20px;color:var(--branddk)}
+.hero h1 em{color:var(--brand)}
+.hero p{font-size:19px;color:#2F4B39;max-width:56ch}
+.herobtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;padding:13px 22px;border-radius:13px;font-size:15.5px}
+.btn-primary{background:var(--branddk);color:#fff}
+.btn-primary:hover{background:var(--brand2)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+.metabar{display:flex;flex-wrap:wrap;gap:24px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(15,36,23,.15)}
+.metabar .n{font-family:var(--display);font-weight:700;font-size:24px;color:var(--branddk)}
+.metabar .l{font-size:12px;color:#3d5a47;font-weight:600}
+.heroshot{display:flex;justify-content:center}
+.heroshot img{width:76%;max-width:290px;filter:drop-shadow(0 24px 40px rgba(15,36,23,.25))}
+
+/* audiencia */
+.aud{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+@media(max-width:880px){.aud{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.aud{grid-template-columns:1fr}}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.stat .n{font-family:var(--display);font-weight:800;font-size:36px;line-height:1;color:var(--branddk)}
+.stat .l{font-size:14px;font-weight:600;color:var(--ink);margin:6px 0 10px}
+.stat p{font-size:14.5px;color:var(--soft);padding-top:10px;border-top:1px dashed var(--line)}
+.stat p b{color:var(--brand)}
+.src{font-size:12.5px;color:var(--faint);margin-top:16px}
+.src a{color:var(--soft);text-decoration:underline}
+
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.feat{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.feat{grid-template-columns:1fr}}
+.f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.f [data-lucide]{color:var(--brand);width:24px;height:24px;margin-bottom:8px;display:block}
+.f b{font-family:var(--display);font-weight:700;font-size:16px;display:block;margin-bottom:3px}
+.f span{font-size:14px;color:var(--soft)}
+
+.note{background:var(--cream2);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:18px 22px;font-size:16px;color:#3f5747;margin-top:22px}
+.note b{color:var(--ink)}
+
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.tag [data-lucide]{width:12px;height:12px}
+.tag.base{background:var(--tint);color:var(--brand)}
+.tag.ext{background:rgba(64,170,190,.18);color:#13606e}
+.tag.medida{background:rgba(224,122,46,.15);color:#a24f12}
+.legend{display:flex;flex-wrap:wrap;gap:14px 26px;margin:22px 0 4px;font-size:14px;color:var(--soft)}
+.legend div{display:flex;align-items:center;gap:9px}
+
+/* anatomía */
+.anat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+@media(max-width:820px){.anat{grid-template-columns:1fr}}
+.aitem{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 18px 0;text-align:center;overflow:hidden}
+.phone{position:relative;width:100%;max-width:230px;margin:0 auto}
+.phone img{width:100%;display:block}
+.pm{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-family:var(--display);font-weight:700;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 4px 10px rgba(15,36,23,.35);transform:translate(-50%,-50%)}
+.aitem .cap{padding:14px 4px 20px}
+.aitem .cap b{font-family:var(--display);font-weight:700;font-size:16px;display:block}
+.aitem .cap span{font-size:13px;color:var(--soft)}
+.alegend{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin-top:26px}
+@media(max-width:760px){.alegend{grid-template-columns:1fr}}
+.al{display:flex;gap:13px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.al .n{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-family:var(--display);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.al b{font-family:var(--display);font-weight:700;font-size:16px;display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px}
+.al span.t{display:block;font-size:14px;color:var(--soft);line-height:1.45;margin-top:2px}
+
+/* naming escenarios */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+@media(max-width:760px){.stages{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.stages{grid-template-columns:1fr}}
+.stg{background:var(--branddk);color:#fff;border-radius:14px;padding:16px 18px}
+.stg b{font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:.03em;display:block;line-height:1.1}
+.stg span{font-size:13.5px;color:#A9C4B1}
+.stg span em{font-style:normal;color:var(--yellow);font-weight:700}
+.where{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+@media(max-width:820px){.where{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.where{grid-template-columns:1fr}}
+.where div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14px;color:var(--soft)}
+.where div b{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:16px;color:var(--ink);margin-bottom:2px}
+.where div b [data-lucide]{color:var(--brand)}
+
+/* ideas por sponsor */
+.brands{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+@media(max-width:820px){.brands{grid-template-columns:1fr}}
+.bc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;min-width:0}
+.bc .hd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.bc .who{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.bc h3{font-size:20px;margin-top:3px}
+.bc p{font-size:15px;color:var(--soft)}
+.bc p b{color:var(--ink)}
+.bc .why{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--soft);display:flex;gap:8px;align-items:flex-start}
+.bc .why [data-lucide]{width:16px;height:16px;color:var(--brand);margin-top:2px}
+.bc .fx{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pk{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:7px;white-space:nowrap}
+.pk.platinum{background:var(--platinum);color:#fff}.pk.gold{background:var(--gold);color:var(--ink)}
+.pk.silver{background:var(--silver);color:var(--ink)}.pk.bronze{background:var(--bronze);color:var(--ink)}
+
+/* formatos */
+.fmt{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column}
+.fmt .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.fmt .ic{width:44px;height:44px;border-radius:13px;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
+.fmt .ic [data-lucide]{width:24px;height:24px}
+.fmt h3{font-size:18px;margin-bottom:7px}
+.fmt p{font-size:14.5px;color:var(--soft);flex:1}
+
+/* paquetes */
+.tier{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.tier .head{padding:18px 20px 16px}
+.tier .head .nm{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tier .head .tg{font-size:13.5px;margin-top:2px;opacity:.85}
+.tier.platinum .head{background:var(--platinum);color:#fff}
+.tier.gold .head{background:var(--gold);color:var(--ink)}
+.tier.silver .head{background:var(--silver);color:var(--ink)}
+.tier.bronze .head{background:var(--bronze);color:var(--ink)}
+.tier .body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.tier .price{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--ink)}
+.tier .price small{display:block;font-family:var(--body);font-size:13px;font-weight:600;color:var(--soft);margin-top:6px}
+.simtag{display:inline-block;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.22);border:1px dashed currentColor;white-space:nowrap}
+.tier.silver .simtag,.tier.gold .simtag,.tier.bronze .simtag{background:rgba(255,255,255,.4)}
+.tier .ideal{font-size:13.5px;color:var(--soft);margin:12px 0 14px;min-height:4.4em}
+.tier ul{list-style:none;display:grid;gap:9px;font-size:14.5px;padding-top:14px;border-top:1px dashed var(--line)}
+.tier li{display:flex;gap:9px;align-items:flex-start;line-height:1.4}
+.tier li [data-lucide]{width:16px;height:16px;color:var(--brand);margin-top:3px}
+.tier .imp{margin-top:auto;padding-top:16px}
+.tier .imp div{background:var(--cream);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--soft)}
+.tier .imp b{display:block;font-family:var(--display);font-size:20px;color:var(--branddk)}
+
+.tablewrap{overflow-x:auto;margin-top:34px;border-radius:18px;border:1px solid var(--line);background:var(--card)}
+.matrix{width:100%;min-width:760px;table-layout:fixed;border-collapse:separate;border-spacing:0;font-size:14.5px}
+.matrix th:first-child{width:34%}
+.matrix caption{caption-side:top;text-align:left;font-family:var(--display);font-weight:700;font-size:19px;padding:18px 20px 6px}
+.matrix th,.matrix td{padding:11px 14px;text-align:center;border-top:1px solid var(--line2)}
+.matrix thead th{border-top:none;font-family:var(--display);font-weight:800;font-size:16px;padding:12px 10px}
+.matrix thead th:first-child{text-align:left;background:transparent;font-family:var(--body);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.matrix th.platinum{background:var(--platinum);color:#fff}
+.matrix th.gold{background:var(--gold)}
+.matrix th.silver{background:var(--silver)}
+.matrix th.bronze{background:var(--bronze)}
+.matrix tbody th{text-align:left;font-weight:600;color:var(--ink)}
+.matrix tbody th small{display:block;font-weight:400;font-size:12.5px;color:var(--soft)}
+.matrix tbody tr:nth-child(even) td,.matrix tbody tr:nth-child(even) th{background:rgba(234,244,236,.55)}
+.matrix td [data-lucide]{color:var(--brand)}
+.matrix td.no{color:var(--faint)}
+.matrix td .v{font-weight:700}
+.matrix tfoot td,.matrix tfoot th{background:var(--cream2);font-family:var(--display);font-weight:800;font-size:17px}
+.matrix tfoot th{text-align:left}
+.dagger{color:var(--orange);font-weight:700}
+.swipe{display:none;font-size:13px;color:var(--soft);margin-top:10px}
+@media(max-width:820px){.swipe{display:block}}
+
+/* impactos + simulador */
+.presets{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.presets button{font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.presets button:hover{border-color:var(--brand);color:var(--brand)}
+.presets button.on{background:var(--branddk);border-color:var(--branddk);color:#fff}
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:880px){.funnel{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.funnel{grid-template-columns:1fr}}
+.fn{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative}
+.fn .n{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;color:var(--branddk)}
+.fn .l{font-size:13.5px;color:var(--soft);margin-top:6px}
+.fn .h{font-size:12px;color:var(--faint);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.fn.dk{background:var(--branddk);border-color:var(--branddk)}
+.fn.dk .n{color:var(--yellow)} .fn.dk .l{color:#E4F1E7} .fn.dk .h{color:#A9C4B1;border-color:rgba(255,255,255,.18)}
+.imptab{width:100%;min-width:640px;border-collapse:separate;border-spacing:0;font-size:14.5px}
+.imptab th,.imptab td{padding:12px 14px;text-align:right;border-top:1px solid var(--line2)}
+.imptab th:first-child,.imptab td:first-child{text-align:left}
+.imptab thead th{border-top:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.imptab td b{font-family:var(--display);font-size:17px}
+.imptab .dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:8px;vertical-align:-1px}
+.assump{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin-top:22px;font-size:14px;color:var(--soft)}
+@media(max-width:760px){.assump{grid-template-columns:1fr}}
+.assump div{display:flex;gap:10px;align-items:flex-start}
+.assump [data-lucide]{width:16px;height:16px;color:var(--brand);margin-top:3px}
+.assump b{color:var(--ink)}
+
+.sim{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-top:28px;align-items:start}
+@media(max-width:900px){.sim{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line2)}
+.row:first-of-type{border-top:none}
+.row .nm{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-weight:700;font-size:16px}
+.row .dot{width:14px;height:14px;border-radius:5px;flex-shrink:0}
+.row .pr{font-size:13px;color:var(--soft);font-weight:500;white-space:nowrap}
+.stepper{display:flex;align-items:center;gap:6px}
+.stepper button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;font:700 18px var(--body);color:var(--ink);cursor:pointer;line-height:1}
+.stepper button:hover{border-color:var(--brand);color:var(--brand)}
+.stepper .c{min-width:34px;text-align:center;font-family:var(--display);font-weight:700;font-size:20px}
+.total{background:linear-gradient(150deg,var(--branddk),var(--brand));color:#fff;border-radius:20px;padding:28px}
+.total .lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.total .big{font-family:var(--display);font-weight:800;font-size:clamp(44px,7vw,64px);line-height:1.05;margin:6px 0 2px}
+.total .sub{font-size:14px;opacity:.9}
+.bar{display:flex;height:16px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.18);margin:20px 0 14px}
+.bar span{display:block;height:100%;transition:width .35s ease}
+.brk{display:grid;gap:7px;font-size:14.5px}
+.brk div{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.brk .l{display:flex;align-items:center;gap:8px}
+.brk .dot{width:12px;height:12px;border-radius:4px}
+.brk .z{opacity:.55}
+.total .imps{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.2);font-size:14px}
+.total .imps b{font-family:var(--display);font-size:20px;color:var(--yellow)}
+
+/* a medida */
+.custom{background:var(--branddk);color:#E4F1E7;border-radius:26px;padding:48px 44px}
+@media(max-width:640px){.custom{padding:34px 20px}}
+.custom .kick{color:var(--yellow)}
+.custom h2{color:#fff;max-width:22ch}
+.custom h2 em{color:var(--yellow)}
+.custom .lead{color:#C4DBCB}
+.custom .ideas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+@media(max-width:760px){.custom .ideas{grid-template-columns:1fr}}
+.idea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:18px 20px}
+.idea [data-lucide]{color:var(--yellow);width:24px;height:24px;margin-bottom:8px;display:block}
+.idea b{font-family:var(--display);font-weight:700;font-size:17px;display:block;color:#fff;margin-bottom:3px}
+.idea span{font-size:14.5px;color:#C4DBCB}
+.custom .how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:760px){.custom .how{grid-template-columns:1fr}}
+.how .s{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#C4DBCB}
+.how .s .num{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink);background:var(--yellow);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.how .s b{color:#fff;display:block;font-family:var(--display);font-size:16px;line-height:1.2;margin-bottom:2px}
+.custom .btn-primary{background:var(--yellow);color:var(--ink);margin-top:28px}
+.custom .btn-primary:hover{background:#fff}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.step .num{font-family:var(--display);font-weight:700;font-size:15px;color:#fff;background:var(--brand);width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{font-size:18px;margin-bottom:4px}
+.step .goal{font-size:14px;color:var(--soft);margin-bottom:12px}
+.step ul{list-style:none;display:grid;gap:7px;font-size:14.5px}
+.step li{display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.step li [data-lucide]{width:16px;height:16px;color:var(--brand);margin-top:3px}
+
+.logos{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin-top:14px}
+.logos .chip{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 20px;display:flex;align-items:center;justify-content:center;min-width:130px;min-height:84px}
+.logos img{height:56px;width:auto;max-width:150px;object-fit:contain}
+
+.offer{background:linear-gradient(150deg,var(--branddk),var(--brand));color:#fff;border-radius:24px;padding:46px 42px;text-align:center}
+@media(max-width:640px){.offer{padding:34px 20px}}
+.offer h2{color:#fff;max-width:24ch;margin:0 auto 14px}
+.offer p{font-size:18px;color:rgba(255,255,255,.92);max-width:56ch;margin:0 auto 24px}
+.offer .btn-primary{background:#fff;color:var(--branddk)}
+.offer .btn-primary:hover{background:var(--yellow)}
+.offer .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.offer .btn-ghost:hover{border-color:#fff;color:#fff}
+.offer .btnrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+.disclaim{font-size:12.5px;color:var(--faint);margin-top:20px;max-width:90ch}
+footer{background:var(--branddk);color:#dfeee3;padding:46px 0;text-align:center;border:none}
+footer .brand .vk{color:#fff}
+footer .brand{justify-content:center;color:#fff}
+footer .brand .fest{color:var(--yellow)}
+footer p{font-size:15px;color:#A9C4B1;margin-top:8px}
+footer a{color:var(--yellow)}
+.conf{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7E978A;margin-top:16px}
+
+/* ===== Mad Cool · tema blanco y negro ===== */
+h1,h2{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.5px;line-height:1.02}
+h1 em,h2 em,h3 em{color:transparent;-webkit-text-stroke:1.3px #0a0a0a}
+h2{max-width:22ch}
+h3{font-weight:800}
+.metabar .n,.stat .n,.fn .n,.tier .price,.total .big,.stg b{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px}
+.stat .n{font-size:40px}
+.nav{background:rgba(244,244,242,.92)}
+.brand .vk{color:#000}
+.brand .fest{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.08em;color:#000}
+.simbar{background:#000;color:#d4d4d4}
+.hero{background:#000;color:#fff}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 39px,rgba(255,255,255,.04) 39px 40px);pointer-events:none}
+.hero h1{color:#fff;font-weight:400}
+.hero h1 em{color:transparent;-webkit-text-stroke:1.4px #fff}
+.hero p{color:#d4d4d4}
+.hero .badge{background:rgba(255,255,255,.12);color:#fff}
+.hero .btn-primary{background:#fff;color:#000}
+.hero .btn-primary:hover{background:#d4d4d4}
+.hero .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.hero .btn-ghost:hover{border-color:#fff;color:#fff}
+.hero .metabar{border-top-color:rgba(255,255,255,.2)}
+.hero .metabar .n{color:#fff}
+.hero .metabar .l{color:#b3b3b3}
+.heroshot img{filter:drop-shadow(0 24px 40px rgba(255,255,255,.12))}
+.aud{grid-template-columns:repeat(4,1fr)}
+@media(max-width:980px){.aud{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.aud{grid-template-columns:1fr}}
+.stages{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.stages{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.stages{grid-template-columns:1fr}}
+.stg{background:#000}
+.stg b{font-size:21px}
+.stg span{color:#b3b3b3}
+.stg span em{color:#fff}
+.tag.base{background:#0a0a0a;color:#fff}
+.tag.ext{background:transparent;color:#0a0a0a;box-shadow:inset 0 0 0 1px #0a0a0a}
+.tag.medida{background:rgba(224,122,46,.15);color:#a24f12}
+.pk.gold,.tier.gold .head{background:var(--gold)}
+.dot{box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.total{background:linear-gradient(150deg,#000,#2a2a2a)}
+.custom{background:#000;color:#d4d4d4}
+.custom .lead,.idea span,.how .s{color:#c4c4c4}
+.custom .btn-primary{background:#fff;color:#000}
+.custom .btn-primary:hover{background:#d4d4d4}
+.how .s .num{background:#fff;color:#000}
+.offer{background:linear-gradient(150deg,#000,#2a2a2a)}
+.offer .btn-primary{background:#fff;color:#000}
+.offer .btn-primary:hover{background:#d4d4d4}
+.custom h2 em,.offer h2 em{color:transparent!important;-webkit-text-stroke:1.3px #fff}
+.hero .metabar{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:16px}
+@media(max-width:520px){.hero .metabar{grid-template-columns:1fr 1fr}}
+footer{background:#000;color:#d4d4d4}
+footer .brand .fest{color:#fff}
+footer p{color:#b3b3b3}
+footer a{color:#fff}
+.conf{color:#85857f}
+.step .num{background:#000}
+.note{background:var(--cream2);border-left-color:#000}
+
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="wrap">
+  <div class="brand"><span class="vk"><svg class="vlogo" viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIKIN"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="currentColor"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="currentColor"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.33 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="currentColor"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="currentColor"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="currentColor"/></svg></span> <span class="sep">×</span> <span class="fest">MAD COOL</span></div>
+  <div class="navlinks">
+    <a href="#publico">El público</a><a href="#marcas">Vuestras marcas</a>
+    <a href="#paquetes">Paquetes</a><a href="#impactos">Impactos</a><a href="#simulador">Simulador</a>
+    <a class="navbtn" href="https://proposals.vikin.events/madcool/" target="_blank" rel="noopener">Propuesta de Mad Cool <i data-lucide="arrow-up-right"></i></a>
+  </div>
+</div></div>
+
+<div class="simbar"><i data-lucide="flask-conical"></i><b>Documento de simulación.</b> Todo lo que ves aquí son <b>ideas y propuestas</b>, no acuerdos. Los paquetes, precios e impactos son ejemplos para ver el potencial y los definimos juntos con Mad Cool.</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge">VIKIN × Mad Cool · Monetización de la app</span>
+      <h1>Vuestras marcas ya están en Mad Cool. En la app, <em>rinden más</em>.</h1>
+      <p>Mad Cool tiene una lista de partners que muchos festivales querrían. Aquí os enseñamos cómo llevar a esas marcas a la app de una forma útil para el público: una idea concreta para cada una, cuántos impactos podrían tener y cuánto podría sacar el festival. Son ideas para hablarlas con vosotros, no acuerdos con nadie.</p>
+      <div class="herobtns">
+        <a class="btn btn-primary" href="#marcas">Ver las ideas por marca <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-ghost" href="#impactos">Ver los impactos</a>
+      </div>
+      <div class="metabar">
+        <div><div class="n">~54.000</div><div class="l">asistentes de media al día</div></div>
+        <div><div class="n">4</div><div class="l">días de festival</div></div>
+        <div><div class="n">12</div><div class="l">ideas pensadas por marca</div></div>
+        <div><div class="n">4</div><div class="l">paquetes de ejemplo</div></div>
+      </div>
+    </div>
+    <div class="heroshot"><img src="img/app-inicio.webp" alt="Inicio de la app de Mad Cool, ejemplo con la marca del festival"></div>
+  </div>
+</header>
+
+<!-- 01 PÚBLICO -->
+<section id="publico">
+  <div class="wrap">
+    <div class="kick">01 · El público de Mad Cool</div>
+    <h2>Un público que <em>cualquier marca</em> quiere tener delante.</h2>
+    <p class="lead">Antes de hablar de formatos, lo importante: a cuánta gente llega una marca cuando está en la app de Mad Cool. Estos son los datos públicos del festival y lo que significan para un sponsor.</p>
+    <div class="aud">
+      <div class="stat"><div class="n">+200.000</div><div class="l">asistencias en la edición de 2026</div><p>Más de <b>53.000 personas al día</b> en Iberdrola Music (Villaverde). Un aforo que casi ningún festival de España iguala.</p></div>
+      <div class="stat"><div class="n">10 años</div><div class="l">de Mad Cool, de 2016 a 2026</div><p>Una marca consolidada y reconocible: <b>un sitio donde las marcas quieren estar</b> y donde ya están.</p></div>
+      <div class="stat"><div class="n">4 días</div><div class="l">cada edición, en julio</div><p>Cuatro jornadas largas con la app en el bolsillo. Más días y más momentos en los que <b>una marca puede ser útil</b>.</p></div>
+      <div class="stat"><div class="n">2027</div><div class="l">la 11.ª edición</div><p>Julio de 2027, con fechas por confirmar. Hay tiempo de sobra para <b>preparar la app y vender los paquetes</b> antes.</p></div>
+    </div>
+    <div class="note"><b>Llegar y volver a casa también es parte del festival.</b> El recinto está en Villaverde y se llega en Metro (San Cristóbal y Villaverde Alto, línea 3), Cercanías (San Cristóbal Industrial), autobús (79, 448 y T41) o BiciMAD. Con decenas de miles de personas saliendo a la vez, un módulo de “cómo llegar y cómo volver” que funcione sin cobertura es útil para el público y muy bueno para una marca de movilidad.</div>
+    <p class="src">Fuentes: <a href="https://www.eldiariodemadrid.es/articulo/cultura/mad-cool-2026-53000-asistentes-twenty-one-pilots-kings-of-leon-pixies/20260711135435137040.html" target="_blank" rel="noopener">El Diario de Madrid (jul. 2026)</a>, <a href="https://www.esmadrid.com/en/whats-on/mad-cool-festival" target="_blank" rel="noopener">esMadrid</a> y web oficial de Mad Cool.</p>
+  </div>
+</section>
+
+<!-- 02 LA IDEA -->
+<section id="idea">
+  <div class="wrap">
+    <div class="kick">02 · La idea</div>
+    <h2>No se trata de meter anuncios. Se trata de <em>ser útil</em> y poder venderlo.</h2>
+    <p class="lead">Un banner molesta. Un “Encuentra mi coche by OMODA” o un “Cómo volver a casa by Ouigo”, no. La mejor monetización parece utilidad: ayuda al asistente, encaja con Mad Cool y se puede medir para el sponsor.</p>
+    <div class="feat" style="margin-top:22px">
+      <div class="f"><i data-lucide="hand-helping"></i><b>Utilidad antes que impresiones</b><span>Primero lo que ayuda al asistente. Las visualizaciones vienen después.</span></div>
+      <div class="f"><i data-lucide="map-pin"></i><b>Relevancia por hora y lugar</b><span>Cada mensaje aparece cuando y donde tiene sentido.</span></div>
+      <div class="f"><i data-lucide="tag"></i><b>Todo lo patrocinado, etiquetado</b><span>Se nota qué es una marca y qué es contenido del festival.</span></div>
+      <div class="f"><i data-lucide="bell-ring"></i><b>Pushes con límite estricto</b><span>Pocos y bien elegidos. Si molestan, la app pierde valor y precio.</span></div>
+      <div class="f"><i data-lucide="life-buoy"></i><b>Nunca en emergencias</b><span>Los módulos de ayuda y seguridad no se tocan.</span></div>
+      <div class="f"><i data-lucide="shield-check"></i><b>Sin registro, sin datos personales</b><span>No hay login obligatorio. Las métricas son agregadas y anónimas.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 LO QUE YA TENÉIS -->
+<section id="escenarios">
+  <div class="wrap">
+    <div class="kick">03 · Lo que ya tenéis</div>
+    <h2>Vuestras marcas ya tienen espacio en el recinto. En la app, <em>se ven todo el rato</em>.</h2>
+    <p class="lead">Hoy estas marcas se ven en el recinto, en zonas, escenarios y activaciones. Con la app aparecen cada vez que alguien mira qué suena, dónde es, cuándo empieza su artista o dónde está lo que busca.</p>
+    <div class="stages">
+      <div class="stg"><b>IBERDROLA</b><span>nombre del recinto · <em>Iberdrola Music</em></span></div>
+      <div class="stg"><b>OMODA</b><span>coche oficial · <em>espacio de experiencia</em></span></div>
+      <div class="stg"><b>OUIGO</b><span>transporte oficial · <em>edición 2025</em></span></div>
+      <div class="stg"><b>McDONALD'S</b><span>restaurante <em>dentro del recinto</em></span></div>
+      <div class="stg"><b>COCA-COLA</b><span>zona de <em>descanso e hidratación</em></span></div>
+      <div class="stg"><b>MAHOU</b><span>barras y <em>La Casita Vibra Mahou</em></span></div>
+      <div class="stg"><b>CANTABRIA LABS</b><span>cuidado de la piel y <em>protección solar</em></span></div>
+      <div class="stg"><b>REGION OF MADRID</b><span>escenario con su nombre · <em>2026</em></span></div>
+    </div>
+    <div class="where">
+      <div><b><i data-lucide="calendar-clock"></i>Parrilla</b>En cada franja horaria de los cuatro días.</div>
+      <div><b><i data-lucide="mic-vocal"></i>Ficha de artista</b>El escenario o la zona con su marca.</div>
+      <div><b><i data-lucide="map"></i>Mapa</b>Zonas, barras y activaciones, a un toque.</div>
+      <div><b><i data-lucide="heart"></i>Mi Evento</b>En la agenda personal de cada asistente.</div>
+    </div>
+    <div class="anat">
+      <div class="aitem"><div class="phone"><img src="img/app-inicio.webp" alt="Inicio de la app de Mad Cool"><span class="pm" style="left:50%;top:17%">1</span><span class="pm" style="left:30%;top:41%">2</span><span class="pm" style="left:50%;top:77%">3</span></div><div class="cap"><b>Inicio</b><span>Lo que suena ahora y lo que viene</span></div></div>
+      <div class="aitem"><div class="phone"><img src="img/app-parrilla.webp" alt="Parrilla de la app de Mad Cool"><span class="pm" style="left:25%;top:34%">4</span><span class="pm" style="left:88%;top:11%">5</span></div><div class="cap"><b>Parrilla</b><span>Los escenarios y sus franjas</span></div></div>
+      <div class="aitem"><div class="phone"><img src="img/app-mapa.webp" alt="Mapa de la app de Mad Cool"><span class="pm" style="left:62%;top:65%">6</span><span class="pm" style="left:50%;top:38%">7</span><span class="pm" style="left:32%;top:76%">8</span></div><div class="cap"><b>Mapa</b><span>Escenarios, barras y servicios</span></div></div>
+    </div>
+    <div class="alegend">
+      <div class="al"><span class="n">1</span><div><b>Dashboard patrocinado <span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span></b><span class="t">Un hueco premium en el Inicio, la pantalla que más se abre, que cambia según el momento: por la tarde “cómo llegar”, de madrugada “cómo volver a casa”.</span></div></div>
+      <div class="al"><span class="n">2</span><div><b>Zona o escenario con marca <span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></b><span class="t">El nombre del escenario o de la zona patrocinada en cada tarjeta de “en directo” y “a continuación”.</span></div></div>
+      <div class="al"><span class="n">3</span><div><b>Post patrocinado <span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></b><span class="t">Una publicación entre las secciones del Inicio, con botón de acción.</span></div></div>
+      <div class="al"><span class="n">4</span><div><b>Naming en la parrilla <span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></b><span class="t">La marca junto al escenario en cada franja horaria. Acompaña al artista.</span></div></div>
+      <div class="al"><span class="n">5</span><div><b>Push patrocinado <span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></b><span class="t">“Empieza tu concierto en 15 minutos”, con la marca de la zona. Pocos, útiles y con límite.</span></div></div>
+      <div class="al"><span class="n">6</span><div><b>Espacio de marca en el mapa <span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></b><span class="t">El escenario o la zona con el nombre y la imagen de la marca.</span></div></div>
+      <div class="al"><span class="n">7</span><div><b>Pin destacado <span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span></b><span class="t">Barras, puestos o activaciones de marca, fáciles de encontrar.</span></div></div>
+      <div class="al"><span class="n">8</span><div><b>Prioridad en búsqueda <span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span></b><span class="t">Cuando alguien busca dónde comer o beber, la marca aparece primero.</span></div></div>
+    </div>
+    <p class="src">Marcas y activaciones según información pública de Mad Cool y prensa del sector (<a href="https://www.marketingdirecto.com/anunciantes-general/marcas-tambien-fueron-cabeza-cartel-mad-cool-2026" target="_blank" rel="noopener">Marketing Directo, 2026</a> y <a href="https://www.ouigo.com/es/actualidad/ouigo-y-mad-cool-2025-la-experiencia-donde-esta-tu-destino" target="_blank" rel="noopener">OUIGO, 2025</a>). Las pantallas son ejemplos ilustrativos.</p>
+  </div>
+</section>
+
+<!-- 04 IDEAS POR MARCA -->
+<section id="marcas">
+  <div class="wrap">
+    <div class="kick">04 · Una idea para cada marca</div>
+    <h2>Lo que le propondríamos a <em>cada uno de vuestros sponsors</em>.</h2>
+    <p class="lead">No es lo mismo una eléctrica que un banco o una cerveza. Por eso hemos pensado una idea concreta para cada marca que ya está en Mad Cool, conectada con lo que necesita el público en ese momento.</p>
+    <div class="brands">
+      <div class="bc"><div class="hd"><div><div class="who">Iberdrola · Iberdrola Music</div><h3>Puntos de carga by Iberdrola</h3></div><span class="pk platinum">Platinum</span></div>
+        <p>Un módulo que muestra en el mapa <b>dónde cargar el móvil</b> y cuánta cola hay. Iberdrola pasa de ser el nombre del recinto a ser <b>“la energía que te mantiene conectado”</b> los cuatro días.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Con más de 50.000 móviles al día, la batería es lo primero que se acaba. Utilidad pura y encaja con su negocio.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Mahou · Vibra Mahou</div><h3>Tu barra Mahou, a un toque <span class="dagger">†</span></h3></div><span class="pk platinum">Platinum</span></div>
+        <p>Pins destacados en todas las barras y prioridad cuando alguien busca algo de beber. Como extra, <b>un sorteo de La Casita Vibra Mahou</b> entre quienes lo pidan desde la app, siempre voluntario.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Lleva la experiencia VIP a todo el público y deja una participación medible para la marca.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Santander</div><h3>Recarga y cajeros, sin buscar</h3></div><span class="pk gold">Gold</span></div>
+        <p>Pins con los <b>puntos de recarga cashless y los cajeros</b> más cercanos y un post con consejos para no quedarte sin saldo a mitad de concierto.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Es el momento exacto en el que alguien necesita a un banco. Útil, discreto y con intención de uso.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">OMODA · Coche oficial</div><h3>Encuentra mi coche by OMODA <span class="dagger">†</span></h3></div><span class="pk gold">Gold</span></div>
+        <p>El módulo para <b>guardar dónde aparcaste</b> y volver sin dar vueltas. Y el reto <b>“Termina la canción”</b> de su espacio, con sorteo desde la app.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>La marca de coches, justo en el momento del coche. Lleva tráfico a su espacio de experiencia.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Ouigo · Transporte</div><h3>Cómo llegar y cómo volver by Ouigo</h3></div><span class="pk gold">Gold</span></div>
+        <p>Un módulo <b>offline</b> con Metro, Cercanías y autobús, horarios de las últimas salidas y un aviso al terminar el cabeza de cartel. Más <b>una oferta de viaje</b> para antes y después.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Es el momento de más estrés del festival: todo el mundo se va a la vez y sin cobertura.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Coca-Cola</div><h3>Hidrátate: agua, sombra y descanso</h3></div><span class="pk gold">Gold</span></div>
+        <p>Pins de <b>zonas de descanso y puntos de agua</b> y un post con el <b>plan anti-calor</b> del día. Coca-Cola ayuda cuando más hace falta.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Julio en Madrid: es lo que el público busca a las cinco de la tarde.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">McDonald's</div><h3>Dónde comer, a un toque <span class="dagger">†</span></h3></div><span class="pk gold">Gold</span></div>
+        <p>Pin destacado y primera posición cuando alguien busca comida. Como extra, <b>una oferta al terminar un set</b> que tengas guardado en Mi Evento.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Ya hacéis ofertas en el restaurante del recinto: la app las pone en el momento justo.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Orange</div><h3>Punto de encuentro by Orange</h3></div><span class="pk silver">Silver</span></div>
+        <p>El módulo para <b>guardar dónde habéis quedado</b> con vuestro grupo y compartirlo. Funciona sin cobertura, justo cuando más falta hace.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Perderse en un festival grande es lo más común. Un servicio que la gente recuerda.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Red Bull</div><h3>El plan de la noche by Red Bull</h3></div><span class="pk silver">Silver</span></div>
+        <p>Cada tarde, un post con <b>los tres conciertos que no te puedes perder</b> esa noche y un pin en sus puntos de venta.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Aporta contenido y recomendación, que es lo que se comparte, sin ser un anuncio.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Cantabria Labs</div><h3>Recordatorio de protector solar</h3></div><span class="pk silver">Silver</span></div>
+        <p>Un <b>aviso a media tarde</b> con el consejo de reaplicar protector y un pin con su zona o puesto, si lo hay.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Encaja con lo que ya hacen en el festival y se mide: aperturas y visitas a su zona.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Johnnie Walker · Aperol</div><h3>Barras y cócteles, fáciles de encontrar</h3></div><span class="pk bronze">Bronze</span></div>
+        <p>Un pin en sus barras y una <b>ficha de marca</b> con la carta y los horarios. Presencia constante con una inversión pequeña.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>Formato sencillo para marcas que quieren estar sin una gran activación.</span></div></div>
+      <div class="bc"><div class="hd"><div><div class="who">Comunidad de Madrid · Region of Madrid</div><h3>Madrid, más allá del festival</h3></div><span class="pk silver">Institucional</span></div>
+        <p>Una sección con planes, cultura y gastronomía de la región para quien viene de fuera, más la información de movilidad. <b>El festival como escaparate del destino</b>.</p>
+        <div class="why"><i data-lucide="lightbulb"></i><span>En la parrilla de 2026 ya hay un escenario con su nombre. Es la forma de que se vea también en el móvil.</span></div></div>
+    </div>
+    <div class="note"><b>Son ideas y propuestas, no acuerdos.</b> Las marcas son las que aparecen en la información pública de Mad Cool. Ponerlas aquí no implica ningún acuerdo con ellas: es una forma de enseñar cómo encajaría cada una. Con vuestro equipo de patrocinios decidimos qué tiene sentido ofrecer a cada marca.</div>
+  </div>
+</section>
+
+<!-- 05 FORMATOS -->
+<section id="formatos">
+  <div class="wrap">
+    <div class="kick">05 · Qué se puede vender</div>
+    <h2>Diez formatos para sponsors. <em>Vosotros elegís</em> cuáles.</h2>
+    <p class="lead">No hace falta empezar con todos. Cada formato indica si ya lo tenemos o si lo desarrollaríamos para Mad Cool.</p>
+    <div class="legend">
+      <div><span class="tag base"><i data-lucide="check"></i>Base VIKIN</span> ya está en la plataforma</div>
+      <div><span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span> pequeña mejora sobre algo que ya existe</div>
+      <div><span class="tag medida"><i data-lucide="wrench"></i>A medida †</span> lo desarrollamos para Mad Cool</div>
+    </div>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="tent"></i></div><span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></div><h3>Naming de escenario o zona</h3><p>El escenario o la zona patrocinada con su marca en parrilla, fichas de artista, Mi Evento y mapa.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="badge-check"></i></div><span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></div><h3>Patrocinio de utilidad</h3><p>Una marca asociada a algo que ayuda: Encuentra mi coche, Punto de encuentro, Cómo llegar.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="layout-dashboard"></i></div><span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span></div><h3>Dashboard patrocinado</h3><p>Un hueco premium en el Inicio según el momento del festival. Alto impacto sin ser invasivo.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="bell-ring"></i></div><span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></div><h3>Pushes y posts patrocinados</h3><p>Una o dos notificaciones y posts en el Inicio con botón de acción, con límite de frecuencia.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="map-pin"></i></div><span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span></div><h3>Pins y zonas de marca</h3><p>Barras, activaciones o zonas de descanso con la marca en el mapa, justo cuando el público busca adónde ir.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="search"></i></div><span class="tag ext"><i data-lucide="plus"></i>Ligera extensión</span></div><h3>Prioridad en búsqueda</h3><p>Resultados patrocinados, pocos y relevantes, en el momento de más intención.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="calendar-days"></i></div><span class="tag base"><i data-lucide="check"></i>Base VIKIN</span></div><h3>Antes y después del festival</h3><p>Campañas en las semanas previas (cómo llegar, qué llevar) y en los días de después.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="ticket-percent"></i></div><span class="tag medida"><i data-lucide="wrench"></i>A medida †</span></div><h3>Ofertas y cupones</h3><p>Oferta al terminar un set, regalo por visita o descuento por franja, con control de canjes.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="stamp"></i></div><span class="tag medida"><i data-lucide="wrench"></i>A medida †</span></div><h3>Pasaporte gamificado</h3><p>Sellos y retos por escenarios y activaciones, con premio final. Mueve a la gente por el recinto.</p></div>
+      <div class="fmt"><div class="top"><div class="ic"><i data-lucide="user-check"></i></div><span class="tag medida"><i data-lucide="wrench"></i>A medida †</span></div><h3>Contactos opt-in</h3><p>Sorteo, muestra o newsletter. Siempre voluntario y con consentimiento.</p></div>
+    </div>
+    <div class="note"><b>† A medida.</b> Son formatos que construiríamos para Mad Cool. Antes de comprometer nada, acordamos con vosotros alcance, coste y plazos.</div>
+  </div>
+</section>
+
+<!-- 06 PAQUETES -->
+<section id="paquetes">
+  <div class="wrap">
+    <div class="kick">06 · Paquetes para sponsors · Simulación</div>
+    <h2>Platinum, Gold, Silver y Bronze: un paquete para <em>cada marca</em>.</h2>
+    <p class="lead">Así podrían ser los paquetes. Los precios son un ejemplo para hacernos una idea y los ajustaremos con lo que de verdad pagarían vuestras marcas. Debajo de cada uno, los impactos estimados en el escenario realista (los explicamos en el punto 07).</p>
+    <div class="grid g4" style="margin-top:28px">
+      <div class="tier platinum"><div class="head"><div class="nm">Platinum<span class="simtag">Simulado</span></div><div class="tg">Socio principal</div></div><div class="body"><div class="price">5.000 €<small>por edición</small></div><div class="ideal">Para la marca que quiere estar en toda la experiencia. Solo 1 o 2 por edición.</div><ul><li><i data-lucide="check"></i><span>Patrocinio de utilidad con su nombre</span></li><li><i data-lucide="check"></i><span>Slot en el Inicio los 4 días</span></li><li><i data-lucide="check"></i><span>Zona de marca y 3 pins</span></li><li><i data-lucide="check"></i><span>2 pushes y 3 posts</span></li><li><i data-lucide="check"></i><span>Campañas antes y después</span></li></ul><div class="imp"><div>Impactos estimados<b id="tp-platinum">–</b></div></div></div></div>
+      <div class="tier gold"><div class="head"><div class="nm">Gold<span class="simtag">Simulado</span></div><div class="tg">Presencia fuerte</div></div><div class="body"><div class="price">2.500 €<small>por edición</small></div><div class="ideal">Para marcas con activación en el recinto que quieren medir resultados.</div><ul><li><i data-lucide="check"></i><span>Slot en el Inicio 1 día</span></li><li><i data-lucide="check"></i><span>Zona de marca y 2 pins</span></li><li><i data-lucide="check"></i><span>1 push y 2 posts</span></li><li><i data-lucide="check"></i><span>Oferta o cupón medible <span class="dagger">†</span></span></li></ul><div class="imp"><div>Impactos estimados<b id="tp-gold">–</b></div></div></div></div>
+      <div class="tier silver"><div class="head"><div class="nm">Silver<span class="simtag">Simulado</span></div><div class="tg">Presencia constante</div></div><div class="body"><div class="price">1.000 €<small>por edición</small></div><div class="ideal">Para marcas medianas y proveedores del festival.</div><ul><li><i data-lucide="check"></i><span>1 pin y prioridad en búsqueda</span></li><li><i data-lucide="check"></i><span>Ficha de marca con botón</span></li><li><i data-lucide="check"></i><span>1 post patrocinado</span></li><li><i data-lucide="check"></i><span>Resumen de resultados</span></li></ul><div class="imp"><div>Impactos estimados<b id="tp-silver">–</b></div></div></div></div>
+      <div class="tier bronze"><div class="head"><div class="nm">Bronze<span class="simtag">Simulado</span></div><div class="tg">Para entrar</div></div><div class="body"><div class="price">400 €<small>por edición</small></div><div class="ideal">Para marcas locales y negocios pequeños.</div><ul><li><i data-lucide="check"></i><span>Ficha de marca con logo y enlace</span></li><li><i data-lucide="check"></i><span>1 post patrocinado</span></li><li><i data-lucide="check"></i><span>Métricas básicas</span></li></ul><div class="imp"><div>Impactos estimados<b id="tp-bronze">–</b></div></div></div></div>
+    </div>
+
+    <div class="tablewrap">
+      <table class="matrix">
+        <caption>Qué incluye cada paquete</caption>
+        <thead><tr><th>Formato</th><th class="platinum">Platinum</th><th class="gold">Gold</th><th class="silver">Silver</th><th class="bronze">Bronze</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Patrocinio de utilidad<small>Encuentra mi coche, Cómo llegar…</small></th><td><i data-lucide="check" aria-label="Incluido"></i></td><td class="no">–</td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Slot en el Inicio<small>dashboard patrocinado</small></th><td><span class="v">4 días</span></td><td><span class="v">1 día</span></td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Zona de marca en el mapa</th><td><i data-lucide="check" aria-label="Incluido"></i></td><td><i data-lucide="check" aria-label="Incluido"></i></td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Pins destacados en el mapa</th><td><span class="v">3</span></td><td><span class="v">2</span></td><td><span class="v">1</span></td><td class="no">–</td></tr>
+          <tr><th scope="row">Prioridad en búsqueda</th><td><i data-lucide="check" aria-label="Incluido"></i></td><td><i data-lucide="check" aria-label="Incluido"></i></td><td><i data-lucide="check" aria-label="Incluido"></i></td><td class="no">–</td></tr>
+          <tr><th scope="row">Ficha de marca con botón de acción</th><td><span class="v">Premium</span></td><td><span class="v">Premium</span></td><td><span class="v">Estándar</span></td><td><span class="v">Básica</span></td></tr>
+          <tr><th scope="row">Posts patrocinados</th><td><span class="v">3</span></td><td><span class="v">2</span></td><td><span class="v">1</span></td><td><span class="v">1</span></td></tr>
+          <tr><th scope="row">Pushes patrocinados<small>con límite estricto</small></th><td><span class="v">2</span></td><td><span class="v">1</span></td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Oferta o cupón con canjes <span class="dagger">†</span></th><td><i data-lucide="check" aria-label="Incluido"></i></td><td><i data-lucide="check" aria-label="Incluido"></i></td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Pasaporte o reto patrocinado <span class="dagger">†</span></th><td><i data-lucide="check" aria-label="Incluido"></i></td><td class="no">–</td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Campañas antes y después</th><td><span class="v">Antes y después</span></td><td><span class="v">1 campaña</span></td><td class="no">–</td><td class="no">–</td></tr>
+          <tr><th scope="row">Informe de resultados</th><td><span class="v">Completo + PDF</span></td><td><span class="v">Completo</span></td><td><span class="v">Resumen</span></td><td><span class="v">Básico</span></td></tr>
+        </tbody>
+        <tfoot><tr><th>Precio de ejemplo</th><td>5.000 €</td><td>2.500 €</td><td>1.000 €</td><td>400 €</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="swipe">Desliza la tabla hacia los lados para ver todos los paquetes →</p>
+    <p class="disclaim" style="margin-top:14px"><span class="dagger">†</span> Formato a medida. El naming de escenarios y zonas va aparte de estos paquetes porque ya lo gestionáis vosotros: la app lo hace más visible. Cada módulo con nombre de marca tiene un único patrocinador.</p>
+  </div>
+</section>
+
+<!-- 07 IMPACTOS -->
+<section id="impactos">
+  <div class="wrap">
+    <div class="kick">07 · Estimación de impactos</div>
+    <h2>Cuánta gente vería <em>cada marca</em> en la app.</h2>
+    <p class="lead">Partimos del público de Mad Cool y de lo que se sabe de las apps de festivales. Elige un escenario y mira cómo cambia todo.</p>
+    <div class="presets" id="ipresets" style="margin-top:24px">
+      <button type="button" data-s="prudente">Prudente · 40 % descarga</button>
+      <button type="button" data-s="realista" class="on">Realista · 55 % descarga</button>
+      <button type="button" data-s="ambicioso">Ambicioso · 70 % descarga</button>
+    </div>
+    <div class="funnel">
+      <div class="fn"><div class="n">86.000</div><div class="l">personas distintas (estimación)</div><div class="h">215.000 asistencias ÷ unos 2,5 días de media por persona</div></div>
+      <div class="fn"><div class="n" id="f-users">–</div><div class="l">usuarios de la app</div><div class="h" id="f-users-h">–</div></div>
+      <div class="fn"><div class="n" id="f-opens">–</div><div class="l">aperturas en los días de uso</div><div class="h">5 aperturas al día por usuario, unos 3 días de uso</div></div>
+      <div class="fn dk"><div class="n" id="f-push">–</div><div class="l">personas por cada push</div><div class="h">85 % con notificaciones activadas</div></div>
+      <div class="fn"><div class="n" id="f-parr">–</div><div class="l">vistas de parrilla y fichas</div><div class="h">Donde sale el naming de escenario (40 % de aperturas)</div></div>
+      <div class="fn"><div class="n" id="f-map">–</div><div class="l">vistas del mapa</div><div class="h">Pins y zonas de marca (25 % de aperturas)</div></div>
+      <div class="fn"><div class="n" id="f-util">–</div><div class="l">usos de un módulo patrocinado</div><div class="h">Encuentra mi coche, Cómo volver… (30 % de aperturas)</div></div>
+      <div class="fn"><div class="n" id="f-post">–</div><div class="l">personas por cada post</div><div class="h">30 % de los usuarios ve cada post</div></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:26px">
+      <table class="imptab">
+        <thead><tr><th>Paquete</th><th>Precio de ejemplo</th><th>Impactos estimados</th><th>Coste por 1.000 impactos</th></tr></thead>
+        <tbody id="improws"></tbody>
+      </table>
+    </div>
+    <p class="swipe">Desliza la tabla hacia los lados →</p>
+
+    <div class="assump">
+      <div><i data-lucide="info"></i><span><b>Personas distintas.</b> Mad Cool vende abonos de varios días y entradas de día. Usamos una media de 2,5 días por persona como supuesto prudente: son 86.000 personas, no 215.000.</span></div>
+      <div><i data-lucide="info"></i><span><b>Descargas.</b> En eventos grandes se habla de un 55–65 % de adopción de la app, y en festivales grandes con app propia se llega al 80–100 %. Usamos 40 %, 55 % y 70 % para ir sobre seguro.</span></div>
+      <div><i data-lucide="info"></i><span><b>Notificaciones.</b> En Lollapalooza cerca del 90 % de los usuarios tenía los avisos activados. Usamos un 85 %.</span></div>
+      <div><i data-lucide="info"></i><span><b>Uso.</b> La app de Glastonbury 2025 sumó más de 450.000 horas de uso con unas 250.000 descargas. Nuestras 5 aperturas diarias son un supuesto prudente.</span></div>
+      <div><i data-lucide="info"></i><span><b>Impactos.</b> Son veces que la marca aparece en pantalla, no personas únicas. Una misma persona ve la parrilla varias veces al día.</span></div>
+    </div>
+    <p class="src">Fuentes de referencia: <a href="https://www.audiencerepublic.com/blog/appmiral-md-robin-van-den-bergh-on-using-festival-apps-to-build-loyalty-enhance-customer-experience-and-more" target="_blank" rel="noopener">entrevista a Appmiral (Audience Republic)</a>, <a href="https://lineupr.com/en/blog/event-app-adoption" target="_blank" rel="noopener">LineUpr</a>, <a href="https://www.nunify.com/blogs/event-app-adoption-rate-benchmarks" target="_blank" rel="noopener">Nunify</a>, <a href="https://3sidedcube.com/projects/an-app-to-truly-elevate-the-festival-experience-for-every-attendee" target="_blank" rel="noopener">3 Sided Cube (app de Glastonbury)</a> y <a href="https://www.ticketfairy.com/blog/2025/08/24/digital-inventory-festival-apps-maps-and-moments-monetize-in-app-banners-push-alerts-schedule-pins-and-ar-scavenger-hunts/" target="_blank" rel="noopener">Ticket Fairy</a>.</p>
+    <div class="note"><b>Es una estimación, no una promesa.</b> Sirve para que vuestras marcas vean el orden de magnitud. Después de la primera edición, cada marca tendrá sus datos reales en su informe.</div>
+  </div>
+</section>
+
+<!-- 08 SIMULADOR -->
+<section id="simulador">
+  <div class="wrap">
+    <div class="kick">08 · Simulación de ingresos</div>
+    <h2>Mueve los números y mira <em>cuánto podría salir</em>.</h2>
+    <p class="lead">Elegid un escenario o cambiad cuántas marcas tendría cada paquete. El total se calcula con los precios de ejemplo.</p>
+    <div class="sim">
+      <div class="panel">
+        <div class="presets" id="presets">
+          <button type="button" data-p="prudente">Prudente</button>
+          <button type="button" data-p="realista" class="on">Realista</button>
+          <button type="button" data-p="ambicioso">Ambicioso</button>
+        </div>
+        <div id="rows"></div>
+      </div>
+      <div class="total" aria-live="polite">
+        <div class="lbl">Ingresos simulados por edición</div>
+        <div class="big" id="total">0 €</div>
+        <div class="sub" id="sub">&nbsp;</div>
+        <div class="bar" id="bar"></div>
+        <div class="brk" id="brk"></div>
+        <div class="imps">Impactos para vuestras marcas (escenario realista)<br><b id="simimps">–</b></div>
+      </div>
+    </div>
+    <div class="note"><b>Es una simulación, no una previsión.</b> Solo cuenta paquetes de sponsor dentro de la app. No incluye lo que ya cobráis por vuestros patrocinios: la app los hace más visibles y os da argumentos para renovarlos mejor.</div>
+  </div>
+</section>
+
+<!-- 09 MEDIR -->
+<section id="medir">
+  <div class="wrap">
+    <div class="kick">09 · Medir para renovar</div>
+    <h2>Cada marca recibe su informe. Así es <em>más fácil renovar</em>.</h2>
+    <p class="lead">Sin un resultado claro, cuesta vender el siguiente paquete. Cada sponsor tiene un resumen sencillo de lo que ha pasado con su presencia en la app.</p>
+    <div class="feat" style="margin-top:26px">
+      <div class="f"><i data-lucide="eye"></i><b>Visitas a su ficha y escenario</b><span>Cuánta gente ha visto su marca en parrilla y fichas.</span></div>
+      <div class="f"><i data-lucide="mouse-pointer-click"></i><b>Toques en su pin</b><span>Cuántos han pulsado su ubicación en el mapa.</span></div>
+      <div class="f"><i data-lucide="navigation"></i><b>“Cómo llegar”</b><span>Cuántos han pedido ruta hasta su zona.</span></div>
+      <div class="f"><i data-lucide="mail-open"></i><b>Aperturas de pushes y posts</b><span>Qué campañas han funcionado mejor.</span></div>
+      <div class="f"><i data-lucide="ticket-check"></i><b>Canjes de cupones <span class="dagger">†</span></b><span>Cuántas ofertas se han usado de verdad.</span></div>
+      <div class="f"><i data-lucide="stamp"></i><b>Participación en el pasaporte <span class="dagger">†</span></b><span>Cuántos sellos y cuántos premios.</span></div>
+    </div>
+    <div class="note"><b>Datos agregados y anónimos.</b> Resumen en PDF para el sponsor y para Mad Cool. Cumple la promesa de privacidad de la app.</div>
+  </div>
+</section>
+
+<!-- 10 A MEDIDA -->
+<section id="medida">
+  <div class="wrap">
+    <div class="custom">
+      <div class="kick">10 · Hecho a medida</div>
+      <h2>Somos una empresa de desarrollo. <em>Si hay una idea, la construimos.</em></h2>
+      <p class="lead">Todo lo de arriba ya sabemos que funciona. Pero Mad Cool no se parece a ningún otro festival, y nos gusta crear cosas específicas para cada cliente. Algunas ideas para empezar a hablar:</p>
+      <div class="ideas">
+        <div class="idea"><i data-lucide="route"></i><b>Cómo volver a casa</b><span>Un módulo offline con las últimas salidas de Metro, Cercanías y autobús, y un aviso al terminar el último concierto. Con una marca de movilidad.</span></div>
+        <div class="idea"><i data-lucide="stamp"></i><b>Pasaporte Mad Cool</b><span>Un sello por cada escenario y activación de marca, con premio para quien los complete. Cada sello puede llevar una marca.</span></div>
+        <div class="idea"><i data-lucide="music"></i><b>Oferta al terminar un set</b><span>Una marca lanza un descuento cuando acaba un artista que tienes guardado en Mi Evento.</span></div>
+        <div class="idea"><i data-lucide="landmark"></i><b>Madrid, más allá del festival</b><span>Una sección con planes y gastronomía de la región para quien viene de fuera, de la mano de una institución.</span></div>
+      </div>
+      <p style="margin-top:20px;font-size:14px;color:#b3b3b3">Solo son ejemplos. Lo importante son las ideas que tengáis vosotros.</p>
+      <div class="how">
+        <div class="s"><span class="num">1</span><div><b>Nos contáis la idea</b>Aunque sea a medias. Para eso estamos.</div></div>
+        <div class="s"><span class="num">2</span><div><b>La aterrizamos juntos</b>Qué hace, cuánto cuesta y cuándo estaría lista.</div></div>
+        <div class="s"><span class="num">3</span><div><b>La construimos y probamos</b>Con tiempo de sobra antes de julio.</div></div>
+      </div>
+      <a class="btn btn-primary" href="mailto:david@vikin.events?subject=Una%20idea%20para%20la%20app%20de%20Mad%20Cool">Contarnos una idea <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 FASES -->
+<section id="fases">
+  <div class="wrap">
+    <div class="kick">11 · Cómo empezar</div>
+    <h2>Sin prisa y <em>por fases</em>.</h2>
+    <p class="lead">Para la primera edición no hace falta venderlo todo. Os recomendamos empezar por lo que ya tenéis y crecer con lo que funcione.</p>
+    <div class="steps" style="margin-top:26px">
+      <div class="step"><div class="num">1</div><h3>Empezar</h3><div class="goal">Lo que se vende casi solo.</div>
+        <ul><li><i data-lucide="check"></i>Naming de escenarios y zonas en la app</li><li><i data-lucide="check"></i>Patrocinios de utilidad</li><li><i data-lucide="check"></i>Pins y zonas de marca</li><li><i data-lucide="check"></i>Pushes y posts patrocinados</li></ul></div>
+      <div class="step"><div class="num">2</div><h3>Crecer</h3><div class="goal">Campañas mejores y más medibles.</div>
+        <ul><li><i data-lucide="check"></i>Dashboard patrocinado</li><li><i data-lucide="check"></i>Prioridad en búsqueda</li><li><i data-lucide="check"></i>Ofertas y cupones</li><li><i data-lucide="check"></i>Campañas antes y después</li></ul></div>
+      <div class="step"><div class="num">3</div><h3>Escalar</h3><div class="goal">Lo que más valor da a las marcas.</div>
+        <ul><li><i data-lucide="check"></i>Pasaporte gamificado</li><li><i data-lucide="check"></i>Contactos opt-in</li><li><i data-lucide="check"></i>Informes avanzados</li><li><i data-lucide="check"></i>Autogestión para sponsors</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES + CTA -->
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="kick" style="text-align:center">Ya confían en VIKIN</div>
+    <p class="lead" style="margin:0 auto;text-align:center">Estos festivales ya tienen su app oficial hecha con VIKIN.</p>
+    <div class="logos" style="margin-bottom:56px">
+      <div class="chip"><img src="../../logo-greenbelt.png" alt="Greenbelt Festival"></div>
+      <div class="chip"><img src="../../logo-big-retreat.png" alt="The Big Retreat Festival"></div>
+      <div class="chip"><img src="../../logo-shambala.png" alt="Shambala Festival"></div>
+      <div class="chip"><img src="../../logo-teddy-rocks.png" alt="Teddy Rocks Festival"></div>
+      <div class="chip"><img src="../../logo-canowindra.png" alt="Canowindra International Balloon Challenge"></div>
+      <div class="chip"><img src="../../logo-showmans-show.png" alt="The Showman's Show"></div>
+    </div>
+    <div class="offer">
+      <div class="kick" style="color:rgba(255,255,255,.85)">Hagámoslo</div>
+      <h2>Ajustemos esto <em>juntos</em> con las marcas de Mad Cool.</h2>
+      <p>Las ideas, paquetes, precios e impactos de este documento son una simulación. Lo siguiente es ponerles números reales: qué pagaría cada marca, qué os interesa ofrecer primero y qué ideas queréis que construyamos. Sin ningún compromiso.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="mailto:david@vikin.events?subject=Monetizaci%C3%B3n%20de%20la%20app%20de%20Mad%20Cool"><i data-lucide="mail"></i> Hablar con VIKIN</a>
+        <a class="btn btn-ghost" href="https://proposals.vikin.events/madcool/" target="_blank" rel="noopener">Ver la propuesta de Mad Cool</a>
+      </div>
+    </div>
+    <p class="disclaim">Este documento es una simulación. Las ideas por marca, los paquetes, precios, cantidades, impactos e ingresos son ejemplos y propuestas para ilustrar el potencial, no una oferta cerrada, un acuerdo con ninguna marca ni una previsión de resultados: se definen con Mad Cool. Las estimaciones de impactos se basan en datos públicos del festival y en referencias del sector, y dependen de la adopción real de la app. Las pantallas son ejemplos ilustrativos con la marca de Mad Cool, no un diseño definitivo. Los formatos marcados con † son desarrollos a medida cuyo alcance, coste y plazos se confirman antes de comprometer nada. Marcas, escenarios y activaciones según información pública de Mad Cool Festival y prensa del sector, sin que implique acuerdo alguno con ellas, incluida la Comunidad de Madrid.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="vk"><svg class="vlogo" viewBox="0 0 290 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VIKIN"><path d="M103.98 0.12H81.3V75.63H103.98V0.12Z" fill="currentColor"/><path d="M208.08 0.12H185.4V75.63H208.08V0.12Z" fill="currentColor"/><path d="M69.7 0H44.28C47.72 7.06 49.66 14.98 49.66 23.36C49.66 40.11 41.94 55.04 29.87 64.83C36.65 44.15 35.15 18.84 25.34 0.2L0 0.16C12.79 22.15 13.33 52.75 0.43 75.56H7.37C7.37 75.56 7.28 75.6 7.23 75.61H52.89C65.57 61.88 73.33 43.54 73.33 23.37C73.33 15.22 72.06 7.38 69.71 0.01L69.7 0Z" fill="currentColor"/><path d="M268.71 0.24H223.05C223.05 0.24 223.14 0.26 223.19 0.27H216.25C229.15 23.09 228.61 53.69 215.82 75.68L241.16 75.63C250.96 56.99 252.46 31.68 245.69 11C257.76 20.78 265.48 35.72 265.48 52.47C265.48 60.85 263.54 68.78 260.1 75.83H285.52C287.86 68.46 289.14 60.61 289.14 52.47C289.14 32.31 281.38 13.96 268.7 0.23L268.71 0.24Z" fill="currentColor"/><path d="M161.72 32.03C169.14 22.89 174.52 12.02 177.14 0.11H152.65C149.63 9.34 144.16 17.44 137.01 23.69V0.12H114.33V75.63H137.01V52.06C139.47 50.8 141.86 49.41 144.16 47.9C150.57 55.62 154.86 65.17 156.09 75.66H179.85C178.52 59.06 171.91 43.97 161.73 32.02L161.72 32.03Z" fill="currentColor"/></svg></span> <span class="sep" style="color:#8a8a85">×</span> <span class="fest">MAD COOL</span></div>
+    <p><b style="color:#fff">David Cremades</b> · Iberia Business Development (España &amp; Portugal)</p>
+    <p><a href="mailto:david@vikin.events">david@vikin.events</a> · <a href="https://vikin.events">vikin.events</a></p>
+    <p class="conf">VIKIN × Mad Cool · Confidencial © 2026</p>
+  </div>
+</footer>
+
+<script>
+/* ============ PRECIOS, ESCENARIOS Y SUPUESTOS (simulación) ============ */
+var PRICES = {platinum:5000, gold:2500, silver:1000, bronze:400};
+var NAMES  = {platinum:'Platinum', gold:'Gold', silver:'Silver', bronze:'Bronze'};
+var COLORS = {platinum:'#000000', gold:'#d4d4cf', silver:'#b0b0aa', bronze:'#85857f'};
+var MAXV   = {platinum:4, gold:10, silver:15, bronze:20};
+var PRESETS = {
+  prudente:  {platinum:1, gold:3, silver:4, bronze:4},
+  realista:  {platinum:2, gold:4, silver:6, bronze:6},
+  ambicioso: {platinum:3, gold:6, silver:10, bronze:12}
+};
+/* Supuestos de audiencia */
+var UNIQUE = 86000, OPENS = 5, DAYS = 3, OPTIN = .85;
+var ADOPT = {prudente:.40, realista:.55, ambicioso:.70};
+var SH = {parr:.40, map:.25, util:.30, post:.30, ficha:.05};
+/* ====================================================================== */
+var order = ['platinum','gold','silver','bronze'];
+function fmt(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+function aud(s){
+  var users = UNIQUE*ADOPT[s], opens = users*OPENS*DAYS;
+  return {users:users, opens:opens, push:users*OPTIN, parr:opens*SH.parr, map:opens*SH.map, util:opens*SH.util, post:users*SH.post, ficha:opens*SH.ficha, homeDay:users*OPENS/3};
+}
+function pkgImpacts(a){
+  return {
+    platinum: a.util + a.homeDay*4 + a.map + a.push*2 + a.post*3 + a.ficha,
+    gold:     a.homeDay*1 + a.map + a.push*1 + a.post*2 + a.ficha,
+    silver:   a.map*0.5 + a.post*1 + a.ficha,
+    bronze:   a.post*1 + a.ficha
+  };
+}
+/* --- Impactos --- */
+var scen = 'realista';
+function renderImpacts(){
+  var a = aud(scen), p = pkgImpacts(a);
+  document.getElementById('f-users').textContent = fmt(a.users);
+  document.getElementById('f-users-h').textContent = Math.round(ADOPT[scen]*100)+' % de las 86.000 personas';
+  document.getElementById('f-opens').textContent = fmt(a.opens);
+  document.getElementById('f-push').textContent = fmt(a.push);
+  document.getElementById('f-parr').textContent = fmt(a.parr);
+  document.getElementById('f-map').textContent = fmt(a.map);
+  document.getElementById('f-util').textContent = fmt(a.util);
+  document.getElementById('f-post').textContent = fmt(a.post);
+  var html = '';
+  order.forEach(function(k){
+    html += '<tr><td><span class="dot" style="background:'+COLORS[k]+'"></span><b>'+NAMES[k]+'</b></td><td>'+fmt(PRICES[k])+' €</td><td><b>'+fmt(p[k])+'</b></td><td>'+(PRICES[k]/p[k]*1000).toFixed(2).replace('.',',')+' €</td></tr>';
+  });
+  document.getElementById('improws').innerHTML = html;
+}
+(function(){ var p = pkgImpacts(aud('realista')); order.forEach(function(k){ document.getElementById('tp-'+k).textContent = '~'+fmt(p[k]); }); })();
+document.getElementById('ipresets').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  scen = b.getAttribute('data-s');
+  Array.prototype.forEach.call(document.querySelectorAll('#ipresets button'), function(x){ x.classList.toggle('on', x===b); });
+  renderImpacts();
+});
+renderImpacts();
+/* --- Simulador --- */
+var state = {};
+function setState(p){ order.forEach(function(k){ state[k] = p[k]; }); }
+function build(){
+  var html = '';
+  order.forEach(function(k){
+    html += '<div class="row"><div class="nm"><span class="dot" style="background:'+COLORS[k]+'"></span>'+NAMES[k]+'<span class="pr">'+fmt(PRICES[k])+' €</span></div>'
+      + '<div class="stepper"><button type="button" data-k="'+k+'" data-d="-1" aria-label="Menos '+NAMES[k]+'">−</button><span class="c" id="c-'+k+'">0</span><button type="button" data-k="'+k+'" data-d="1" aria-label="Más '+NAMES[k]+'">+</button></div></div>';
+  });
+  document.getElementById('rows').innerHTML = html;
+}
+function render(){
+  var total = 0, parts = [], imps = 0, p = pkgImpacts(aud('realista'));
+  order.forEach(function(k){
+    document.getElementById('c-'+k).textContent = state[k];
+    var v = state[k]*PRICES[k]; total += v; parts.push([k,v]); imps += state[k]*p[k];
+  });
+  document.getElementById('total').textContent = fmt(total)+' €';
+  var n = order.reduce(function(s,k){return s+state[k];},0);
+  document.getElementById('sub').textContent = n+' marcas con paquete';
+  var bar = '', brk = '';
+  parts.forEach(function(x){
+    var k = x[0], v = x[1];
+    if(v>0) bar += '<span style="width:'+(v/total*100)+'%;background:'+COLORS[k]+'"></span>';
+    brk += '<div class="'+(v===0?'z':'')+'"><span class="l"><span class="dot" style="background:'+COLORS[k]+'"></span>'+state[k]+' × '+NAMES[k]+'</span><b>'+fmt(v)+' €</b></div>';
+  });
+  document.getElementById('bar').innerHTML = bar;
+  document.getElementById('brk').innerHTML = brk;
+  document.getElementById('simimps').textContent = '~'+fmt(imps);
+}
+function markPreset(name){
+  Array.prototype.forEach.call(document.querySelectorAll('#presets button'), function(b){ b.classList.toggle('on', b.getAttribute('data-p')===name); });
+}
+function samePreset(){
+  for(var n in PRESETS){ if(order.every(function(k){return PRESETS[n][k]===state[k];})) return n; }
+  return '';
+}
+build(); setState(PRESETS.realista); render();
+document.getElementById('rows').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  var k = b.getAttribute('data-k'), d = parseInt(b.getAttribute('data-d'),10);
+  state[k] = Math.max(0, Math.min(MAXV[k], state[k]+d)); render(); markPreset(samePreset());
+});
+document.getElementById('presets').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  setState(PRESETS[b.getAttribute('data-p')]); render(); markPreset(b.getAttribute('data-p'));
+});
+if(window.lucide){ lucide.createIcons(); }
+</script>
+</body></html>
