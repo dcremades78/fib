@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>VIKIN × Sonorama Ribera — La app oficial del festival</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+:root{
+  --cream:#F4EEDF; --cream2:#EFE6D3; --card:#FFFFFF;
+  --ink:#2E2A25; --soft:#6E665B; --faint:#9A9183;
+  --brand:#E85C3D; --brand2:#D3492B; --branddk:#A83A20;
+  --green:#4BB959; --blue:#3FB0E0; --gold:#EBA23F; --pink:#D98C93;
+  --line:rgba(46,42,37,.12); --line2:rgba(46,42,37,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.disp{font-family:'Fjalla One',sans-serif;font-weight:400;line-height:1.04;letter-spacing:.005em;text-transform:uppercase}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--brand)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+a{color:var(--brand2);text-decoration:none}
+[data-lucide]{width:20px;height:20px;stroke-width:1.5px;vertical-align:middle}
+.muted{color:var(--soft)} .tiny{font-size:12.5px;color:var(--faint)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;background:rgba(244,238,223,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Fjalla One';font-size:18px;letter-spacing:.02em;text-transform:uppercase}
+.ring{width:21px;height:21px;border-radius:50%;border:5px solid var(--brand);border-top-color:rgba(232,92,61,.28);transform:rotate(40deg)}
+.navlinks{display:flex;gap:16px;font-size:13.5px;font-weight:600}
+.navlinks a{color:var(--soft)} .navlinks a:hover{color:var(--ink)}
+@media(max-width:1040px){.navlinks{display:none}}
+
+section{padding:76px 0;border-bottom:1px solid var(--line2)}
+.kick{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brand2);margin-bottom:16px;font-family:'Inter';display:flex;align-items:center;gap:10px}
+.kick::before{content:"";width:26px;height:2px;background:var(--brand)}
+h2{font-size:clamp(30px,4.5vw,48px);margin-bottom:18px;max-width:24ch}
+.lead{font-size:19px;color:var(--soft);max-width:70ch;margin-bottom:8px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card .ic{width:40px;height:40px;border-radius:11px;background:rgba(232,92,61,.1);display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--brand2)}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{font-size:15px;color:var(--soft)}
+
+/* HERO */
+.hero{background:linear-gradient(165deg,#F4EEDF 0%,#FBE4DB 100%);padding:52px 0 76px;border-bottom:none;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:40px;align-items:center}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brand2);background:rgba(232,92,61,.1);padding:6px 14px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-size:clamp(34px,5.2vw,58px);margin:0 0 20px}
+.hero p{font-size:18px;color:var(--soft);max-width:56ch}
+.btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--branddk);color:#fff;font-weight:700;padding:13px 22px;border-radius:13px;font-size:15px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.heroshot{position:relative;display:flex;justify-content:center;gap:0}
+.heroshot img{filter:drop-shadow(0 28px 48px rgba(46,42,37,.26))}
+.heroshot .p1{width:200px;transform:rotate(-6deg) translateX(26px);z-index:1}
+.heroshot .p2{width:230px;z-index:2;margin-top:-10px}
+.metabar{display:flex;flex-wrap:wrap;gap:30px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.metabar .n{font-family:'Fjalla One';font-size:26px;color:var(--ink)}
+.metabar .l{font-size:12.5px;color:var(--faint);font-weight:600;max-width:20ch}
+
+/* generic chips/facts */
+.facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.fact{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 15px;font-size:14px;font-weight:600}
+.fact [data-lucide]{color:var(--brand2);width:18px;height:18px}
+.featnum{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+@media(max-width:860px){.featnum{grid-template-columns:1fr}}
+.fn h3{font-size:18px;margin-bottom:6px}
+.fn p{font-size:14.5px;color:var(--soft)}
+
+/* logos + testimonials */
+.logos{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:6px 0 24px}
+.logos img{height:40px;width:auto;opacity:.9}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.quotes{grid-template-columns:1fr}}
+.proof{background:var(--ink);color:#EDE7DA;border-radius:18px;padding:26px}
+.proof .q{font-size:16px;line-height:1.5;margin-bottom:10px}
+.proof .who{font-size:13px;color:#bcb3a4;font-weight:600}
+
+/* app features + gallery */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:860px){.feat{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.feat{grid-template-columns:1fr}}
+.f{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px}
+.f [data-lucide]{color:var(--brand2);width:20px;height:20px;margin-bottom:7px}
+.f b{font-family:'Fjalla One';font-weight:400;font-size:15px;display:block;text-transform:uppercase;letter-spacing:.01em;margin-bottom:2px}
+.f span{font-size:13.5px;color:var(--soft)}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}
+@media(max-width:860px){.gal{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gitem{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px 0;text-align:center;overflow:hidden}
+.gitem img{width:100%;max-width:150px;margin:0 auto;display:block;filter:drop-shadow(0 10px 16px rgba(46,42,37,.14))}
+.gitem .cap{padding:9px 2px 12px}
+.gitem .cap b{font-family:'Fjalla One';font-weight:400;font-size:13px;display:block;text-transform:uppercase;letter-spacing:.02em}
+.gitem .cap span{font-size:11.5px;color:var(--soft)}
+.note{background:var(--cream2);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:16px 20px;font-size:15.5px;color:#5c554a;margin-top:22px}
+.note b{color:var(--ink)}
+
+/* sponsors */
+.sponsors{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+.sponsors span{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 15px;font-size:13.5px;font-weight:600}
+.fmt{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;counter-reset:fmt}
+@media(max-width:860px){.fmt{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fmt{grid-template-columns:1fr}}
+.fmt .i{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 16px 16px 48px;position:relative}
+.fmt .i::before{counter-increment:fmt;content:counter(fmt);position:absolute;left:14px;top:16px;width:24px;height:24px;border-radius:7px;background:var(--brand2);color:#fff;font-family:'Fjalla One';font-size:13px;display:flex;align-items:center;justify-content:center}
+.fmt .i b{font-family:'Fjalla One';font-weight:400;font-size:15px;text-transform:uppercase;display:block;margin-bottom:3px}
+.fmt .i span{font-size:13.5px;color:var(--soft)}
+.fmt .i .tag{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--green);background:rgba(75,185,89,.12);padding:3px 9px;border-radius:20px}
+.fmt .i .tag.mej{color:var(--gold);background:rgba(235,162,63,.15)}
+
+/* idea cards */
+.ideagrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+@media(max-width:860px){.ideagrid{grid-template-columns:1fr}}
+.subh{font-family:'Fjalla One';text-transform:uppercase;font-size:15px;letter-spacing:.06em;color:var(--brand2);margin:28px 0 4px}
+.idea{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative}
+.idea .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.idea .bn{font-family:'Fjalla One';font-size:17px;text-transform:uppercase}
+.tier{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:20px}
+.tier.plat{background:#2E2A25;color:#fff}.tier.gold{background:rgba(235,162,63,.18);color:#9a6a12}
+.tier.silver{background:rgba(120,120,120,.16);color:#555}.tier.inst{background:rgba(63,176,224,.16);color:#1f7ea0}
+.idea h3{font-size:17px;margin:2px 0 8px}
+.idea p{font-size:14.5px;color:var(--soft)}
+.idea .hoy{font-size:13px;color:#5c554a;background:var(--cream2);border-radius:10px;padding:9px 12px;margin-top:12px}
+.idea .hoy b{color:var(--ink)}
+
+/* packages table */
+.pk{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14.5px;margin-top:18px}
+.pk th,.pk td{padding:13px 14px;text-align:center;border-bottom:1px solid var(--line2);border-right:1px solid var(--line2)}
+.pk th:first-child,.pk td:first-child{text-align:left;font-weight:600}
+.pk thead th{background:var(--cream2);font-family:'Fjalla One';font-weight:400;font-size:16px;text-transform:uppercase}
+.pk .price td{font-family:'Fjalla One';font-size:22px}
+.pk .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.pk tr:last-child td{border-bottom:none}
+.pkwrap{overflow-x:auto}
+
+/* scenario toggle + assumptions */
+.scen{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+.scen button{font-family:'Inter';font-weight:600;font-size:14px;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:12px 16px;cursor:pointer;color:var(--soft);text-align:left;line-height:1.2}
+.scen button b{display:block;font-family:'Fjalla One';font-weight:400;font-size:16px;color:var(--ink);text-transform:uppercase}
+.scen button.on{border-color:var(--brand);background:rgba(232,92,61,.07);color:var(--ink)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+@media(max-width:860px){.kpi{grid-template-columns:1fr 1fr}}
+.kpi .b{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.kpi .n{font-family:'Fjalla One';font-size:30px;color:var(--brand2);line-height:1}
+.kpi .l{font-size:13px;color:var(--soft);margin-top:6px}
+.subkpi .n{font-size:26px;color:var(--ink)}
+details.box{background:var(--cream2);border-radius:14px;padding:4px 18px;margin-top:20px;border:1px solid var(--line2)}
+details.box>summary{cursor:pointer;font-weight:600;padding:14px 0;list-style:none}
+details.box>summary::-webkit-details-marker{display:none}
+details.box>summary::before{content:"+ ";color:var(--brand2);font-weight:700}
+details.box[open]>summary::before{content:"– "}
+.assume{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 18px;padding:6px 0 18px}
+@media(max-width:860px){.assume{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.assume{grid-template-columns:1fr}}
+.assume label{font-size:12.5px;color:var(--soft);display:block}
+.assume .in{display:flex;align-items:center;gap:6px;margin-top:4px}
+.assume input{width:100%;font-family:'Inter';font-size:15px;font-weight:600;border:1.5px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff;color:var(--ink)}
+.assume .u{font-size:12px;color:var(--faint);white-space:nowrap}
+.calc{font-size:13.5px;color:#5c554a;line-height:1.7}
+.calc b{color:var(--ink)}
+
+/* simulator */
+.simgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+@media(max-width:860px){.simgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.simgrid{grid-template-columns:1fr}}
+.simcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.simcard .h{display:flex;align-items:center;gap:8px;font-family:'Fjalla One';font-size:19px;text-transform:uppercase}
+.simcard .sub{font-size:12.5px;color:var(--soft);min-height:32px;margin:4px 0 12px}
+.simcard .fl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);margin-bottom:5px}
+.simcard .inp{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;margin-bottom:12px}
+.simcard .inp input{border:none;outline:none;width:100%;font-family:'Fjalla One';font-size:22px;color:var(--ink);background:transparent}
+.simcard .inp .u{font-size:14px;color:var(--faint)}
+.sumbar{position:sticky;bottom:0;z-index:40;background:var(--branddk);color:#fff;border-radius:16px;padding:16px 22px;margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:18px 30px}
+.sumbar .n{font-family:'Fjalla One';font-size:30px;line-height:1}
+.sumbar .l{font-size:12px;color:rgba(255,255,255,.82);text-transform:uppercase;letter-spacing:.05em}
+.sumbar .spacer{flex:1}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.barrow{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:12px;font-size:13.5px}
+.barrow .bar{height:16px;border-radius:8px;background:var(--brand);min-width:2px}
+.barrow .bar.gold{background:var(--gold)}.barrow .bar.silver{background:#b9b2a3}.barrow .bar.bronze{background:#b98a5a}
+.costin{display:flex;align-items:center;gap:8px;margin-top:4px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:#fff;max-width:280px}
+.costin input{border:none;outline:none;width:100%;font-family:'Fjalla One';font-size:18px;background:transparent}
+
+/* report */
+.report{background:var(--ink);color:#EDE7DA;border-radius:18px;padding:26px}
+.report h3{color:#fff;font-size:19px;margin-bottom:4px}
+.report .rk{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+@media(max-width:620px){.report .rk{grid-template-columns:1fr 1fr}}
+.report .rk .n{font-family:'Fjalla One';font-size:24px;color:var(--brand)}
+.report .rk .l{font-size:11.5px;color:#bcb3a4}
+
+/* phases */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+@media(max-width:860px){.phases{grid-template-columns:1fr}}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.phase .ph{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--brand2);margin-bottom:8px}
+.phase h3{font-size:18px;margin-bottom:10px}
+.phase ul{list-style:none;font-size:14px;color:var(--soft)}
+.phase li{padding:5px 0 5px 20px;position:relative}
+.phase li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--brand)}
+
+/* CTA + footer */
+.offer{background:linear-gradient(150deg,var(--branddk),var(--brand));color:#fff;border-radius:22px;padding:40px;text-align:center}
+.offer h2{color:#fff;max-width:26ch;margin:0 auto 12px}
+.offer p{font-size:17px;color:rgba(255,255,255,.9);max-width:54ch;margin:0 auto 22px}
+.offer .btn{background:#fff;color:var(--branddk)}
+.disclaim{font-size:12px;color:var(--faint);margin-top:18px;max-width:92ch;line-height:1.6}
+footer{background:var(--cream2);padding:40px 0;text-align:center;border:none}
+footer p{font-size:14.5px;color:var(--soft);margin-top:7px}
+.conf{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:14px}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="wrap">
+  <div class="brand"><span class="ring"></span> VIKIN <span style="color:var(--faint)">×</span> Sonorama</div>
+  <div class="navlinks">
+    <a href="#festival">Festival</a><a href="#vikin">VIKIN</a><a href="#experiencia">La app</a>
+    <a href="#marcas">Patrocinadores</a><a href="#ideas">Ideas</a><a href="#paquetes">Paquetes</a>
+    <a href="#simulador">Simulador</a>
+  </div>
+</div></div>
+
+<!-- HERO -->
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="badge">VIKIN × Sonorama Ribera · Temporada 2027</span>
+    <h1>Vuestras marcas ya están en Sonorama. En la app, <em>rinden más</em>.</h1>
+    <p>Una app oficial con la marca de <b>Sonorama</b>, que funciona <b>sin conexión</b> y que lleva a vuestros patrocinadores a un sitio donde el público los usa de verdad. Una idea concreta por marca, <b>impactos calculados</b> y precios que podéis cambiar vosotros.</p>
+    <div class="btnrow">
+      <a class="btn" href="#experiencia"><i data-lucide="smartphone"></i> Ver la app de Sonorama</a>
+      <a class="btn ghost" href="#simulador"><i data-lucide="sliders-horizontal"></i> Probar el simulador</a>
+    </div>
+    <div class="metabar">
+      <div><div class="n">Desde 1998</div><div class="l">El festival de Aranda de Duero</div></div>
+      <div><div class="n">4–8 AGO</div><div class="l">5 días · Temporada 2027</div></div>
+      <div><div class="n">+12 marcas</div><div class="l">Patrocinan hoy el festival</div></div>
+      <div><div class="n">Offline</div><div class="l">Aunque la red se sature</div></div>
+    </div>
+  </div>
+  <div class="heroshot">
+    <img class="p1" src="assets/sonorama-app-timeline.png" alt="Parrilla de la app de Sonorama">
+    <img class="p2" src="assets/sonorama-app-home.png" alt="Inicio de la app de Sonorama">
+  </div>
+</div></header>
+
+<!-- EL FESTIVAL -->
+<section id="festival"><div class="wrap">
+  <div class="kick">El festival</div>
+  <h2>Un Sonorama que pasa en <em>muchos sitios a la vez</em>.</h2>
+  <p class="lead">Cinco días, decenas de artistas y escenarios repartidos por todo Aranda de Duero. Con tanta oferta a la vez, una app que lo reúna le sirve al público — y le da a las marcas un sitio donde estar.</p>
+  <div class="featnum" style="margin-top:26px">
+    <div class="card fn"><div class="ic"><i data-lucide="calendar-days"></i></div><h3>5 días · 4–8 agosto 2027</h3><p>De martes a sábado en Aranda de Duero (Ribera del Duero, Burgos), el festival de música y gastronomía.</p></div>
+    <div class="card fn"><div class="ic"><i data-lucide="map-pin"></i></div><h3>Escenarios por toda la ciudad</h3><p>Ribera del Duero, Santa María, Charro, El Sótano, La Plaza, Bodega, Caja de Burgos, Aranda… El casco histórico como recinto.</p></div>
+    <div class="card fn"><div class="ic"><i data-lucide="utensils"></i></div><h3>Música y gastronomía</h3><p>Vino Ribera del Duero, jamón y lechazo conviven con el cartel. La app los junta con filtros por música, zona y servicios.</p></div>
+    <div class="card fn"><div class="ic"><i data-lucide="users"></i></div><h3>Una villa que se multiplica</h3><p>Aranda (~33.000 habitantes) multiplica su población durante el festival, con entradas agotadas de forma habitual.</p></div>
+    <div class="card fn"><div class="ic"><i data-lucide="wifi-off"></i></div><h3>Sin cobertura</h3><p>Con miles de móviles a la vez la red se satura. Mapa, parrilla y fichas funcionan sin conexión — y con ellos, las marcas que salen ahí.</p></div>
+    <div class="card fn"><div class="ic"><i data-lucide="award"></i></div><h3>Desde 1998, con premios</h3><p>Premio Ondas 2019 e Iberian Festival Award a la mejor activación de marca. Casi tres décadas de comunidad fiel.</p></div>
+  </div>
+  <p class="tiny" style="margin-top:16px">Datos de fechas, escenarios y patrocinadores según la web oficial de Sonorama Ribera (sonoramaribera.com). La app se adapta al recinto y a los escenarios de cada edición.</p>
+</div></section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="vikin"><div class="wrap">
+  <div class="kick">Quiénes somos</div>
+  <h2>Construimos la app oficial de festivales <em>y grandes eventos</em>.</h2>
+  <p class="lead">VIKIN es una solución <b>white-label</b> nacida en Reino Unido. Somos una empresa de desarrollo: lo que nos piden los clientes lo construimos a medida, y cada mejora llega al resto de apps. Nos conectamos a vuestro sistema de datos para no duplicar trabajo, y la gestión es muy sencilla.</p>
+  <div class="facts">
+    <div class="fact"><i data-lucide="smartphone"></i> iOS y Android · app nativa propia</div>
+    <div class="fact"><i data-lucide="wifi-off"></i> Offline-first · funciona sin cobertura</div>
+    <div class="fact"><i data-lucide="shield-check"></i> Sin registro · sin datos personales</div>
+    <div class="fact"><i data-lucide="palette"></i> Vuestra marca, una piel nueva cada edición</div>
+    <div class="fact"><i data-lucide="plug"></i> Se integra con vuestros datos (y la web)</div>
+  </div>
+  <div class="logos" style="margin-top:28px">
+    <img src="https://proposals.vikin.events/logo-greenbelt.png" alt="Greenbelt Festival">
+    <img src="https://proposals.vikin.events/logo-big-retreat.png" alt="The Big Retreat Festival">
+    <img src="https://proposals.vikin.events/logo-ideas-fest.png" alt="Ideas Fest">
+    <img src="https://proposals.vikin.events/logo-canowindra.png" alt="Canowindra">
+    <img src="https://proposals.vikin.events/logo-teddy-rocks.png" alt="Teddy Rocks">
+    <img src="https://proposals.vikin.events/logo-shambala.png" alt="Shambala">
+    <img src="https://proposals.vikin.events/logo-showmans-show.png" alt="The Showman's Show">
+  </div>
+  <div class="quotes">
+    <div class="proof"><p class="q">"Ha sido un auténtico placer trabajar con VIKIN en la app de Greenbelt 2025. Su dedicación, creatividad y rapidez de respuesta ha sido inmejorable."</p><p class="who">Daisy Ghira · Greenbelt Festival</p></div>
+    <div class="proof"><p class="q">"Ya habíamos usado apps para eventos en The Big Retreat, pero VIKIN superó nuestras expectativas. Una experiencia fluida tanto para la organización como para los asistentes."</p><p class="who">Amber Lort-Phillips · The Big Retreat</p></div>
+  </div>
+</div></section>
+
+<!-- LA APP -->
+<section id="experiencia"><div class="wrap">
+  <div class="kick">La app</div>
+  <h2>Todo lo que necesita el público, en el bolsillo y <em>sin conexión</em>.</h2>
+  <p class="lead">Una app que cambia según la hora y el sitio, para que cada persona vea lo que le importa en cada momento del festival.</p>
+  <div class="feat" style="margin-top:24px">
+    <div class="f"><i data-lucide="radio"></i><b>En directo y a continuación</b><span>El inicio enseña quién toca ahora y quién va después.</span></div>
+    <div class="f"><i data-lucide="calendar-clock"></i><b>Parrilla por escenario</b><span>Todos los escenarios con la línea de "ahora" en tiempo real.</span></div>
+    <div class="f"><i data-lucide="heart"></i><b>Mi Evento</b><span>Favoritos, recordatorios y aviso cuando dos sesiones se solapan.</span></div>
+    <div class="f"><i data-lucide="user-round"></i><b>Ficha de artista</b><span>Bio, actuaciones, vídeo de YouTube y enlaces útiles.</span></div>
+    <div class="f"><i data-lucide="sliders-horizontal"></i><b>Filtros</b><span>Por categoría, horario o zona: música, gastronomía y más.</span></div>
+    <div class="f"><i data-lucide="map"></i><b>Mapa offline</b><span>Escenarios, barras, aseos, agua, food trucks y salidas.</span></div>
+    <div class="f"><i data-lucide="search"></i><b>Búsqueda inteligente</b><span>Artistas, puestos y servicios al instante, sin cobertura.</span></div>
+    <div class="f"><i data-lucide="bell"></i><b>Notificaciones</b><span>Cambios de horario y avisos que sí llegan, sin algoritmo.</span></div>
+    <div class="f"><i data-lucide="life-buoy"></i><b>Ayuda en emergencia</b><span>Ubicación what3words y contactos para pedir ayuda.</span></div>
+  </div>
+  <div class="gal">
+    <div class="gitem"><img src="assets/sonorama-app-home.png" alt="Inicio"><div class="cap"><b>Inicio</b><span>En directo y a continuación</span></div></div>
+    <div class="gitem"><img src="assets/sonorama-app-timeline.png" alt="Parrilla"><div class="cap"><b>Parrilla</b><span>Escenarios y franjas</span></div></div>
+    <div class="gitem"><img src="assets/sonorama-app-listview.png" alt="Cartel"><div class="cap"><b>Cartel</b><span>Line-up por día</span></div></div>
+    <div class="gitem"><img src="assets/sonorama-app-details.png" alt="Ficha"><div class="cap"><b>Ficha</b><span>Bio y actuaciones</span></div></div>
+    <div class="gitem"><img src="assets/sonorama-app-filters.png" alt="Filtros"><div class="cap"><b>Filtros</b><span>Música y zonas</span></div></div>
+    <div class="gitem"><img src="assets/sonorama-app-map.png" alt="Mapa"><div class="cap"><b>Mapa</b><span>Todo el recinto, offline</span></div></div>
+  </div>
+  <div class="note"><b>Pantallas de ejemplo</b> con la marca de Sonorama. No son un diseño cerrado: dan una idea de la experiencia y el diseño final se adapta al 100% a vuestra identidad. La app se entrega en <b>español e inglés</b>.</div>
+</div></section>
+
+<!-- PATROCINADORES -->
+<section id="marcas"><div class="wrap">
+  <div class="kick">Vuestros patrocinadores</div>
+  <h2>Ya vendéis la marca en el recinto. <em>La app la lleva a la pantalla.</em></h2>
+  <p class="lead">El escenario <b>Ribera del Duero</b> y el <b>Caja de Burgos</b> ya llevan nombre de patrocinador, y <b>Vibra Mahou</b> está en todas las barras. En la app ese nombre sale en la parrilla, en cada ficha, en Mi Evento y en el mapa. Y hay más sitios donde una marca puede aparecer.</p>
+  <div class="sponsors">
+    <span>Ribera del Duero</span><span>Vibra Mahou</span><span>Indexa Capital</span><span>Johnnie Walker</span><span>Coca-Cola</span><span>Jägermeister</span><span>Caja Viva</span><span>Tierra de Sabor</span><span>Plenitude</span><span>Interporc</span><span>Fans del Vacuno</span><span>Europa FM</span>
+  </div>
+  <p class="tiny">Patrocinadores de la edición 2026 según sonoramaribera.com. Las marcas se citan como ilustración de posibles formatos; no existe ningún acuerdo con ellas.</p>
+
+  <div class="grid g3" style="margin-top:22px">
+    <div class="gitem" style="text-align:center"><img src="assets/sonorama-app-home.png" alt="Inicio con marcas" style="max-width:190px;margin:0 auto;display:block"><div class="cap"><b>Inicio</b><span>Hueco patrocinado y lo que suena ahora</span></div></div>
+    <div class="gitem" style="text-align:center"><img src="assets/sonorama-app-timeline.png" alt="Parrilla con marcas" style="max-width:190px;margin:0 auto;display:block"><div class="cap"><b>Parrilla</b><span>Cada escenario, con su nombre</span></div></div>
+    <div class="gitem" style="text-align:center"><img src="assets/sonorama-app-map.png" alt="Mapa con marcas" style="max-width:190px;margin:0 auto;display:block"><div class="cap"><b>Mapa</b><span>Escenarios, barras y zonas de marca</span></div></div>
+  </div>
+
+  <div class="fmt">
+    <div class="i"><b>Dashboard patrocinado</b><span>Un hueco premium en el Inicio, por día.</span><div><span class="tag mej">Mejora ligera</span></div></div>
+    <div class="i"><b>Escenario con marca</b><span>El nombre sale en Inicio, parrilla, fichas y mapa. Como el escenario Ribera del Duero.</span><div><span class="tag">Ya en VIKIN</span></div></div>
+    <div class="i"><b>Naming en la parrilla</b><span>La pestaña de cada escenario lleva la marca.</span><div><span class="tag">Ya en VIKIN</span></div></div>
+    <div class="i"><b>Pin destacado</b><span>Barras, puestos y activaciones que se ven primero.</span><div><span class="tag mej">Mejora ligera</span></div></div>
+    <div class="i"><b>Espacio de marca en el mapa</b><span>Una zona entera, con su identidad.</span><div><span class="tag">Ya en VIKIN</span></div></div>
+    <div class="i"><b>Patrocinio de utilidad</b><span>Cashless, puntos de agua, "mi barra más cercana" o "carga tu móvil" by una marca.</span><div><span class="tag">Ya en VIKIN</span></div></div>
+    <div class="i"><b>Post patrocinado</b><span>Una noticia en el feed de la app.</span><div><span class="tag">Ya en VIKIN</span></div></div>
+    <div class="i"><b>Push patrocinado</b><span>Un aviso con límite de envíos.</span><div><span class="tag">Ya en VIKIN</span></div></div>
+    <div class="i"><b>Prioridad en búsqueda</b><span>La marca sale primera en su categoría.</span><div><span class="tag mej">Mejora ligera</span></div></div>
+  </div>
+  <div class="note">En el escenario intermedio, el nombre de un escenario con marca se ve <b id="teaserViews">muchas</b> veces durante el festival (parrilla, fichas y mapa). Con un informe, Ribera del Duero puede ver cuánto vale su escenario — y vosotros tenéis un argumento para renovar y subir el precio.</div>
+</div></section>
+
+<!-- UNA IDEA POR MARCA -->
+<section id="ideas"><div class="wrap">
+  <div class="kick">Una idea para cada marca</div>
+  <h2>Doce ideas, <em>una por marca</em> o categoría.</h2>
+  <p class="lead">Ocho para marcas que ya están en Sonorama y cuatro para categorías que hoy no aparecen entre sus patrocinadores. Son ideas para hablar, no acuerdos con nadie. El paquete recomendado es una sugerencia.</p>
+
+  <div class="subh">Marcas que ya están</div>
+  <div class="ideagrid">
+    <div class="idea"><div class="top"><span class="bn">Ribera del Duero</span><span class="tier plat">Platinum</span></div><h3>El escenario Ribera del Duero, en cada pantalla</h3><p>Su nombre sale en parrilla, fichas, Mi Evento y mapa. Y el hueco del Inicio puede ser "Ahora en el escenario Ribera del Duero". Más una ficha de enoturismo y catas en el mapa.</p><div class="hoy"><b>Hoy en Sonorama:</b> patrocinador principal y nombre de uno de los escenarios del festival.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Vibra Mahou</span><span class="tier gold">Gold</span></div><h3>Tu barra, a un toque</h3><p>Todas las barras en el mapa, con el pin de Mahou destacado, y un patrocinio de utilidad "mi barra más cercana" que se usa a todas horas.</p><div class="hoy"><b>Hoy en Sonorama:</b> cerveza oficial del festival.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Caja Viva</span><span class="tier gold">Gold</span></div><h3>El cashless, by Caja Viva</h3><p>La recarga de la pulsera y "mi saldo" dentro de la app, con su marca. Más el naming del escenario Caja de Burgos en parrilla y mapa.</p><div class="hoy"><b>Hoy en Sonorama:</b> patrocinador y nombre del escenario Caja de Burgos.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Tierra de Sabor · Interporc · Fans del Vacuno</span><span class="tier gold">Gold</span></div><h3>La ruta gastronómica, con nombre</h3><p>Jamón, lechazo y food trucks en el mapa con pins destacados y una "ruta gastronómica" patrocinada. Sonorama es música y gastronomía: su sitio natural.</p><div class="hoy"><b>Hoy en Sonorama:</b> colaboradores del apartado gastronómico.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Europa FM</span><span class="tier silver">Silver</span></div><h3>El feed, con la radio oficial</h3><p>Entrevistas, playlist del festival y posts en el feed de la app con la marca de la radio oficial, enlazando a Spotify y YouTube.</p><div class="hoy"><b>Hoy en Sonorama:</b> radio oficial del festival.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Indexa Capital</span><span class="tier silver">Silver</span></div><h3>Mi Sonorama, by Indexa</h3><p>Al terminar, cada persona recibe su resumen (sesiones, escenarios, horas de música) presentado por Indexa. Se calcula en el móvil, sin datos personales.</p><div class="hoy"><b>Hoy en Sonorama:</b> patrocinador del festival.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Johnnie Walker</span><span class="tier silver">Silver</span></div><h3>Tu carta, a un toque</h3><p>Ficha de marca con la carta y las zonas donde se sirve, y un post el día de la apertura.</p><div class="hoy"><b>Hoy en Sonorama:</b> patrocinador del festival.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Jägermeister</span><span class="tier silver">Silver</span></div><h3>El momento de la noche</h3><p>Pin destacado de su barra y un push con límite de envíos para el tramo de madrugada, cuando la app más se mira.</p><div class="hoy"><b>Hoy en Sonorama:</b> patrocinador del festival.</div></div>
+  </div>
+
+  <div class="subh">Categorías por abrir</div>
+  <div class="ideagrid">
+    <div class="idea"><div class="top"><span class="bn">Transporte · Buses</span><span class="tier silver">Silver</span></div><h3>Tu vuelta a casa by…</h3><p>Horarios de buses lanzadera, últimas salidas y paradas en el mapa, con el nombre de la empresa de transporte. Menos gente perdida de madrugada.</p><div class="hoy"><b>Por qué encaja:</b> menos preguntas al staff y una utilidad que todo el mundo usa.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Plenitude</span><span class="tier silver">Silver</span></div><h3>Carga tu móvil, by Plenitude</h3><p>Puntos de carga en el mapa como patrocinio de utilidad. Una marca de energía en el sitio más lógico: la batería del festivalero.</p><div class="hoy"><b>Por qué encaja:</b> ya colabora, y la carga de móvil es lo que la gente busca.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Aranda · Ribera del Duero (turismo)</span><span class="tier inst">Institución</span></div><h3>Aranda y la Ribera, a un toque</h3><p>Qué ver, dónde comer y qué bodegas visitar para quien llega antes o se queda unos días. Suele acordarse aparte, como las instituciones.</p><div class="hoy"><b>Por qué encaja:</b> convierte el festival en una visita a la Ribera.</div></div>
+    <div class="idea"><div class="top"><span class="bn">Streaming y discos</span><span class="tier silver">Silver</span></div><h3>Escucha lo que acabas de ver</h3><p>Una lista oficial de la edición, presentada por una marca, con enlace desde cada ficha de artista. La ficha ya enlaza con YouTube: es el paso natural.</p><div class="hoy"><b>Por qué encaja:</b> conecta con El Planeta Sonoro y la comunidad musical de Sonorama.</div></div>
+  </div>
+</div></section>
+
+<!-- PAQUETES -->
+<section id="paquetes"><div class="wrap">
+  <div class="kick">Paquetes</div>
+  <h2>Cuatro paquetes <em>de ejemplo</em>.</h2>
+  <p class="lead">Los precios son un punto de partida y se pueden cambiar: en el simulador de más abajo tenéis cada precio como un número editable, y aquí se actualizan al momento.</p>
+  <div class="pkwrap"><table class="pk">
+    <thead><tr><th></th><th><span class="dot" style="background:#2E2A25"></span>Platinum</th><th><span class="dot" style="background:var(--gold)"></span>Gold</th><th><span class="dot" style="background:#b9b2a3"></span>Silver</th><th><span class="dot" style="background:#b98a5a"></span>Bronze</th></tr></thead>
+    <tbody>
+      <tr class="price"><td>Precio por marca</td><td id="pk-plat">3.000 €</td><td id="pk-gold">1.500 €</td><td id="pk-silver">800 €</td><td id="pk-bronze">250 €</td></tr>
+      <tr><td>Pensado para</td><td>Socio principal</td><td>Presencia fuerte, con medición</td><td>Presencia constante</td><td>Entrada para marcas pequeñas</td></tr>
+      <tr><td>Hueco en Inicio</td><td>3 días</td><td>1 día</td><td>–</td><td>–</td></tr>
+      <tr><td>Pins destacados</td><td>3</td><td>2</td><td>2</td><td>1</td></tr>
+      <tr><td>Posts patrocinados</td><td>3</td><td>2</td><td>2</td><td>1</td></tr>
+      <tr><td>Pushes con límite</td><td>2</td><td>1</td><td>–</td><td>–</td></tr>
+      <tr><td>Patrocinio de utilidad</td><td>✓</td><td>–</td><td>–</td><td>–</td></tr>
+      <tr><td>Prioridad en búsqueda</td><td>✓</td><td>✓</td><td>–</td><td>–</td></tr>
+      <tr><td>Informe por marca</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    </tbody>
+  </table></div>
+  <p class="tiny" style="margin-top:12px"><b>Fuera de los paquetes:</b> el naming de escenario, porque ya lo vendéis (escenario Ribera del Duero). En los impactos no contamos la zona de marca ni la ficha de marca, para no inflar las cifras.</p>
+</div></section>
+
+<!-- IMPACTOS -->
+<section id="impactos"><div class="wrap">
+  <div class="kick">Impactos para las marcas</div>
+  <h2>Cuántas veces ve <em>cada marca</em> su nombre.</h2>
+  <p class="lead">Partimos de una cifra prudente de asistentes por día, vemos cuántos usan la app y calculamos cuántas veces aparece cada marca. Son veces que se ve la marca, no personas distintas. Elige un escenario y, si quieres, cambia cualquier supuesto.</p>
+  <div class="scen">
+    <button data-adopt="0.30"><b>Prudente</b>El 30 % usa la app</button>
+    <button data-adopt="0.45" class="on"><b>Intermedio</b>El 45 % usa la app</button>
+    <button data-adopt="0.60"><b>Ambicioso</b>El 60 % usa la app</button>
+  </div>
+  <p class="tiny" style="margin:-10px 0 18px">De la asistencia a las aperturas</p>
+  <div class="kpi">
+    <div class="b"><div class="n" id="k-perday">0</div><div class="l">Asistentes por día</div></div>
+    <div class="b"><div class="n subkpi" id="k-personas" style="color:var(--ink)">0</div><div class="l">Personas distintas</div></div>
+    <div class="b"><div class="n subkpi" id="k-usuarios" style="color:var(--ink)">0</div><div class="l">Usuarios de la app</div></div>
+    <div class="b"><div class="n" id="k-aperturas">0</div><div class="l">Aperturas en el festival</div></div>
+  </div>
+  <p class="tiny" style="margin:18px 0 8px">Y de ahí, lo que ve cada marca</p>
+  <div class="kpi">
+    <div class="b"><div class="n" id="k-mapa">0</div><div class="l">Vistas del mapa</div></div>
+    <div class="b"><div class="n" id="k-modulo">0</div><div class="l">Usos de un módulo con marca</div></div>
+    <div class="b"><div class="n" id="k-push">0</div><div class="l">Alcance de cada push</div></div>
+    <div class="b"><div class="n" id="k-post">0</div><div class="l">Alcance de cada post</div></div>
+  </div>
+
+  <details class="box"><summary>Ajustar los supuestos</summary>
+    <p class="tiny" style="margin:4px 0 10px">Sonorama no publica una cifra oficial por día. Partimos de una estimación prudente que afináis con vuestros datos de entradas. El resto son estimaciones de partida.</p>
+    <div class="assume">
+      <div><label>Asistentes por día</label><div class="in"><input id="a-perDay" type="number" value="35000"></div></div>
+      <div><label>Días de festival</label><div class="in"><input id="a-days" type="number" value="5"></div></div>
+      <div><label>Días que viene cada persona</label><div class="in"><input id="a-dpp" type="number" value="3"></div></div>
+      <div><label>Aperturas por usuario y día</label><div class="in"><input id="a-oPD" type="number" value="6"></div></div>
+      <div><label>Vistas de mapa por usuario y día</label><div class="in"><input id="a-pMap" type="number" value="2"></div></div>
+      <div><label>Usos de módulo por usuario y día</label><div class="in"><input id="a-pMod" type="number" value="1.5" step="0.1"></div></div>
+      <div><label>Visibilidad del pin (0–1)</label><div class="in"><input id="a-pinVis" type="number" value="0.5" step="0.05"></div></div>
+      <div><label>Alcance de un post (0–1)</label><div class="in"><input id="a-pPost" type="number" value="0.6" step="0.05"></div></div>
+      <div><label>Alcance de un push (0–1)</label><div class="in"><input id="a-pPush" type="number" value="0.6" step="0.05"></div></div>
+      <div><label>CPM de referencia (€)</label><div class="in"><input id="a-refCpm" type="number" value="6" step="0.5"></div></div>
+    </div>
+    <button id="resetAssume" class="btn ghost" style="font-size:13px;padding:9px 14px">Volver a los supuestos de partida</button>
+  </details>
+
+  <details class="box"><summary>Cómo se calcula cada impacto</summary>
+    <p class="calc"><b>Personas distintas</b> = asistentes/día × días ÷ días que viene cada persona. <b>Usuarios</b> = personas × % que usa la app. <b>Aperturas</b> = usuarios × aperturas por usuario y día × días. <b>Hueco en Inicio</b> = aperturas × (días del hueco ÷ días). <b>Pin destacado</b> = vistas del mapa × visibilidad del pin × nº de pins. <b>Post</b> = usuarios × alcance de un post × nº de posts. <b>Push</b> = usuarios × alcance de un push × nº de pushes. <b>CPM</b> = precio ÷ (impresiones ÷ 1.000). <b>Valor equivalente</b> = impresiones × CPM de referencia ÷ 1.000.</p>
+  </details>
+</div></section>
+
+<!-- SIMULADOR -->
+<section id="simulador"><div class="wrap">
+  <div class="kick">Simulador</div>
+  <h2>Mueve los precios, <em>mira qué pasa</em>.</h2>
+  <p class="lead">Cambia el precio de cada paquete y cuántas marcas entran. Se recalculan los ingresos del festival y lo que recibe cada marca: impresiones, interacciones y coste por 1.000 impresiones. El punto de partida son las ideas de más arriba.</p>
+  <p class="tiny" style="margin:-8px 0 14px">Es un ejemplo para jugar, no una previsión. Las instituciones no suman aquí: suelen acordarse aparte.</p>
+  <button id="resetAll" class="btn ghost" style="font-size:13px;padding:9px 14px;margin-bottom:16px">Restablecer precios y marcas</button>
+  <div class="simgrid">
+    <div class="simcard"><div class="h"><span class="dot" style="background:#2E2A25;width:10px;height:10px;border-radius:50%;display:inline-block"></span> Platinum</div><div class="sub">Socio principal</div><div class="fl">Precio por marca</div><div class="inp"><input id="p-plat" type="number" value="3000"><span class="u">€</span></div><div class="fl">Marcas en este paquete</div><div class="inp"><input id="n-plat" type="number" value="1"></div></div>
+    <div class="simcard"><div class="h"><span class="dot" style="background:var(--gold);width:10px;height:10px;border-radius:50%;display:inline-block"></span> Gold</div><div class="sub">Presencia fuerte, con medición</div><div class="fl">Precio por marca</div><div class="inp"><input id="p-gold" type="number" value="1500"><span class="u">€</span></div><div class="fl">Marcas en este paquete</div><div class="inp"><input id="n-gold" type="number" value="2"></div></div>
+    <div class="simcard"><div class="h"><span class="dot" style="background:#b9b2a3;width:10px;height:10px;border-radius:50%;display:inline-block"></span> Silver</div><div class="sub">Presencia constante</div><div class="fl">Precio por marca</div><div class="inp"><input id="p-silver" type="number" value="800"><span class="u">€</span></div><div class="fl">Marcas en este paquete</div><div class="inp"><input id="n-silver" type="number" value="4"></div></div>
+    <div class="simcard"><div class="h"><span class="dot" style="background:#b98a5a;width:10px;height:10px;border-radius:50%;display:inline-block"></span> Bronze</div><div class="sub">Entrada para marcas pequeñas</div><div class="fl">Precio por marca</div><div class="inp"><input id="p-bronze" type="number" value="250"><span class="u">€</span></div><div class="fl">Marcas en este paquete</div><div class="inp"><input id="n-bronze" type="number" value="4"></div></div>
+  </div>
+
+  <h3 style="font-size:18px;margin:26px 0 4px">Dónde aparece cada marca</h3>
+  <p class="tiny" style="margin-bottom:10px">Impresiones por paquete, a la misma escala. Se ve de dónde sale la exposición.</p>
+  <div class="bars" id="sim-bars"></div>
+
+  <div class="sumbar">
+    <div><div class="n" id="sim-revenue">0 €</div><div class="l">Ingresos simulados por edición</div></div>
+    <div><div class="n" id="sim-brands">0</div><div class="l">Marcas en total</div></div>
+    <div><div class="n" id="sim-impr">0</div><div class="l">Impresiones entre todas</div></div>
+    <div><div class="n" id="sim-cpm">0 €</div><div class="l">CPM medio que pagan</div></div>
+    <div class="spacer"></div>
+    <div><div class="n" id="sim-peruser">0 €</div><div class="l">Ingresos por usuario de la app</div></div>
+  </div>
+
+  <details class="box" style="margin-top:18px"><summary>¿Cuánto cuesta la app? (opcional)</summary>
+    <p class="tiny" style="margin:4px 0 8px">Escribe una cifra y verás cuánto cubren los patrocinios.</p>
+    <div class="costin"><input id="sim-cost" type="number" placeholder="p. ej. 18000"><span class="u">€</span></div>
+    <p class="calc" style="margin-top:10px" id="sim-coverTxt">—</p>
+  </details>
+</div></section>
+
+<!-- INFORME -->
+<section id="informe"><div class="wrap">
+  <div class="kick">Medir para renovar</div>
+  <h2>Un informe por marca, <em>sin enredos</em>.</h2>
+  <p class="lead">Cada marca recibe un resumen sencillo, con datos agregados y anónimos: visitas a su ficha y escenario, toques en su pin, aperturas de pushes y posts, y búsquedas donde sale. El festival recibe el mismo informe, para saber qué funciona y qué cobrar el año siguiente.</p>
+  <div class="scen" style="margin-top:18px">
+    <button data-pkg="plat"><b>Platinum</b>Socio principal</button>
+    <button data-pkg="gold" class="on"><b>Gold</b>Presencia fuerte</button>
+    <button data-pkg="silver"><b>Silver</b>Presencia constante</button>
+    <button data-pkg="bronze"><b>Bronze</b>Marcas pequeñas</button>
+  </div>
+  <div class="report">
+    <h3>Informe de resultados</h3>
+    <p class="who" style="color:#bcb3a4">Marca de ejemplo · <span id="rep-pkg">Gold</span> · Sonorama 2027 · simulación</p>
+    <div class="rk">
+      <div><div class="n" id="rep-impr">0</div><div class="l">Impresiones de la marca</div></div>
+      <div><div class="n" id="rep-inter">0</div><div class="l">Interacciones (toques)</div></div>
+      <div><div class="n" id="rep-cpm">0 €</div><div class="l">Coste por 1.000 (CPM)</div></div>
+      <div><div class="n" id="rep-value">0 €</div><div class="l">Valor equivalente en ads</div></div>
+    </div>
+    <p class="tiny" style="color:#bcb3a4">PDF para la marca · Panel para el festival · Datos anónimos y agregados. Cambian en cuanto tocas el simulador.</p>
+  </div>
+</div></section>
+
+<!-- TODO EL AÑO -->
+<section><div class="wrap">
+  <div class="kick">Hecho a medida · todo el año</div>
+  <h2>Ideas para que la app <em>no se apague</em> el domingo.</h2>
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card"><div class="ic"><i data-lucide="stamp"></i></div><h3>Pasaporte Sonorama</h3><p>Un sello por escenario y por activación de marca. Al completarlo, premio o merch con un patrocinador detrás. Para sorteos, registro opcional y con consentimiento.</p></div>
+    <div class="card"><div class="ic"><i data-lucide="sparkles"></i></div><h3>Mi Sonorama, resumen personal</h3><p>Al terminar, cada persona recibe su resumen: sesiones, escenarios, horas de música. Se calcula en el móvil, sin datos personales, y se comparte con el nombre de una marca.</p></div>
+    <div class="card"><div class="ic"><i data-lucide="ticket"></i></div><h3>Cuenta atrás y cartel por fases</h3><p>La app se instala meses antes. Cuenta atrás con patrocinador y el cartel que se desvela por fases, para que la abran mucho antes de agosto.</p></div>
+    <div class="card"><div class="ic"><i data-lucide="globe"></i></div><h3>Una marca, todo el calendario</h3><p>Sonorama México, Goes to Ibiza y Day Santander en la misma plataforma, cada uno con su sección y sus marcas. Feed, preventas y anuncios sin depender de las redes.</p></div>
+  </div>
+  <div class="kick" style="margin-top:46px">Cómo empezamos</div>
+  <div class="phases">
+    <div class="phase"><div class="ph">Fase 1 · Empezar</div><h3>Lo que ya existe</h3><ul><li>Naming de escenarios con informe</li><li>Patrocinios de utilidad (cashless, agua, barras)</li><li>Pins y zonas de marca</li><li>Pushes y posts con límite</li></ul></div>
+    <div class="phase"><div class="ph">Fase 2 · Crecer</div><h3>Mejoras ligeras</h3><ul><li>Dashboard patrocinado en Inicio</li><li>Prioridad en búsqueda</li><li>Pins destacados que se ven primero</li><li>Campañas antes y después</li></ul></div>
+    <div class="phase"><div class="ph">Fase 3 · Escalar</div><h3>A medida</h3><ul><li>Pasaporte Sonorama</li><li>Mi Sonorama, resumen personal</li><li>El universo Sonorama en una sola app</li><li>Informes avanzados y portal para marcas</li></ul></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section style="border-bottom:none"><div class="wrap">
+  <div class="offer">
+    <div class="kick" style="color:rgba(255,255,255,.8);justify-content:center">Hagámoslo</div>
+    <h2>Ajustemos esto juntos con <em style="color:#FBE4DB">vuestras marcas</em>.</h2>
+    <p>Sin compromiso. En una llamada rápida os enseñamos la app de Sonorama funcionando, ponemos los datos reales de entradas y vosotros decidís qué paquetes y qué precios tienen sentido.</p>
+    <a class="btn" href="mailto:david@vikin.events"><i data-lucide="arrow-right"></i> Hablar con VIKIN</a>
+  </div>
+  <p class="disclaim"><b>Documento de simulación.</b> Paquetes, precios e impactos son ejemplos para definir juntos con Sonorama. No son una oferta cerrada ni una previsión. Las estimaciones dependen de la adopción real de la app y de los datos de entradas. Las marcas y categorías citadas aparecen como ilustración de posibles formatos y no existe ningún acuerdo con ellas. Los datos del festival (fechas, escenarios, patrocinadores) son de información pública de Sonorama Ribera (sonoramaribera.com); la cifra de asistentes por día es una estimación prudente de partida. Las pantallas son un ejemplo de diseño. Los testimonios corresponden a clientes reales de VIKIN.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="brand" style="justify-content:center"><span class="ring"></span> VIKIN × Sonorama Ribera</div>
+  <p><b>David Cremades</b> · Iberia Business Development (España y Portugal)</p>
+  <p><a href="mailto:david@vikin.events">david@vikin.events</a> · <a href="https://vikin.events">vikin.events</a> · +44 (0) 118 991 9316</p>
+  <p class="conf">VIKIN × Sonorama Ribera · Propuesta confidencial · © 2026</p>
+</div></footer>
+
+<script>
+const fmt = new Intl.NumberFormat('es-ES');
+const eur = n => fmt.format(Math.round(n)) + ' €';
+const num = id => parseFloat(document.getElementById(id).value) || 0;
+// package placement contents
+const PKG = {
+  plat:  {slot:3, pins:3, posts:3, push:2},
+  gold:  {slot:1, pins:2, posts:2, push:1},
+  silver:{slot:0, pins:2, posts:2, push:0},
+  bronze:{slot:0, pins:1, posts:1, push:0}
+};
+const CTR = {home:0.04, pin:0.06, post:0.08, push:0.10};
+let adopt = 0.45;
+let repPkg = 'gold';
+
+function base(){
+  const perDay=num('a-perDay'), days=num('a-days'), dpp=num('a-dpp')||1;
+  const oPD=num('a-oPD'), pMap=num('a-pMap'), pMod=num('a-pMod');
+  const pinVis=num('a-pinVis'), pPost=num('a-pPost'), pPush=num('a-pPush'), refCpm=num('a-refCpm');
+  const personas = perDay*days/dpp;
+  const usuarios = personas*adopt;
+  const aperturas = usuarios*oPD*days;
+  const vistasMapa = usuarios*pMap*days;
+  const usosModulo = usuarios*pMod*days;
+  const alcancePush = usuarios*pPush;
+  const alcancePost = usuarios*pPost;
+  return {perDay,days,dpp,oPD,pMap,pinVis,pPost,pPush,refCpm,personas,usuarios,aperturas,vistasMapa,usosModulo,alcancePush,alcancePost};
+}
+function imprPerBrand(pkg, b){
+  const p = PKG[pkg];
+  const dash = (b.aperturas/b.days)*p.slot;
+  const pin  = b.vistasMapa*b.pinVis*p.pins;
+  const post = b.usuarios*b.pPost*p.posts;
+  const push = b.usuarios*b.pPush*p.push;
+  return {dash,pin,post,push,total:dash+pin+post+push};
+}
+function interPerBrand(pkg,b){
+  const i=imprPerBrand(pkg,b);
+  return i.dash*CTR.home + i.pin*CTR.pin + i.post*CTR.post + i.push*CTR.push;
+}
+
+function renderImpacts(){
+  const b=base();
+  document.getElementById('k-perday').textContent=fmt.format(Math.round(b.perDay));
+  document.getElementById('k-personas').textContent=fmt.format(Math.round(b.personas));
+  document.getElementById('k-usuarios').textContent=fmt.format(Math.round(b.usuarios));
+  document.getElementById('k-aperturas').textContent=fmt.format(Math.round(b.aperturas));
+  document.getElementById('k-mapa').textContent=fmt.format(Math.round(b.vistasMapa));
+  document.getElementById('k-modulo').textContent=fmt.format(Math.round(b.usosModulo));
+  document.getElementById('k-push').textContent=fmt.format(Math.round(b.alcancePush));
+  document.getElementById('k-post').textContent=fmt.format(Math.round(b.alcancePost));
+  // teaser: escenario con marca ~ parrilla(aperturas) + mapa
+  const tv=document.getElementById('teaserViews'); if(tv) tv.textContent=fmt.format(Math.round(b.aperturas+b.vistasMapa));
+}
+
+function renderSim(){
+  const b=base();
+  const tiers=['plat','gold','silver','bronze'];
+  let revenue=0, impr=0, brands=0;
+  const perTier={};
+  tiers.forEach(t=>{
+    const price=num('p-'+t), n=num('n-'+t);
+    const ipb=imprPerBrand(t,b).total;
+    revenue+=price*n; brands+=n; impr+=ipb*n;
+    perTier[t]={n,ipb,tot:ipb*n};
+  });
+  document.getElementById('sim-revenue').textContent=eur(revenue);
+  document.getElementById('sim-brands').textContent=fmt.format(brands);
+  document.getElementById('sim-impr').textContent=fmt.format(Math.round(impr));
+  document.getElementById('sim-cpm').textContent= impr>0 ? eur(revenue/(impr/1000)) : '0 €';
+  document.getElementById('sim-peruser').textContent= b.usuarios>0 ? eur(revenue/b.usuarios) : '0 €';
+  // bars
+  const max=Math.max(...tiers.map(t=>perTier[t].tot),1);
+  const names={plat:'Platinum',gold:'Gold',silver:'Silver',bronze:'Bronze'};
+  document.getElementById('sim-bars').innerHTML = tiers.map(t=>{
+    const w=Math.max(2,perTier[t].tot/max*100);
+    return `<div class="barrow"><span>${names[t]} ·&nbsp;${perTier[t].n}</span><div class="bar ${t}" style="width:${w}%"></div><b>${fmt.format(Math.round(perTier[t].tot))}</b></div>`;
+  }).join('');
+  // cost coverage
+  const cost=num('sim-cost');
+  const ct=document.getElementById('sim-coverTxt');
+  if(cost>0){ const pct=revenue/cost*100; ct.innerHTML=`Con estos precios, los patrocinios cubren el <b>${fmt.format(Math.round(pct))}%</b> de una app de ${eur(cost)}.`; }
+  else ct.textContent='—';
+  // packages table prices mirror
+  document.getElementById('pk-plat').textContent=eur(num('p-plat'));
+  document.getElementById('pk-gold').textContent=eur(num('p-gold'));
+  document.getElementById('pk-silver').textContent=eur(num('p-silver'));
+  document.getElementById('pk-bronze').textContent=eur(num('p-bronze'));
+}
+
+function renderReport(){
+  const b=base();
+  const price=num('p-'+repPkg);
+  const i=imprPerBrand(repPkg,b).total;
+  const inter=interPerBrand(repPkg,b);
+  document.getElementById('rep-pkg').textContent={plat:'Platinum',gold:'Gold',silver:'Silver',bronze:'Bronze'}[repPkg];
+  document.getElementById('rep-impr').textContent=fmt.format(Math.round(i));
+  document.getElementById('rep-inter').textContent=fmt.format(Math.round(inter));
+  document.getElementById('rep-cpm').textContent= i>0 ? eur(price/(i/1000)) : '0 €';
+  document.getElementById('rep-value').textContent= eur(i*b.refCpm/1000);
+}
+function renderAll(){ renderImpacts(); renderSim(); renderReport(); }
+
+// listeners
+document.querySelectorAll('.scen button[data-adopt]').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.scen button[data-adopt]').forEach(x=>x.classList.remove('on'));
+  btn.classList.add('on'); adopt=parseFloat(btn.dataset.adopt); renderAll();
+}));
+document.querySelectorAll('.scen button[data-pkg]').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.scen button[data-pkg]').forEach(x=>x.classList.remove('on'));
+  btn.classList.add('on'); repPkg=btn.dataset.pkg; renderReport();
+}));
+['a-perDay','a-days','a-dpp','a-oPD','a-pMap','a-pMod','a-pinVis','a-pPost','a-pPush','a-refCpm','p-plat','p-gold','p-silver','p-bronze','n-plat','n-gold','n-silver','n-bronze','sim-cost']
+  .forEach(id=>document.getElementById(id).addEventListener('input',renderAll));
+
+const DEFA={'a-perDay':35000,'a-days':5,'a-dpp':3,'a-oPD':6,'a-pMap':2,'a-pMod':1.5,'a-pinVis':0.5,'a-pPost':0.6,'a-pPush':0.6,'a-refCpm':6};
+const DEFP={'p-plat':3000,'p-gold':1500,'p-silver':800,'p-bronze':250,'n-plat':1,'n-gold':2,'n-silver':4,'n-bronze':4};
+document.getElementById('resetAssume').addEventListener('click',()=>{for(const k in DEFA)document.getElementById(k).value=DEFA[k];renderAll();});
+document.getElementById('resetAll').addEventListener('click',()=>{for(const k in DEFP)document.getElementById(k).value=DEFP[k];renderAll();});
+
+renderAll();
+if(window.lucide) lucide.createIcons();
+</script>
+</body>
+</html>
